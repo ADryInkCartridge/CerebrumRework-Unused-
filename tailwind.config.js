@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('./node_modules/tailwindcss/colors');
 
 module.exports = {
     mode: 'jit',
@@ -11,9 +12,26 @@ module.exports = {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            borderRadius:{
+                'big':'4rem',
+                '2big':'6rem'
             },
+            scale:{
+                '70':'0.7',
+            },
+            fontFamily: {
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+            },
+            colors:{
+                backgroundCerebrum: '#425958',
+                rose: colors.rose,
+                fuchsia: colors.fuchsia,
+                indigo: colors.indigo,
+                teal: colors.teal,
+                lime: colors.lime,
+                orange: colors.orange,
+                orangeCerebrum: '#FFCEA2',
+            }
         },
     },
 
