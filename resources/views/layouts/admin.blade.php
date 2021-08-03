@@ -37,7 +37,7 @@
             Super user
         </div>
     </div>
-    <div class="left-0 right-0 w-full mx-auto rounded-t-2big bottom-0 bg-white z-10 absolute top-48">
+    <div class="left-0 right-0 mx-auto h-full rounded-t-2big bottom-0 bg-white z-10 absolute top-48">
         @yield('content')
     </div>
 </body>
