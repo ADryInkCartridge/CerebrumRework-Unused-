@@ -15,4 +15,8 @@ class HomeController extends Controller
     {
         return view('landingpage');
     }
+    public function testing()
+    {
+        return view('testing');
+    }
 }

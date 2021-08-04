@@ -1,11 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="grid grid-cols-2 h-full content-center">
-    <div class="">
-        <div class="flex flex-col items-start px-40 py-40 text-left text-2xl">
-            <button id="button1">
-                <div class="grid grid-cols-2 align-middle items-start">
+<div class="grid grid-cols-2 h-full content-center p-20">
+        <div class="flex flex-col justify-start items-start px-40 py-40 text-left text-2xl">
+            <button id="button1" class="grid grid-cols-2 items-center">
                     <div>
                         Manajemen Mahasiswa
                     </div>
@@ -14,9 +12,8 @@
                             <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
                         </svg>
                     </div>
-                </div>
             </button>
-            <div id="dropdown" class="hidden flex-col  px-20">
+            <div id="dropdown" class="hidden flex-col px-32 ">
                 <a href="">
                     List Mahasiswa
                 </a>
@@ -57,7 +54,6 @@
                 Manajemen Kegiatan
             </a>
         </div>
-    </div>
     <div class="items-center flex">
         <img src="pictures/logo cerebrum.png" alt="logo cerebrum" class="scale-70">
     </div>
