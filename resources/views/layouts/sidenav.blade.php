@@ -23,17 +23,17 @@
 <body class=" bg-backgroundCerebrum font-sans">
     <div class="flex gap-x-5 ">
         <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-10 sidenavheight items-center rounded-3xl p-4">
-            <div class="flex text-xl font-semibold pb-20">
+            <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
-            <div class="flex p-5 items-center gap-x-5 pb-20">
+            <div class="flex w-full justify-start items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-start">
                     <span class="font-semibold">Admin</span>
                     <span>Superuser</span>
                 </div>
             </div>
-            <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-2 text-sm">
+            <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm">
                 <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
                     <div class="flex gap-x-3">
                     <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
@@ -65,8 +65,8 @@
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemenuser.png" alt=""><a class="" href="">Manajemen User</a></div>
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class="" href="">Kegiatan</a></div>
             </nav>
-            <div class="flex items-center justify-start pt-32 w-full px-4 gap-x-5">
-                <img src="pictures/logout.png" class="w-10" alt="">
+            <div class="flex items-center justify-start w-full px-4 gap-x-5">
+                <img src="pictures/logout_gray.png" class="w-10" alt="">
                 Log Out
             </div>
         </div>
