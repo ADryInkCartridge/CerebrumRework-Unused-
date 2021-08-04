@@ -12,6 +12,12 @@ module.exports = {
 
     theme: {
         extend: {
+            spacing: {
+                '309': '19rem',
+                '84': '21rem',
+                '837': '52rem',
+                '449': '28rem',
+              },
             borderRadius:{
                 'big':'4rem',
                 '2big':'6rem'
@@ -24,6 +30,7 @@ module.exports = {
             },
             colors:{
                 backgroundCerebrum: '#425958',
+                grayCerebrum: '#6e6e6e',
                 rose: colors.rose,
                 fuchsia: colors.fuchsia,
                 indigo: colors.indigo,
@@ -31,7 +38,7 @@ module.exports = {
                 lime: colors.lime,
                 orange: colors.orange,
                 orangeCerebrum: '#FFCEA2',
-            }
+            },
         },
     },
 
