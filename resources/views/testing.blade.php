@@ -3,7 +3,7 @@
 @section('content')
 
     <div>
-        aaaaaa
+        ngocok
     </div>
 
 @endsection

@@ -19,4 +19,8 @@ class HomeController extends Controller
     {
         return view('login1');
     }
+    public function testing()
+    {
+        return view('testing');
+    }
 }
