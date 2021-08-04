@@ -1,60 +1,58 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="grid grid-cols-2 h-full content-center p-20">
-        <div class="flex flex-col justify-start items-start px-40 py-40 text-left text-2xl">
-            <button id="button1" class="grid grid-cols-2 items-center">
+<div class="grid grid-cols-2 h-full pt-32">
+        <div class="flex flex-col items-start px-28 text-left text-2xl text-gray-600">
+            <button id="button1">
+                <div class="flex items-center gap-x-5 pb-4">
                     <div>
                         Manajemen Mahasiswa
                     </div>
-                    <div class="px-5">
-                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-                        </svg>
-                    </div>
-            </button>
-            <div id="dropdown" class="hidden flex-col px-32 ">
-                <a href="">
-                    List Mahasiswa
-                </a>
-                <a href="">
-                    List Kelompok
-                </a>
-            </div>
-            <a href="#">
-                Manajemen Penilaian
-            </a>
-            <button id="button2">
-                <div class="grid grid-cols-2 align-middle items-start">
-                    <div>
-                        Nilai Mahasiswa
-                    </div>
-                    <div class="px-5">
-                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-                        </svg>
+                    <div class="w-4">
+                        <img src="pictures/dropdown.png" alt="">
                     </div>
                 </div>
             </button>
-            <div id="dropdown2" class="hidden flex-col px-20">
-                <a href="">
+            <div id="dropdown" class="hidden flex-col pl-10">
+                <a href="" class="text-lg pb-4">
+                    List Mahasiswa
+                </a>
+                <a href="" class="text-lg pb-4">
+                    List Kelompok
+                </a>
+            </div>
+            <a href="" class="pb-4">
+                Manajemen Penilaian
+            </a>
+            <button id="button2">
+                <div class="flex items-center gap-x-28 pb-4">
+                    <div>
+                        Nilai Mahasiswa
+                    </div>
+                    <div class="w-4">
+                        <img src="pictures/dropdown.png" alt="">
+                    </div>
+                </div>
+            </button>
+            <div id="dropdown2" class="hidden flex-col pl-10 text-lg">
+                <a href="" class="pb-4">
                     Penyambutan
                 </a>
-                <a href="">
+                <a href="" class="pb-4">
                     Pembinaan
                 </a>
-                <a href="">
+                <a href="" class="pb-4">
                     Orientasi Ormawa
                 </a>
             </div>
-            <a href="#">
+            <a href="" class="pb-4">
                 Manajemen User
             </a>
-            <a href="#">
+            <a href="" class="pb-4">
                 Manajemen Kegiatan
             </a>
         </div>
-    <div class="items-center flex">
+    <div>
         <img src="pictures/logo cerebrum.png" alt="logo cerebrum" class="scale-70">
     </div>
 </div>

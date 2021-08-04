@@ -21,7 +21,7 @@
 </head>
 
 <body class="min-h-screen bg-backgroundCerebrum">
-    <div class="w-full h-20 flex justify-between px-10 py-5 items-center">
+    <div class="h-20 flex justify-between px-10 py-5 items-center">
         <div class="w-10 h-10">
             <img src="pictures/logo_unair.png" alt="Logo Unair <3">
         </div>
@@ -29,7 +29,7 @@
             Buku Hijau Cerebrum
         </div>
     </div>
-    <div class="w-full bottom-0 mt-12 grid grid-cols-1 text-white text-center text-xl align-text-bottom font-semibold">
+    <div class="bottom-0 mt-12 grid grid-cols-1 text-white text-center text-xl align-text-bottom font-semibold">
         <div>
             Admin
         </div>
@@ -37,7 +37,7 @@
             Super user
         </div>
     </div>
-    <div class="left-0 right-0 mx-auto h-full rounded-t-2big bottom-0 bg-white z-10 absolute top-48">
+    <div class="left-0 right-0 mx-auto rounded-t-2big bottom-0 bg-white z-10 absolute top-48 h-screen">
         @yield('content')
     </div>
 </body>
