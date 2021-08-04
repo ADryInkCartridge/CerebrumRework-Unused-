@@ -15,12 +15,8 @@ use App\Http\Controllers\LoginController;
 |
 */
 // Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
 Route::get('/admin',[adminController::class, 'index'])->name('admin');
 Route::get('/login1',[HomeController::class, 'login1'])->name('loginpage1');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
