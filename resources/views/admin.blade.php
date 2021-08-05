@@ -9,7 +9,7 @@
                         Manajemen Mahasiswa
                     </div>
                     <div class="w-4">
-                        <img src="pictures/dropdown.png" alt="">
+                        <img src="pictures/dropdown_grey.png" alt="">
                     </div>
                 </div>
             </button>
@@ -30,7 +30,7 @@
                         Nilai Mahasiswa
                     </div>
                     <div class="w-4">
-                        <img src="pictures/dropdown.png" alt="">
+                        <img src="pictures/dropdown_grey.png" alt="">
                     </div>
                 </div>
             </button>
@@ -54,6 +54,10 @@
         </div>
     <div>
         <img src="pictures/logo cerebrum.png" alt="logo cerebrum" class="scale-70">
+    </div>
+
+    <div class="px-28 font-light opacity-50">
+        Bontang Hebat 2021. All Rights Reserved
     </div>
 </div>
 

@@ -17,6 +17,7 @@ module.exports = {
                 '84': '21rem',
                 '837': '52rem',
                 '449': '28rem',
+                '26': '6.5rem'
               },
             borderRadius:{
                 'big':'4rem',
@@ -31,6 +32,8 @@ module.exports = {
             colors:{
                 backgroundCerebrum: '#425958',
                 grayCerebrum: '#6e6e6e',
+                greenTableheader: '#327370',
+                greenTable1: '#7BA6A4',
                 rose: colors.rose,
                 fuchsia: colors.fuchsia,
                 indigo: colors.indigo,
