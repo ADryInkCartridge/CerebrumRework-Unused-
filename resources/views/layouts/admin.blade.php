@@ -14,7 +14,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -31,7 +30,7 @@
     </div>
     <div class="bottom-0 mt-12 grid grid-cols-1 text-white text-center text-xl align-text-bottom font-semibold">
         <div>
-            Admin
+            {{{Auth::user()->nama}}}
         </div>
         <div class="text-orangeCerebrum text-sm">
             Super user

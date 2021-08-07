@@ -16,7 +16,8 @@ use App\Http\Controllers\LoginController;
 */
 // Auth::routes();
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
-Route::get('/admin',[adminController::class, 'index'])->name('admin');
-Route::get('/login1',[HomeController::class, 'login1'])->name('loginpage1');
+Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
+Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 

@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class User extends Migration
+class Users extends Migration
 {
     public function up()
     {   
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('user_id');
             $table->string('nama');
             $table->string('username');
             $table->string('password');
@@ -19,6 +19,6 @@ class User extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }
