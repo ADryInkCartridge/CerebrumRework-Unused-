@@ -31,6 +31,8 @@ module.exports = {
             colors:{
                 backgroundCerebrum: '#425958',
                 grayCerebrum: '#6e6e6e',
+                greenTable1:'#7BA6A4',
+                greenTableheader:'#327370',
                 rose: colors.rose,
                 fuchsia: colors.fuchsia,
                 indigo: colors.indigo,

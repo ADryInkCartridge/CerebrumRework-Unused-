@@ -55,6 +55,9 @@
     <div>
         <img src="pictures/logo cerebrum.png" alt="logo cerebrum" class="scale-70">
     </div>
+    <div class="text-base opacity-30 px-28">
+        Bontang Hebat 2021. All Rightes Reserved
+    </div>
 </div>
 
 <script>
