@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MahasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,14 @@ use App\Http\Controllers\LoginController;
 */
 // Auth::routes();
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
-Route::get('/admin',[adminController::class, 'index'])->name('admin');
-Route::get('/login1',[HomeController::class, 'login1'])->name('loginpage1');
+Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
+Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 Route::get('/ormawa',[HomeController::class, 'ormawa'])->name('ormawa');
 Route::get('/panitia',[HomeController::class, 'panitia'])->name('panitia');
 Route::get('/homeormawa',[HomeController::class, 'ormawanav'])->name('ormawanav');
+Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);
+Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
+
