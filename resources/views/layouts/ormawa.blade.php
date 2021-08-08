@@ -29,10 +29,10 @@
     </div>
     <div class="bottom-0 mt-12 grid grid-cols-1 text-white text-center text-xl align-text-bottom font-semibold">
         <div>
-            Admin
+            SKK
         </div>
         <div class="text-orangeCerebrum text-sm">
-            Super user
+            Ormawa
         </div>
     </div>
     <div class="left-0 right-0 mx-auto rounded-t-2big bottom-0 bg-white z-10 absolute top-48 h-screen">

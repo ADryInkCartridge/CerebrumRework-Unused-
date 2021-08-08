@@ -23,4 +23,16 @@ class HomeController extends Controller
     {
         return view('testing');
     }
+    public function ormawa()
+    {
+        return view('ormawa');
+    }
+    public function panitia()
+    {
+        return view('ormawanav');
+    }
+    public function ormawanav()
+    {
+        return view('ormawanav');
+    }
 }

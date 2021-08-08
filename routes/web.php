@@ -19,4 +19,6 @@ Route::get('/',[HomeController::class, 'landing'])->name('landing');
 Route::get('/admin',[adminController::class, 'index'])->name('admin');
 Route::get('/login1',[HomeController::class, 'login1'])->name('loginpage1');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
-
+Route::get('/ormawa',[HomeController::class, 'ormawa'])->name('ormawa');
+Route::get('/panitia',[HomeController::class, 'panitia'])->name('panitia');
+Route::get('/homeormawa',[HomeController::class, 'ormawanav'])->name('ormawanav');

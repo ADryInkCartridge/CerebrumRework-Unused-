@@ -1120,6 +1120,9 @@ select {
 .m-10 {
 	margin: 2.5rem;
 }
+.m-4 {
+	margin: 1rem;
+}
 .m-0 {
 	margin: 0px;
 }
@@ -1733,6 +1736,12 @@ select {
 .pt-1 {
 	padding-top: 0.25rem;
 }
+.pr-10 {
+	padding-right: 2.5rem;
+}
+.pr-8 {
+	padding-right: 2rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -1924,7 +1933,7 @@ select {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .sidenavheight{
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 2rem);
 }
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
