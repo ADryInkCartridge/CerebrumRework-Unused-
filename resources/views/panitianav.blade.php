@@ -1,4 +1,4 @@
-@extends('layouts.ormawasidenav')
+@extends('layouts.panitiasidenav')
 
 @section('content')
 
