@@ -24,6 +24,7 @@ Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 Route::get('/ormawa',[HomeController::class, 'ormawa'])->name('ormawa');
 Route::get('/panitia',[HomeController::class, 'panitia'])->name('panitia');
 Route::get('/homeormawa',[HomeController::class, 'ormawanav'])->name('ormawanav');
+Route::get('/homepanitia', [HomeController::class, 'panitianav'])->name('panitianav');
 Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);
 Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
