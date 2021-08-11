@@ -19,8 +19,8 @@ class HomeController extends Controller
     {
         return view('login1');
     }
-    public function testing()
+    public function ormawa()
     {
-        return view('testing');
+        return view('orientasiormawa');
     }
 }

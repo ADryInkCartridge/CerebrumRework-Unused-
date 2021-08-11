@@ -14,7 +14,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -22,7 +21,7 @@
 
 <body class=" bg-backgroundCerebrum font-sans">
     <div class="flex gap-x-5 ">
-        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-10 sidenavheight items-center rounded-3xl p-4">
+        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4">
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
@@ -70,7 +69,7 @@
                 Log Out
             </div>
         </div>
-        <div class="w-full flex-1">
+        <div class="flex-1">
             @yield('content')
         </div>
     </div>
@@ -90,6 +89,39 @@
         nilaibtn.addEventListener('click', () => {
             nilai.classList.toggle('hidden');
             nilai.classList.toggle('flex');
+
+        })
+
+    })
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+        const editbtn = document.querySelector('#editbtn')
+        const edit = document.querySelector('#editdropdown')
+        const editclose = document.querySelector('#closeedit')
+        const tambahbtn = document.querySelector('#tambahbtn')
+        const tambahoverlay = document.querySelector('#tambahoverlay')
+        const closeoverlay = document.querySelector('#closeoverlaybtn')
+
+
+        editbtn.addEventListener('click', () => {
+            edit.classList.toggle('hidden');
+            edit.classList.toggle('flex');
+
+        })
+        editclose.addEventListener('click', () => {
+            edit.classList.toggle('hidden');
+            edit.classList.toggle('flex');
+
+        })
+        tambahbtn.addEventListener('click', () => {
+            tambahoverlay.classList.toggle('hidden');
+            tambahoverlay.classList.toggle('flex');
+
+        })
+        closeoverlay.addEventListener('click', () => {
+            tambahoverlay.classList.toggle('hidden');
+            tambahoverlay.classList.toggle('flex');
 
         })
 

@@ -38,6 +38,10 @@ module.exports = {
                 lime: colors.lime,
                 orange: colors.orange,
                 orangeCerebrum: '#FFCEA2',
+                tablehead: '#327370',
+                tablegreen: '#7BA6A4',
+                tabletext: '#2B2B2B',
+
             },
         },
     },
