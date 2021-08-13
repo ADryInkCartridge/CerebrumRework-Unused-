@@ -27,29 +27,16 @@
             <div class="flex w-full justify-start items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
-                    <span class="font-semibold">Admin</span>
-                    <span>Superuser</span>
+                    <span class="font-semibold">PJ Kelompok 1</span>
+                    <span>Panitia</span>
                 </div>
             </div>
             <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm">
-                <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
-                    <div class="flex gap-x-3">
-                    <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
-                    Manajemen Mahasiswa
-                    </div>
-
-                    <img src="pictures/dropdown.png" class="w-2" alt="">
-                </button>
-                <div id="dropmanajemen" class="hidden flex-col pl-8 gap-y-2">
-                    <a href="">List Mahasiswa</a>
-                    <a href="">List Kelompok</a>
-                </div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemennilai.png" alt=""><a class="" href="">Manajemen Penilaian</a></div>
                 
                 <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                     <div class="flex gap-x-3">
                     <img src="pictures/iconnilai.png" class="w-5" alt="">
-                    Nilai Mahasiswa
+                        Nilai Mahasiswa
                     </div>
 
                     <img src="pictures/dropdown.png" class="w-2 end" alt="">
@@ -57,11 +44,16 @@
                 </button>
                 <div id="dropnilai" class="hidden flex-col pl-8 gap-y-2">
                     <a href="">Penyambutan</a>
-                    <a href="">Pembinaan</a>
-                    <a href="">Orientasi Ormawa</a>
-                </div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemenuser.png" alt=""><a class="" href="">Manajemen User</a></div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class="" href="">Kegiatan</a></div>
+                    <a href="">Pembinaan</a>   
+                </div>    
+
+                <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
+                    <div class="flex gap-x-3">
+                    <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
+                    Manajemen Mahasiswa
+                    </div>
+                </button>
+                
             </nav>
             <div class="flex items-center justify-start w-full px-4 gap-x-5">
                 <img src="pictures/logout_gray.png" class="w-10" alt="">
