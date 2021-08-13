@@ -17,11 +17,12 @@ use App\Http\Controllers\MahasiswaController;
 */
 // Auth::routes();
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
-Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
 Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);
 Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
+Route::get('/admin',[AdminController::class, 'index'])->name('admin');
+Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
 

@@ -9,13 +9,25 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth',['except' => 'loginpage','landing']);
+    // public function __construct(){
+    //     $this->middleware('auth',['except' => 'loginpage','login','landing']);
+    // }
+
+    public function handle($request, Closure $next)
+    {
+        if(Auth::user())
+        {
+            return $next($request);
+        }
+        return redirect('/');
     }
 
     public function index()
     {
-        return view('admin');
+        if(Auth::check()){
+            return view('admin');
+        }
+        return redirect('login');
     }
 
     public function loginpage()
@@ -28,10 +40,18 @@ class AdminController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
+        // dd(Hash::make('abc'));
         $cridentials = $req->only('username','password');
         if(Auth::attempt($cridentials)){
-            return redirect()->intended('admin')->withSuccess('Signed in');
+            return redirect()->route('admin')->withSuccess('Signed in');
         }
         return redirect('login')->withSuccess('Login details are not valid');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
