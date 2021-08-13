@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware('auth',['except' => 'loginpage','login','landing']);
-    // }
 
     public function handle($request, Closure $next)
     {
@@ -25,7 +22,16 @@ class AdminController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('admin');
+            $user = Auth::user();
+            if ($user->role == 'Super User'){
+                return view('admin');
+            }
+            else if($user->role == 'Ormawa'){
+                return redirect('ormawa');
+            }
+            if($user->role == 'Panitia'){
+                return redirect('panitia');
+            }
         }
         return redirect('login');
     }
@@ -43,6 +49,7 @@ class AdminController extends Controller
         // dd(Hash::make('abc'));
         $cridentials = $req->only('username','password');
         if(Auth::attempt($cridentials)){
+            
             return redirect()->route('admin')->withSuccess('Signed in');
         }
         return redirect('login')->withSuccess('Login details are not valid');

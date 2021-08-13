@@ -32,7 +32,7 @@
             {{{Auth::user()->nama}}}
         </div>
         <div class="text-orangeCerebrum text-sm">
-            Super user
+            {{{Auth::user()->role}}}
         </div>
     </div>
     <div class="left-0 right-0 mx-auto rounded-t-2big bottom-0 bg-white z-10 absolute top-48 h-screen">

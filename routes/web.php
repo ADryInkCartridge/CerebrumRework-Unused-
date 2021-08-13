@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PanitiaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,7 @@ Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
 Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
 Route::get('/ormawa',[HomeController::class, 'ormawa'])->name('ormawa');
-Route::get('/panitia',[HomeController::class, 'panitia'])->name('panitia');
+Route::get('/panitia',[PanitiaController::class, 'index'])->name('panitia');
 Route::get('/homeormawa',[HomeController::class, 'ormawanav'])->name('ormawanav');
 Route::get('/homepanitia', [HomeController::class, 'panitianav'])->name('panitianav');
 Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);

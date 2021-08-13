@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
     public function panitia()
     {
-        return view('ormawanav');
+        return view('panitia');
     }
     public function ormawanav()
     {
