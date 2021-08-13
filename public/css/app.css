@@ -1163,8 +1163,15 @@ select {
 .mb-10 {
 	margin-bottom: 2.5rem;
 }
+
+.mt-5 {
+	margin-top: 1.25rem;
+}
+.mt-3 {
+	margin-top: 0.75rem;
 .mt-2 {
 	margin-top: 0.5rem;
+
 }
 .-mr-0\.5 {
 	margin-right: -0.125rem;
@@ -1184,6 +1191,7 @@ select {
 .-mr-1 {
 	margin-right: -0.25rem;
 }
+
 .mt-12 {
 	margin-top: 3rem;
 }
@@ -1202,6 +1210,7 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+
 .mt-10 {
 	margin-top: 2.5rem;
 }
