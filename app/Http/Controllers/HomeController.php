@@ -35,4 +35,16 @@ class HomeController extends Controller
     {
         return view('panitianav');
     }
+    public function listmahasiswa()
+    {
+        return view('listmahasiswa');
+    }
+    public function listUser()
+    {
+        return view('listUser');
+    }
+    public function tambahUser()
+    {
+        return view('tambahUser');
+    }
 }

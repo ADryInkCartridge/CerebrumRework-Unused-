@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
@@ -68,7 +69,7 @@
                 Log Out
             </div>
         </div>
-        <div class="w-full flex-1">
+        <div class="flex-1">
             @yield('content')
         </div>
     </div>
@@ -83,14 +84,37 @@
         manabtn.addEventListener('click', () => {
             mana.classList.toggle('hidden');
             mana.classList.toggle('flex');
-
         })
         nilaibtn.addEventListener('click', () => {
             nilai.classList.toggle('hidden');
             nilai.classList.toggle('flex');
-
         })
-
+    })
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+        const editbtn = document.querySelector('#editbtn')
+        const edit = document.querySelector('#editdropdown')
+        const editclose = document.querySelector('#closeedit')
+        const tambahbtn = document.querySelector('#tambahbtn')
+        const tambahoverlay = document.querySelector('#tambahoverlay')
+        const closeoverlay = document.querySelector('#closeoverlaybtn')
+        editbtn.addEventListener('click', () => {
+            edit.classList.toggle('hidden');
+            edit.classList.toggle('flex');
+        })
+        editclose.addEventListener('click', () => {
+            edit.classList.toggle('hidden');
+            edit.classList.toggle('flex');
+        })
+        tambahbtn.addEventListener('click', () => {
+            tambahoverlay.classList.toggle('hidden');
+            tambahoverlay.classList.toggle('flex');
+        })
+        closeoverlay.addEventListener('click', () => {
+            tambahoverlay.classList.toggle('hidden');
+            tambahoverlay.classList.toggle('flex');
+        })
     })
     </script>
 </body>

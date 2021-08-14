@@ -5,3 +5,10 @@
 .sidenavheight{
     height: calc(100vh - 2rem);
 }
+
+.table-row-group .table-row:nth-child(even) {background-color: #fff; color: #2b2b2b}
+.table-row-group .table-row:nth-child(odd) {background-color: #7BA6A4; color: #2b2b2b}
+
+.table-row input {
+    background-color: transparent;
+}
