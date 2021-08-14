@@ -33,3 +33,8 @@ Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
 Route::get('/listmahasiswa', [HomeController::class, 'listmahasiswa'])->name('listmahasiswa');
 Route::get('/listUser', [HomeController::class, 'listUser'])->name('listUser');
 Route::get('/tambahUser', [HomeController::class, 'tambahUser'])->name('tambahUser');
+Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
+Route::get('/editmahasiswa', [HomeController::class, 'editmahasiswa'])->name('editmahasiswa');
+Route::get('/tambahkegiatan', [HomeController::class, 'tambahkegiatan'])->name('tambahkegiatan');
+Route::get('/editkegiatan', [HomeController::class, 'editkegiatan'])->name('editkegiatan');
+

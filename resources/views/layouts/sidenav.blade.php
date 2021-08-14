@@ -19,9 +19,10 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class=" bg-backgroundCerebrum font-sans">
+<body id="body" class=" bg-backgroundCerebrum font-sans">
     <div class="flex gap-x-5 ">
-        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4">
+        <div
+            class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
@@ -35,8 +36,8 @@
             <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm">
                 <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
                     <div class="flex gap-x-3">
-                    <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
-                    Manajemen Mahasiswa
+                        <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
+                        Manajemen Mahasiswa
                     </div>
 
                     <img src="pictures/dropdown.png" class="w-2" alt="">
@@ -45,12 +46,13 @@
                     <a href="">List Mahasiswa</a>
                     <a href="">List Kelompok</a>
                 </div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemennilai.png" alt=""><a class="" href="">Manajemen Penilaian</a></div>
-                
+                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemennilai.png" alt=""><a class=""
+                        href="">Manajemen Penilaian</a></div>
+
                 <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                     <div class="flex gap-x-3">
-                    <img src="pictures/iconnilai.png" class="w-5" alt="">
-                    Nilai Mahasiswa
+                        <img src="pictures/iconnilai.png" class="w-5" alt="">
+                        Nilai Mahasiswa
                     </div>
 
                     <img src="pictures/dropdown.png" class="w-2 end" alt="">
@@ -61,15 +63,17 @@
                     <a href="">Pembinaan</a>
                     <a href="">Orientasi Ormawa</a>
                 </div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemenuser.png" alt=""><a class="" href="">Manajemen User</a></div>
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class="" href="">Kegiatan</a></div>
+                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemenuser.png" alt=""><a class=""
+                        href="">Manajemen User</a></div>
+                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class=""
+                        href="">Kegiatan</a></div>
             </nav>
             <div class="flex items-center justify-start w-full px-4 gap-x-5">
                 <img src="pictures/logout_gray.png" class="w-10" alt="">
                 Log Out
             </div>
         </div>
-        <div class="flex-1">
+        <div class="ml-64 pl-4 flex-1">
             @yield('content')
         </div>
     </div>
@@ -99,6 +103,11 @@
         const tambahbtn = document.querySelector('#tambahbtn')
         const tambahoverlay = document.querySelector('#tambahoverlay')
         const closeoverlay = document.querySelector('#closeoverlaybtn')
+        const uploadbtn = document.querySelector('#uploadbtn')
+        const uploadoverlay = document.querySelector('#uploadoverlay')
+        const closeuploadoverlay = document.querySelector('#closeuploadoverlaybtn')
+        const body = document.querySelector('#body')
+
         editbtn.addEventListener('click', () => {
             edit.classList.toggle('hidden');
             edit.classList.toggle('flex');
@@ -110,10 +119,22 @@
         tambahbtn.addEventListener('click', () => {
             tambahoverlay.classList.toggle('hidden');
             tambahoverlay.classList.toggle('flex');
+            body.classList.toggle('overflow-hidden');
         })
         closeoverlay.addEventListener('click', () => {
             tambahoverlay.classList.toggle('hidden');
             tambahoverlay.classList.toggle('flex');
+            body.classList.remove('overflow-hidden');
+
+        })
+        uploadbtn.addEventListener('click', () => {
+            uploadoverlay.classList.toggle('hidden');
+            uploadoverlay.classList.toggle('flex');
+        })
+        closeuploadoverlay.addEventListener('click', () => {
+            uploadoverlay.classList.toggle('hidden');
+            uploadoverlay.classList.toggle('flex');
+
         })
     })
     </script>
