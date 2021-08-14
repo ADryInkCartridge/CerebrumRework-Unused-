@@ -30,4 +30,6 @@ Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('fi
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
-
+Route::get('/listmahasiswa', [HomeController::class, 'listmahasiswa'])->name('listmahasiswa');
+Route::get('/listUser', [HomeController::class, 'listUser'])->name('listUser');
+Route::get('/tambahUser', [HomeController::class, 'tambahUser'])->name('tambahUser');
