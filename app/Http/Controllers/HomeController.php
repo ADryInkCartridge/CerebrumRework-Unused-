@@ -47,4 +47,21 @@ class HomeController extends Controller
     {
         return view('tambahUser');
     }
+    public function tambahmahasiswa()
+    {
+        return view('tambahmahasiswa');
+    }
+    public function editmahasiswa()
+    {
+        return view('editmahasiswa');
+    }
+    public function editkegiatan()
+    {
+        return view('editkegiatan');
+    }
+    public function tambahkegiatan()
+    {
+        return view('tambahkegiatan');
+    }
+
 }
