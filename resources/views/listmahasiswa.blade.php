@@ -3,7 +3,9 @@
 @section('content')
 <div id="tambahoverlay" class="absolute inset-0 hidden justify-center bg-black bg-opacity-50 z-10 items-center">
     <div class="w-1/3 bg-white h-1/3 rounded-xl py-10 flex flex-col items-center justify-center gap-y-10 relative">
-        <button id="closeoverlaybtn" class="absolute top-5 right-5 z-10">x</button>
+        <button id="closeoverlaybtn" class="absolute top-5 right-5 z-10">
+            <img class="w-4" src="pictures/close.png" alt="">
+        </button>
         <span class="text-3xl text-black font-semibold">Tambah Mahasiswa</span>
         <div class="items-center flex gap-x-20 text-white ">
             <button id="uploadbtn" class="w-36 h-14 bg-greenTableheader rounded-md font-semibold">Upload File</button>
@@ -13,8 +15,10 @@
 </div>
 <div id="uploadoverlay" class="absolute inset-0 hidden justify-center bg-black bg-opacity-50 z-10 items-center">
     <div class="w-1/3 bg-white h-1/3 rounded-xl py-10 flex flex-col items-start justify-center gap-y-10 relative">
-        <button id="closeuploadoverlaybtn" class="absolute top-5 right-5 z-10">x</button>
-        <h2 class="mb-6 text-4xl font-medium flex justify-start pl-16">
+        <button id="closeuploadoverlaybtn" class="absolute top-5 right-5 z-10">
+        <img class="w-4" src="pictures/close.png" alt="">
+        </button>
+        <h2 class="mt-10 text-2xl font-medium flex justify-start pl-16">
             Upload File
         </h2>
         @if($errors->any())
@@ -41,8 +45,8 @@
 </div>
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">
     <div class="flex justify-between">
-        <div class="flex flex-col text-white">
-            <span class="text-3xl pb-4">List Mahasiswa</span>
+        <div class="flex flex-col">
+            <span class="text-3xl pb-4 text-white">List Mahasiswa</span>
             <div class="relative">
                 <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
                 <input class="rounded-lg h-9 w-64 pl-10" type="text" name="" id="" placeholder="Search">
@@ -204,9 +208,26 @@
                     <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
                     <div class="table-cell w-32 text-center align-middle "></div>
                 </div>
-
-
-
+            </div>
+        </div>
+        <div class="flex flex-row mt-4">
+            <div class="w-96 flex items-center text-white mr-96">
+                Showing 1 to 10 of 1 entries
+            </div>
+            <div>
+                <div class="flex flex-row gap-x-4">
+                    <button class="w-10 flex items-center">
+                        <img src="pictures/leftbutton.png" alt="">
+                    </button>
+                    <div class="flex flex-row items-center bg-greenTableheader text-white gap-x-10 rounded-3xl">
+                        <button class="ml-5">1</button>
+                        <button>2</button>
+                        <button class="mr-5">3</button>
+                    </div>
+                    <button class="w-10 flex items-center">
+                        <img src="pictures/rightbutton.png" alt="">
+                    </button>
+                </div>
             </div>
         </div>
     </div>

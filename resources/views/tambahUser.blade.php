@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="pt-10 pr-10">
+<div class="pt-10 pr-10 ml-4">
     <div class="font-medium text-white text-3xl pb-4">Tambah User</div>
     <div class="w-full tambahuserheight bg-white rounded-xl">
         <form class="flex flex-col gap-y-16  h-full" action="">
-            <div class="pt-28 pl-11 flex flex-col gap-y-5">
+            <div class="pt-11 pl-11 flex flex-col gap-y-5">
                 <label class="font-semibold pr-28 text-2xl text-grayCerebrum" for="">Username</label>
                 <input type="text" id="" name="" class="w-96 rounded-lg">
             </div>
