@@ -14,7 +14,7 @@
             </div>
         </button>
         <div id="dropdown" class="hidden flex-col pl-10">
-            <a href="" class="text-lg pb-4">
+            <a href="{{route('listmahasiswa')}}" class="text-lg pb-4">
                 List Mahasiswa
             </a>
             <a href="" class="text-lg pb-4">

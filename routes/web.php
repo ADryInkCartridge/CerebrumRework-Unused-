@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PanitiaController;
+use Illuminate\Support\Facades\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +31,7 @@ Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('fi
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
-Route::get('/listmahasiswa', [HomeController::class, 'listmahasiswa'])->name('listmahasiswa');
+Route::get('/listmahasiswa', [MahasiswaController::class, 'listmahasiswa'])->name('listmahasiswa');
 Route::get('/listUser', [AdminController::class, 'listUser'])->name('listUser');
 Route::get('/tambahUser', [AdminController::class, 'tambahUser'])->name('tambahUser');
 Route::post('/tambahUser-post', [AdminController::class, 'addUser'])->name('tambahUser.post');

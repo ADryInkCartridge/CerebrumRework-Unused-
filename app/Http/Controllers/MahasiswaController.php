@@ -6,6 +6,7 @@ use Excel;
 use Illuminate\Http\Request;
 use App\Imports\MahasiswaImport;
 use App\Exports\MahasiswaExport;
+use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -13,7 +14,11 @@ class MahasiswaController extends Controller
     {
        return view('file-import');
     }
-   
+    public function listmahasiswa()
+    {
+        $data = Mahasiswa::paginate(10);
+        return view('listmahasiswa',['listOfMahasiswa' => $data]);
+    }
     /**
     * @return \Illuminate\Support\Collection
     */

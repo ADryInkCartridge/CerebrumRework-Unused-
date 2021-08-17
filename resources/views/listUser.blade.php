@@ -6,8 +6,16 @@
         <div class="flex flex-col">
             <span class="text-3xl pb-4 text-white">List User</span>
             <div class="relative">
-                <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
-                <input class="rounded-lg h-9 w-64 pl-10" type="text" name="" id="" placeholder="Search">
+                <form action="{{route('listUser')}}" method="GET" role='search'>
+                    @csrf
+                    <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
+                    <input class="rounded-lg h-9 w-64 pl-10" type="text" name="term" id="term" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <img class="w-5 " src="pictures/search_grey.png" alt="">
+                        </button>
+                    </span>
+                </form>
             </div>
 
         </div>
@@ -108,18 +116,6 @@
             <div>
                 <div class="flex flex-row gap-x-4">
                     {{ $listOfUsers->links('custompaginator') }}
-
-                    <!-- <button class="w-10 flex items-center">
-                        <img src="pictures/leftbutton.png" alt="">
-                    </button>
-                    <div class="flex flex-row items-center bg-greenTableheader text-white gap-x-10 rounded-3xl">
-                        <button class="ml-5">1</button>
-                        <button>2</button>
-                        <button class="mr-5">3</button>
-                    </div>
-                    <button class="w-10 flex items-center">
-                        <img src="pictures/rightbutton.png" alt="">
-                    </button> -->
                 </div>
             </div>
         </div>

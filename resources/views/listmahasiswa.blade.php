@@ -16,7 +16,7 @@
 <div id="uploadoverlay" class="absolute inset-0 hidden justify-center bg-black bg-opacity-50 z-10 items-center">
     <div class="w-1/3 bg-white h-1/3 rounded-xl py-10 flex flex-col items-start justify-center gap-y-10 relative">
         <button id="closeuploadoverlaybtn" class="absolute top-5 right-5 z-10">
-        <img class="w-4" src="pictures/close.png" alt="">
+            <img class="w-4" src="pictures/close.png" alt="">
         </button>
         <h2 class="mt-10 text-2xl font-medium flex justify-start pl-16">
             Upload File
@@ -48,8 +48,16 @@
         <div class="flex flex-col">
             <span class="text-3xl pb-4 text-white">List Mahasiswa</span>
             <div class="relative">
-                <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
-                <input class="rounded-lg h-9 w-64 pl-10" type="text" name="" id="" placeholder="Search">
+                <form action="/search" method="POST" role='search'>
+                    @csrf
+                    <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
+                    <input class="rounded-lg h-9 w-64 pl-10" type="text" name="" id="" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <img class="w-5 " src="pictures/search_grey.png" alt="">
+                        </button>
+                    </span>
+                </form>
             </div>
 
         </div>
@@ -75,30 +83,32 @@
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>
+                    <div class="table-cell w-1/4 text-center align-middle">ID Cerebrum</div>
                     <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
                     <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
                     <div class="table-cell w-32 text-center align-middle "></div>
-
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
+                        <span class="pl-5">No</span>
+                    </div>
+                    <div class="table-cell w-1/4 text-center align-middle">Username</div>
                     <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
+                    <div class="table-cell w-1/4 text-center align-middle">Role</div>
                     <div class="table-cell w-32 text-center align-middle relative">
                         <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
                         <div id="editdropdown"
                             class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
                             <button id="closeedit"
-                                class="self-end bg-tablehead w-full flex justify-end pr-2 h-6">x</button>
+                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
+                                <img class="pt-1 w-3" src="pictures/close.png" alt="">
+                            </button>
                             <a href="">
                                 <div class="border-b-2 h-6 pl-2 text-left">
-                                    Hapus
+                                    Edit
                                 </div>
                             </a>
                             <a href="">
@@ -109,124 +119,43 @@
                         </div>
                     </div>
                 </div>
+                @foreach($listOfMahasiswa as $Mahasiswa)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
+                        <span class="pl-5">{{$Mahasiswa['id']}}</span>
+                    </div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['id_cerebrum']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['nama']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['kelompok']}}</div>
+                    <div class="table-cell w-32 text-center align-middle relative">
+                        <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
+                        <div id="editdropdown"
+                            class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
+                            <button id="closeedit"
+                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
+                                <img class="pt-1 w-3" src="pictures/close.png" alt="">
+                            </button>
+                            <a href="">
+                                <div class="border-b-2 h-6 pl-2 text-left">
+                                    Edit
+                                </div>
+                            </a>
+                            <a href="">
+                                <div class="text-left pl-2 h-6">
+                                    Hapus
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span></div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">NIM</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="flex flex-row mt-4">
-            <div class="w-96 flex items-center text-white mr-96">
-                Showing 1 to 10 of 1 entries
-            </div>
             <div>
                 <div class="flex flex-row gap-x-4">
-                    <button class="w-10 flex items-center">
-                        <img src="pictures/leftbutton.png" alt="">
-                    </button>
-                    <div class="flex flex-row items-center bg-greenTableheader text-white gap-x-10 rounded-3xl">
-                        <button class="ml-5">1</button>
-                        <button>2</button>
-                        <button class="mr-5">3</button>
-                    </div>
-                    <button class="w-10 flex items-center">
-                        <img src="pictures/rightbutton.png" alt="">
-                    </button>
+                    {{ $listOfMahasiswa->links('custompaginator') }}
                 </div>
             </div>
         </div>

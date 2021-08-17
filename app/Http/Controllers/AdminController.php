@@ -19,9 +19,16 @@ class AdminController extends Controller
         return redirect('/');
     }
 
-    public function listUser()
+    public function listUser(Request $request)
     {
-        $data = User::paginate(10);
+        $data = User::where([
+            ['user_id','!=',NULL],
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('nama','LIKE','%'. $term .'%')->orWhere('username','LIKE','%'. $term .'%')->get();
+                }
+            }]
+        ])->orderBy('user_id','asc')->paginate(10);
         return view('listUser',['listOfUsers' => $data]);
     }
 
