@@ -39,14 +39,6 @@ class HomeController extends Controller
     {
         return view('listmahasiswa');
     }
-    public function listUser()
-    {
-        return view('listUser');
-    }
-    public function tambahUser()
-    {
-        return view('tambahUser');
-    }
     public function tambahmahasiswa()
     {
         return view('tambahmahasiswa');

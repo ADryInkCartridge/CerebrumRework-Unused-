@@ -19,6 +19,17 @@ class AdminController extends Controller
         return redirect('/');
     }
 
+    public function listUser()
+    {
+        $data = User::paginate(10);
+        return view('listUser',['listOfUsers' => $data]);
+    }
+
+    public function tambahUser()
+    {
+        return view('tambahUser');
+    }
+
     public function index()
     {
         if(Auth::check()){
@@ -60,5 +71,21 @@ class AdminController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function addUser(Request $request){
+        $request->validate([
+            'username' => 'required|unique:users,username',
+            'nama' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+        User::create([
+            'username' => $request['username'],
+            'nama' => $request['nama'],
+            'role' => $request['role'],
+            'password' => Hash::make($request['password'])
+        ]);
+        return redirect()->route('tambahUser')->with('success', 'User Berhasil Ditambahkan');
     }
 }

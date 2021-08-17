@@ -31,8 +31,9 @@ Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('fil
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
 Route::get('/listmahasiswa', [HomeController::class, 'listmahasiswa'])->name('listmahasiswa');
-Route::get('/listUser', [HomeController::class, 'listUser'])->name('listUser');
-Route::get('/tambahUser', [HomeController::class, 'tambahUser'])->name('tambahUser');
+Route::get('/listUser', [AdminController::class, 'listUser'])->name('listUser');
+Route::get('/tambahUser', [AdminController::class, 'tambahUser'])->name('tambahUser');
+Route::post('/tambahUser-post', [AdminController::class, 'addUser'])->name('tambahUser.post');
 Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
 Route::get('/editmahasiswa', [HomeController::class, 'editmahasiswa'])->name('editmahasiswa');
 Route::get('/tambahkegiatan', [HomeController::class, 'tambahkegiatan'])->name('tambahkegiatan');
