@@ -90,35 +90,7 @@
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span>
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">Username</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Role</div>
-                    <div class="table-cell w-32 text-center align-middle relative">
-                        <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
-                        <div id="editdropdown"
-                            class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
-                            <button id="closeedit"
-                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
-                                <img class="pt-1 w-3" src="pictures/close.png" alt="">
-                            </button>
-                            <a href="">
-                                <div class="border-b-2 h-6 pl-2 text-left">
-                                    Edit
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="text-left pl-2 h-6">
-                                    Hapus
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
                 @foreach($listOfMahasiswa as $Mahasiswa)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
