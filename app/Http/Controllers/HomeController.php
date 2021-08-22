@@ -51,5 +51,9 @@ class HomeController extends Controller
     {
         return view('tambahkegiatan');
     }
+    public function setpermission()
+    {
+        return view('setpermission');
+    }
 
 }

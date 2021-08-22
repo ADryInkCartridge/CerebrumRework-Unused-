@@ -26,7 +26,7 @@
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
-            <div class="flex w-full justify-start items-center gap-x-5 pb-10">
+            <div class="flex w-full justify-center items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
                     <span class="font-semibold">Admin</span>
