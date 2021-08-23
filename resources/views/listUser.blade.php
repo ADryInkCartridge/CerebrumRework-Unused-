@@ -38,7 +38,7 @@
 
     </div>
     <div class="pt-5 w-full">
-        <div class="table w-full rounded-2xl overflow-hidden">
+        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>
@@ -50,35 +50,7 @@
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">No</span>
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">Username</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Role</div>
-                    <div class="table-cell w-32 text-center align-middle relative">
-                        <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
-                        <div id="editdropdown"
-                            class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
-                            <button id="closeedit"
-                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
-                                <img class="pt-1 w-3" src="pictures/close.png" alt="">
-                            </button>
-                            <a href="">
-                                <div class="border-b-2 h-6 pl-2 text-left">
-                                    Edit
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="text-left pl-2 h-6">
-                                    Hapus
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
                 @foreach($listOfUsers as $users)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
@@ -89,11 +61,11 @@
                     <div class="table-cell w-1/4 text-center align-middle">{{$users['nama']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$users['role']}}</div>
                     <div class="table-cell w-32 text-center align-middle relative">
-                        <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
-                        <div id="editdropdown"
-                            class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
-                            <button id="closeedit"
-                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
+                        <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
+                        <div id=""
+                            class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl z-10">
+                            <button id=""
+                                class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">
                             </button>
                             <a href="">

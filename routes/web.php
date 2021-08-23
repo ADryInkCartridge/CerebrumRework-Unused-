@@ -39,4 +39,6 @@ Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name
 Route::get('/editmahasiswa', [HomeController::class, 'editmahasiswa'])->name('editmahasiswa');
 Route::get('/tambahkegiatan', [HomeController::class, 'tambahkegiatan'])->name('tambahkegiatan');
 Route::get('/editkegiatan', [HomeController::class, 'editkegiatan'])->name('editkegiatan');
+Route::get('/setpermission', [HomeController::class, 'setpermission'])->name('setpermission');
+
 

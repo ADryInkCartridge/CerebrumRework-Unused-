@@ -26,7 +26,7 @@
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
-            <div class="flex w-full justify-start items-center gap-x-5 pb-10">
+            <div class="flex w-full justify-center items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
                     <span class="font-semibold">Admin</span>
@@ -97,9 +97,9 @@
     </script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-        const editbtn = document.querySelector('#editbtn')
-        const edit = document.querySelector('#editdropdown')
-        const editclose = document.querySelector('#closeedit')
+        const editbtn = document.getElementsByClassName('editbtn')
+        const edit = document.getElementsByClassName('editdropdown')
+        const editclose = document.getElementsByClassName('closeedit')
         const tambahbtn = document.querySelector('#tambahbtn')
         const tambahoverlay = document.querySelector('#tambahoverlay')
         const closeoverlay = document.querySelector('#closeoverlaybtn')
@@ -107,7 +107,16 @@
         const uploadoverlay = document.querySelector('#uploadoverlay')
         const closeuploadoverlay = document.querySelector('#closeuploadoverlaybtn')
         const body = document.querySelector('#body')
-
+        for(let i=0;i<editbtn.length;i++){
+            editbtn[i].onclick = function() {
+                edit[i].style.display = "block";
+            }
+        }
+        for(let i=0;i<editclose.length;i++){
+            editclose[i].onclick = function() {
+                edit[i].style.display = "none";
+            }
+        }
         editbtn.addEventListener('click', () => {
             edit.classList.toggle('hidden');
             edit.classList.toggle('flex');
