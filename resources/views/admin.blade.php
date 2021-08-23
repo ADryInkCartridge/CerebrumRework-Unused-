@@ -45,7 +45,7 @@
                 Orientasi Ormawa
             </a>
         </div>
-        <a href="" class="pb-4">
+        <a href="{{route('listUser')}}" class="pb-4">
             Manajemen User
         </a>
         <a href="" class="pb-4">
