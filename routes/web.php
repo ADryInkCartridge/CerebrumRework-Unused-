@@ -41,4 +41,3 @@ Route::get('/tambahkegiatan', [HomeController::class, 'tambahkegiatan'])->name('
 Route::get('/editkegiatan', [HomeController::class, 'editkegiatan'])->name('editkegiatan');
 Route::get('/setpermission', [HomeController::class, 'setpermission'])->name('setpermission');
 
-

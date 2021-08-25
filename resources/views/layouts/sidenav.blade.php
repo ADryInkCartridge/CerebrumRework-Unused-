@@ -43,7 +43,7 @@
                     <img src="pictures/dropdown.png" class="w-2" alt="">
                 </button>
                 <div id="dropmanajemen" class="hidden flex-col pl-8 gap-y-2">
-                    <a href="">List Mahasiswa</a>
+                    <a href="{{url('/listmahasiswa')}}">List Mahasiswa</a>
                     <a href="">List Kelompok</a>
                 </div>
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemennilai.png" alt=""><a class=""
@@ -64,7 +64,7 @@
                     <a href="">Orientasi Ormawa</a>
                 </div>
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconmanajemenuser.png" alt=""><a class=""
-                        href="">Manajemen User</a></div>
+                        href="{{url('/listUser')}}">Manajemen User</a></div>
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class=""
                         href="">Kegiatan</a></div>
             </nav>
