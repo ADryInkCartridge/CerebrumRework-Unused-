@@ -29,8 +29,8 @@ class KegiatanController extends Controller
             'id_ormawa' => 'required',
             'jenis_kegiatan' => 'required',
             'sn' => 'required',
-
         ]);
+
         Kegiatan::create([
             'nama_kegiatan' => $request['nama_kegiatan'],
             'id_ormawa' => $request['id_ormawa'],
@@ -54,3 +54,4 @@ class KegiatanController extends Controller
         return view('listkegiatan',['kegiatans' => $data]);
     }
 }
+
