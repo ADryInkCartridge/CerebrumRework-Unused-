@@ -1,6 +1,7 @@
 @extends('layouts.sidenav')
 
 @section('content')
+@include('flash-message')
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">
     <div class="flex justify-between">
         <div class="flex flex-col">
@@ -51,11 +52,11 @@
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
 
-                @foreach($listOfUsers as $users)
+                @foreach($listOfUsers as $index => $users)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">{{$users['user_id']}}</span>
+                        <span class="pl-5">{{$index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$users['username']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$users['nama']}}</div>
@@ -68,16 +69,20 @@
                                 class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">
                             </button>
-                            <a href="">
+                            <a href="{{route('getUser', $users->user_id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
                                 </div>
                             </a>
-                            <a href="">
-                                <div class="text-left pl-2 h-6">
-                                    Hapus
-                                </div>
-                            </a>
+                            <form action="{{route('deleteUser',[$users->user_id])}}" method="post">
+                                @csrf
+                                <input type='hidden' name='user_id' value="{{$users->user_id}}">
+                                <button type="submit">
+                                    <div class="text-left pl-2 h-6">
+                                        Hapus
+                                    </div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
