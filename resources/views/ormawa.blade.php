@@ -7,6 +7,9 @@
             Kegiatan Ormawa
         </a>
         <a href="" class="pb-4">
+            Tambah Mahasiswa
+        </a>
+        <a href="" class="pb-4">
             Nilai Mahasiswa
         </a>
         <form action="{{route('logout.post')}}" method="POST">

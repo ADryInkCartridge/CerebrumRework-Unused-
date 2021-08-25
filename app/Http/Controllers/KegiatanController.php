@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
+use App\Models\Tahap;
 use App\Models\Ormawa;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -19,7 +20,8 @@ class KegiatanController extends Controller
     {
         $userid = Auth::user()->user_id;
         $data = Ormawa::where('user_id',$userid)->get();
-        return view('tambahkegiatan',['ormawas'=> $data]);
+        $tahap = Tahap::where([['status','=','1'],['tipe','=','1']])->get();
+        return view('tambahkegiatan',['ormawas'=> $data,'tahaps' => $tahap]);
     }
     
     public function addKegiatan(Request $request)

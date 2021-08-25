@@ -8,6 +8,8 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\OrmawaController;
+use App\Http\Controllers\TahapController;
+use App\Http\Controllers\MhsormawaController;
 use Illuminate\Support\Facades\Request;
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +63,13 @@ Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport'
 Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
 Route::get('/listmahasiswa', [MahasiswaController::class, 'listmahasiswa'])->name('listmahasiswa');
+
+/* Tahap ROUTES */
+Route::get('/listtahap', [TahapController::class, 'listtahap'])->name('listtahap');
+Route::get('/tambahtahap', [TahapController::class, 'tambahTahap'])->name('tambahtahap');
+Route::post('/tambahtahap-post', [TahapController::class, 'addTahap'])->name('tambahtahap.post');
+
+/* MhsOrmawa ROUTES */
+Route::get('/listmhsormawa', [MhsormawaController::class, 'listmhsormawa'])->name('listmhsormawa');
+Route::get('/tambahmhsormawa', [MhsormawaController::class, 'tambahmhsormawa'])->name('tambahmhsormawa');
+Route::post('/tambahmhsormawa-post', [MhsormawaController::class, 'addMhsormawa'])->name('tambahmhsormawa.post');
