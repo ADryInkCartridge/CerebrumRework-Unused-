@@ -12,9 +12,6 @@ use Response;
 
 class TahapController extends Controller
 {
-    // public function index(){
-    //     return view('manajemenkegiatan');
-    // }
     public function listtahap(Request $request)
     {
         $data = Tahap::where([
@@ -45,30 +42,32 @@ class TahapController extends Controller
         ]);
         return redirect()->route('tambahtahap')->with('success', 'Tahap Berhasil Ditambahkan');
     }
-    public function editOrmawa($id){
-		$ormawa = Ormawa::where('id',$id)->first();
-        $data = User::where('role','Ormawa')->get();
-        return view('editormawa',['ormawa' => $ormawa,'users' => $data]);
+    public function editTahap($id){
+        $tahap = Tahap::where('id',$id)->first();
+		return view('edittahap',['tahap' => $tahap]);
     }
 
-    public function destroy(Request $request){
+    public function deleteTahap(Request $request){
         $id = $request['id'];
-		if (Ormawa::where('id', '=', $id)->exists()) {
-            $Ormawa = Ormawa::where('id',$id)->delete();
-            return redirect()->route('listormawa')->with('success', 'Ormawa Berhasil Dihapus');
+		if (Tahap::where('id', '=', $id)->exists()) {
+            $tahap = Tahap::where('id',$id)->delete();
+            return redirect()->route('listtahap')->with('success', 'Tahap Berhasil Dihapus');
         }
-		return redirect('listormawa')->withErrors('Ormawa tidak ditemukan');
+		return redirect('listtahap')->withErrors('Tahap tidak ditemukan');
     }
     
-    public function updateOrmawa(Request $request){
+    public function updateTahap(Request $request){
+        
         $request->validate([
             'nama' => 'required',
-            'user_id'=> 'required'
+            'status'=> 'required',
+            'tipe'=> 'required',
         ]);
-        Ormawa::where('id',$request->id)->update([
-			'nama' => $request->nama,
-            'user_id' => $request->user_id,
+        Tahap::where('id',$request->id)->update([
+			'nama' => $request['nama'],
+            'status'=> $request['status'],
+            'tipe'=> $request['tipe']
 		]);
-        return redirect()->route('ormawa.edit', [$request->id])->with('success', 'Ormawa Berhasil Diupdate');
+        return redirect()->route('tahap.edit', [$request->id])->with('success', 'Tahap Berhasil Diupdate');
     }
 }

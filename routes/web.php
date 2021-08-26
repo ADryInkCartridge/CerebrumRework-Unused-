@@ -68,6 +68,9 @@ Route::get('/listmahasiswa', [MahasiswaController::class, 'listmahasiswa'])->nam
 Route::get('/listtahap', [TahapController::class, 'listtahap'])->name('listtahap');
 Route::get('/tambahtahap', [TahapController::class, 'tambahTahap'])->name('tambahtahap');
 Route::post('/tambahtahap-post', [TahapController::class, 'addTahap'])->name('tambahtahap.post');
+Route::get('/tahap/{id}/edit', [TahapController::class, 'editTahap'])->name('tahap.edit');
+Route::POST('/tahap/{id}/delete', [TahapController::class, 'deleteTahap'])->name('tahap.delete');
+Route::POST('/tahap/update', [TahapController::class, 'updateTahap'])->name('tahap.update');
 
 /* MhsOrmawa ROUTES */
 Route::get('/listmhsormawa', [MhsormawaController::class, 'listmhsormawa'])->name('listmhsormawa');
