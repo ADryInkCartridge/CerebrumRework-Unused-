@@ -22,7 +22,11 @@
             </div>
             <div class="flex flex-col gap-y-5">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">Jenis</label>
-                <input type="text" id="jenis_kegiatan" name="jenis_kegiatan" class="w-96 rounded-lg">
+                <select name="jenis_kegiatan" id="jenis_kegiatan" class="w-96 rounded-lg">
+                    @foreach($tahaps as $tahap)
+                    <option value="{{$tahap->nama}}">{{$tahap->nama}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="flex flex-col gap-y-5">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">SN</label>
