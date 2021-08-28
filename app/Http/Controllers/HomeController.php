@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
     public function testing()
     {
-        return view('testing');
+        return view('mahasiswarapor');
     }
     public function panitia()
     {
@@ -39,5 +39,10 @@ class HomeController extends Controller
     {
         return view('setpermission');
     }
+    public function landingmah()
+    {
+        return view('landingmah');
+    }
+    
 
 }

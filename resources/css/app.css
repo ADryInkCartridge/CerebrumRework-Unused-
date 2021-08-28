@@ -16,3 +16,11 @@
 .tambahuserheight{
     height: calc(100vh - 7rem);
 }
+
+.active{
+    border-bottom: 3px #2b2b2b;
+}
+
+.pdfheight{
+    height: calc(100vh - 17rem);
+}

@@ -71,10 +71,7 @@
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class=""
                         href="">Kegiatan</a></div>
             </nav>
-            <!-- <div class="flex items-center justify-start w-full px-4 gap-x-5">
-                <img src="pictures/logout_gray.png" class="w-10" alt="">
-                Log Out
-            </div> -->
+
             <form action="{{route('logout.post')}}" method="POST">
                 @csrf
                 <div class="flex justify-center mt-2">
@@ -163,7 +160,7 @@
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
-            <div class="flex w-full justify-start items-center gap-x-5 pb-10">
+            <div class="flex w-full justify-center items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
                     <span class="font-semibold">SKP</span>
