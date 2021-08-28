@@ -22,24 +22,16 @@
         </div>
         <div class="flex flex-col justify-end">
             <a href="{{route('tambahkegiatan')}}"
-                class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 flex justify-center items-center">
+                class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
                 Tambah Kegiatan +
             </a>
-            <div class="flex gap-x-4 items-center">
-                <span class="text-white">Show :</span>
-                <select class="h-7 py-0 px-2 w-16 text-sm rounded-lg" name="" id="">
-                    <option value="">10</option>
-                    <option value="">25</option>
-                    <option value="">50</option>
-                </select>
-                <span class="text-white">entries</span>
-            </div>
+
         </div>
 
 
     </div>
     <div class="pt-5 w-full">
-        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
+        <div class="table table-fixed w-full rounded-2xl ">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>
@@ -52,12 +44,11 @@
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
-
+                
                 @foreach($kegiatans as $index => $kegiatan)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
-                        <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">{{$index+1}}</span>
+                        <span class="">{{$index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['nama_kegiatan']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['nama']}}</div>
@@ -76,16 +67,23 @@
                                     Edit
                                 </div>
                             </a>
-                            <form action="{{route('deleteUser',[$kegiatan->id])}}" method="post">
+                            <form class="flex justify-start font-semibold" action="{{route('deleteUser',[$kegiatan->id])}}" method="post">
                                 @csrf
                                 <input type='hidden' name='id' value="{{$kegiatan->id}}">
                                 <button type="submit">
-                                    <div class="text-left pl-2 h-6">
+                                    <div class="text-left font-semibold pl-2 h-6">
                                         Hapus
                                     </div>
                                 </button>
                             </form>
+                            <a href="{{route('kegiatan.edit', $kegiatan->id)}}">
+                                <div class="border-b-2 h-6 pl-2 text-left">
+                                    Tambah Nilai
+                                </div>
+                            </a>
                         </div>
+                        
+                        
                     </div>
                 </div>
                 @endforeach
