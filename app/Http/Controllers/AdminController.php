@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Mahasiswa;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Ormawa;
+use App\Models\Panitia;
 use Response;
+use App\Models\Kegiatan;
+use App\Models\Tahap;
+use App\Models\NilaiOrmawa;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -177,6 +183,116 @@ class AdminController extends Controller
             return redirect()->route('listUser')->with('success', 'User Berhasil Dihapus');
         }
 		return redirect('listUser')->withErrors('User tidak ditemukan');
+    }
+    public function listormawa(Request $request)
+    {
+        $data = Ormawa::join('users','ormawa.user_id','=','users.user_id')->select(
+            'users.nama as namauser', 'id', 'ormawa.nama as namaormawa')->where([
+            ['id','!=',NULL],
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('namaormawa','LIKE','%'. $term .'%')->orWhere('namauser','LIKE','%'. $term .'%')->get();
+                }
+            }]
+        ])->orderBy('id','asc')->paginate(10);
+        return view('listormawa',['ormawas' => $data]);
+    }
+    public function tambahOrmawa()
+    {
+        $data = User::where('role','Ormawa')->get();
+        return view('tambahormawa',['users' => $data]);
+    }
+    public function addOrmawa(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'user_id'=> 'required'
+        ]);
+        Ormawa::create([
+            'nama' => $request['nama'],
+            'user_id'=> $request['user_id']
+        ]);
+        return redirect()->route('tambahormawa')->with('success', 'Ormawa Berhasil Ditambahkan');
+    }
+    public function editOrmawa($id){
+		$ormawa = Ormawa::where('id',$id)->first();
+        $data = User::where('role','Ormawa')->get();
+        return view('editormawa',['ormawa' => $ormawa,'users' => $data]);
+    }
+
+    public function deleteOrmawa(Request $request){
+        $id = $request['id'];
+		if (Ormawa::where('id', '=', $id)->exists()) {
+            $Ormawa = Ormawa::where('id',$id)->delete();
+            return redirect()->route('listormawa')->with('success', 'Ormawa Berhasil Dihapus');
+        }
+		return redirect('listormawa')->withErrors('Ormawa tidak ditemukan');
+    }
+    
+    public function updateOrmawa(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'user_id'=> 'required'
+        ]);
+        Ormawa::where('id',$request->id)->update([
+			'nama' => $request->nama,
+            'user_id' => $request->user_id,
+		]);
+        return redirect()->route('ormawa.edit', [$request->id])->with('success', 'Ormawa Berhasil Diupdate');
+    }
+
+    public function listPanitia(Request $request)
+    {
+        $data = Panitia::join('users','panitia.user_id','=','users.user_id')->select(
+            'users.nama as namauser', 'id', 'panitia.kelompok as kelompok')->where([
+            ['id','!=',NULL]
+        ])->where(function ($query) use ($request) {
+            $query->where('users.nama', 'LIKE', '%' . $request->term . '%' )->orWhere('panitia.kelompok', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('id','asc')->paginate(10);
+        return view('listpanitia',['panitias' => $data]);
+    }
+    public function tambahPanitia()
+    {
+        $data = User::where('role','Panitia')->get();
+        return view('tambahpanitia',['users' => $data]);
+    }
+    public function addPanitia(Request $request)
+    {
+        $request->validate([
+            'kelompok' => 'required',
+            'user_id'=> 'required'
+        ]);
+        Panitia::create([
+            'kelompok' => $request['kelompok'],
+            'user_id'=> $request['user_id']
+        ]);
+        return redirect()->route('tambahpanitia')->with('success', 'Panitia Berhasil Ditambahkan');
+    }
+    public function editPanitia($id){
+		$panitia = Panitia::where('id',$id)->first();
+        $data = User::where('role','Panitia')->get();
+        return view('editpanitia',['panitia' => $panitia,'users' => $data]);
+    }
+
+    public function deletePanitia(Request $request){
+        $id = $request['id'];
+		if (Panitia::where('id', '=', $id)->exists()) {
+            $Panitia = Panitia::where('id',$id)->delete();
+            return redirect()->route('listpanitia')->with('success', 'Panitia Berhasil Dihapus');
+        }
+		return redirect('listpanitia')->withErrors('Panitia tidak ditemukan');
+    }
+    
+    public function updatePanitia(Request $request){
+        $request->validate([
+            'kelompok' => 'required',
+            'user_id'=> 'required'
+        ]);
+        Panitia::where('id',$request->id)->update([
+			'kelompok' => $request->kelompok,
+            'user_id' => $request->user_id,
+		]);
+        return redirect()->route('panitia.edit', [$request->id])->with('success', 'Panitia Berhasil Diupdate');
     }
     
 }

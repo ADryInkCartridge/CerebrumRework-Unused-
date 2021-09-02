@@ -41,22 +41,30 @@ Route::post('/tambahUser-post', [AdminController::class, 'addUser'])->name('tamb
 Route::get('/user/{id}/edit', [AdminController::class, 'getUser'])->name('getUser');
 Route::get('/user/update', [AdminController::class, 'userUpdate'])->name('user.update');
 Route::post('/user/{user_id}/delete', [AdminController::class, 'destroy'])->name('deleteUser');
+Route::get('/listormawa', [AdminController::class, 'listormawa'])->name('listormawa');
+Route::get('/tambahormawa', [AdminController::class, 'tambahormawa'])->name('tambahormawa');
+Route::post('/tambahormawa/add', [AdminController::class, 'addOrmawa'])->name('tambahormawa.post');
+Route::get('/ormawa/{id}/edit', [AdminController::class, 'editOrmawa'])->name('ormawa.edit');
+Route::post('/ormawa/update', [AdminController::class, 'updateOrmawa'])->name('ormawa.update');
+Route::post('/ormawa/{id}/delete', [AdminController::class, 'deleteOrmawa'])->name('ormawa.delete');
+Route::get('/listpanitia', [AdminController::class, 'listpanitia'])->name('listpanitia');
+Route::get('/tambahpanitia', [AdminController::class, 'tambahpanitia'])->name('tambahpanitia');
+Route::post('/tambahpanitia/add', [AdminController::class, 'addPanitia'])->name('tambahpanitia.post');
+Route::get('/panitia/{id}/edit', [AdminController::class, 'editpanitia'])->name('panitia.edit');
+Route::post('/panitia/update', [AdminController::class, 'updatepanitia'])->name('panitia.update');
+Route::post('/panitia/{id}/delete', [AdminController::class, 'deletePanitia'])->name('panitia.delete');
 
 /* Ormawa ROUTES */
 Route::get('/ormawa',[OrmawaController::class, 'index'])->name('ormawa');
-Route::get('/listormawa', [OrmawaController::class, 'listormawa'])->name('listormawa');
-Route::get('/tambahormawa', [OrmawaController::class, 'tambahormawa'])->name('tambahormawa');
-Route::post('/tambahormawa/add', [OrmawaController::class, 'addOrmawa'])->name('tambahormawa.post');
-Route::get('/ormawa/{id}/edit', [OrmawaController::class, 'editOrmawa'])->name('ormawa.edit');
-Route::post('/ormawa/update', [OrmawaController::class, 'updateOrmawa'])->name('ormawa.update');
-Route::post('/ormawa/{id}/delete', [OrmawaController::class, 'destroy'])->name('ormawa.delete');
+Route::get('/nilaiormawa/{id}',[OrmawaController::class, 'nilaiOrmawa'])->name('nilaiOrmawa');
+Route::get('/nilaiormawa/{id_ormawa}/{id_kegiatan}',[OrmawaController::class, 'tambahNilai'])->name('tambahNilaiOrmawa');
+Route::post('/nilaiormawa/post',[OrmawaController::class, 'addNilai'])->name('tambahnilaiormawa.post');
+Route::get('/tambahkegiatan', [OrmawaController::class, 'tambahkegiatan'])->name('tambahkegiatan');
+Route::get('/editkegiatan', [OrmawaController::class, 'editkegiatan'])->name('editkegiatan');
+Route::get('/listkegiatan', [OrmawaController::class, 'listkegiatan'])->name('listkegiatan');
+Route::get('/tambahkegiatan/post', [OrmawaController::class, 'addKegiatan'])->name('tambahkegiatan.post');
+Route::get('/kegiatan/{id}/edit', [OrmawaController::class, 'editKegiatan'])->name('kegiatan.edit');
 
-/* Kegiatan ROUTES */
-Route::get('/tambahkegiatan', [KegiatanController::class, 'tambahkegiatan'])->name('tambahkegiatan');
-Route::get('/editkegiatan', [KegiatanController::class, 'editkegiatan'])->name('editkegiatan');
-Route::get('/listkegiatan', [KegiatanController::class, 'listkegiatan'])->name('listkegiatan');
-Route::get('/tambahkegiatan/post', [KegiatanController::class, 'addKegiatan'])->name('tambahkegiatan.post');
-Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'editKegiatan'])->name('kegiatan.edit');
 
 /* Mahasiswa ROUTES */
 Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);
@@ -76,3 +84,7 @@ Route::POST('/tahap/update', [TahapController::class, 'updateTahap'])->name('tah
 Route::get('/listmhsormawa', [MhsormawaController::class, 'listmhsormawa'])->name('listmhsormawa');
 Route::get('/tambahmhsormawa', [MhsormawaController::class, 'tambahmhsormawa'])->name('tambahmhsormawa');
 Route::post('/tambahmhsormawa-post', [MhsormawaController::class, 'addMhsormawa'])->name('tambahmhsormawa.post');
+
+/* Panitia ROUTES */
+Route::get('/panitia', [PanitiaController::class, 'index'])->name('panitia');
+Route::get('/listtahappanitia', [PanitiaController::class, 'listtahappanitia'])->name('listtahappanitia');

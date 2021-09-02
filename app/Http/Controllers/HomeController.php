@@ -13,36 +13,11 @@ class HomeController extends Controller
     }
     public function landing()
     {
-        return view('landingpage');
+        return view('mahasiswalanding');
     }
     public function testing()
     {
         return view('mahasiswarapor');
     }
-    public function panitia()
-    {
-        return view('panitia');
-    }
-    public function panitianav()
-    {
-        return view('panitianav');
-    }
-    public function tambahmahasiswa()
-    {
-        return view('tambahmahasiswa');
-    }
-    public function editmahasiswa()
-    {
-        return view('editmahasiswa');
-    }
-    public function setpermission()
-    {
-        return view('setpermission');
-    }
-    public function landingmah()
-    {
-        return view('landingmah');
-    }
     
-
 }

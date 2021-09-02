@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Tahap;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
@@ -25,4 +26,17 @@ class PanitiaController extends Controller
         }
         return redirect('login');
     }
+    public function listtahappanitia(Request $request){
+        $data = Tahap::where([
+            ['id','!=',NULL],
+            ['tipe','=',0],
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('nama','LIKE','%'. $term .'%')->orWhere('tipe','LIKE','%'. $term .'%')->get();
+                }
+            }]
+        ])->orderBy('id','asc')->paginate(10);
+        return view('listtahappanitia',['tahaps' => $data]);
+    }
+    
 }
