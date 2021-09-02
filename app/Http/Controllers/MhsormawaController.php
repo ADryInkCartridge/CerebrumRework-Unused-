@@ -32,7 +32,6 @@ class MhsormawaController extends Controller
             'mahasiswa_id' => 'required',
             'ormawa_id' => 'required',
         ]);
-
         Mhsormawa::create([
             'mahasiswa_id' => $request['mahasiswa_id'],
             'ormawa_id' => $request['ormawa_id'],
@@ -42,14 +41,18 @@ class MhsormawaController extends Controller
     
     public function listmhsormawa(Request $request)
     {
-        $data = Mhsormawa::join('mahasiswa','mahasiswa.id','=','mahasiswa_id')->where([
-            ['id','!=',NULL],
-            [function ($query) use ($request) {
-                if (($term = $request->term)) {
-                    $query->orWhere('mahasiswa.nama','LIKE','%'. $term .'%')->get();
-                }
-            }]
-        ])->orderBy('id','asc')->paginate(10);
+        $userid = Auth::user()->user_id;
+        if($request){
+            $data = Mhsormawa::join('ormawa','in_ormawa.ormawa_id','=','ormawa.id')->join(
+                'mahasiswa','mahasiswa.id','=','mahasiswa_id')->where([
+                ['in_ormawa.mahasiswa_id','!=',NULL],
+                ['ormawa.user_id','=',$userid],
+            ])->select('mahasiswa.id as mahasiswa_id','ormawa.nama as nama_ormawa'
+            ,'mahasiswa.nama as namamhs','mahasiswa.id_cerebrum as id_cerebrum','in_ormawa.id as id')->where(function ($query) use ($request) {
+                $query->where('mahasiswa.nama', 'LIKE', '%' . $request->term . '%' )->orWhere('ormawa.nama', 'LIKE', '%' . $request->term . '%' );
+            })->orderBy('id','asc')->paginate(10);
+        }
         return view('listmhsormawa',['mhsormawas' => $data]);
     }
+
 }

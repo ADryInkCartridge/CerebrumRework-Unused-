@@ -20,7 +20,7 @@
 
         </div>
         <div class="flex flex-col justify-end">
-            <a href="{{route('tambahmhsormawa')}}"
+            <a href="{{route('tambahNilaiOrmawa', [$id_ormawa->id_ormawa,$id_kegiatan])}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
                 Alokasi Mahasiswa +
             </a>
@@ -36,19 +36,23 @@
                     <div class="table-cell w-32 text-center align-middle ">No</div>
                     <div class="table-cell w-1/4 text-center align-middle">ID Cerebrum</div>
                     <div class="table-cell w-1/4 text-center align-middle">Nama Mahasiswa</div>
+                    <div class="table-cell w-1/4 text-center align-middle">BN</div>
+                    <div class="table-cell w-1/4 text-center align-middle">TN</div>
                     <div class="table-cell w-32 text-center align-middle "></div>
 
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
 
-                @foreach($mhsormawas as $index => $mhsormawa)
+                @foreach($nilais as $index => $nilai)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <span class="">{{$index+1}}</span>
                     </div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$mhsormawa['id_cerebrum']}}</div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$mhsormawa['nama']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['id_cerebrum']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['nama']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['bn']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tn']}}</div>
                     <div class="table-cell w-32 text-center align-middle relative">
                         <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
                         <div id=""
@@ -80,7 +84,7 @@
         <div class="flex flex-row mt-4">
             <div>
                 <div class="flex flex-row gap-x-4">
-                    {{ $mhsormawas->links('custompaginator') }}
+                    {{ $nilais->links('custompaginator') }}
                 </div>
             </div>
         </div>
