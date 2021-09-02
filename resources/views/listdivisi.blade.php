@@ -4,7 +4,7 @@
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">
     <div class="flex justify-between">
         <div class="flex flex-col">
-            <span class="text-3xl pb-4 text-white">List Panitia</span>
+            <span class="text-3xl pb-4 text-white">List Divisi</span>
             <div class="relative">
                 <form action="{{route('listpanitia')}}" method="GET" role='search'>
                     @csrf
