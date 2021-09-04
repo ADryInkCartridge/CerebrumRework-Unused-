@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use App\Models\Ormawa;
+use App\Models\Divisi;
 use App\Models\Panitia;
+use App\Models\KegiatanPanitia;
 use Response;
 use App\Models\Kegiatan;
 use App\Models\Tahap;
@@ -295,4 +297,114 @@ class AdminController extends Controller
         return redirect()->route('panitia.edit', [$request->id])->with('success', 'Panitia Berhasil Diupdate');
     }
     
+    public function listDivisi(Request $request)
+    {
+        $data = Divisi::where([
+            ['id','!=',NULL]
+        ])->where(function ($query) use ($request) {
+            $query->where('nama', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('id','asc')->paginate(10);
+        return view('listdivisi',['divisis' => $data]);
+    }
+    public function tambahDivisi()
+    {
+        return view('tambahdivisi');
+    }
+    public function addDivisi(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+        ]);
+        Divisi::create([
+            'nama' => $request['nama'],
+        ]);
+        return redirect()->route('tambahdivisi')->with('success', 'Panitia Berhasil Ditambahkan');
+    }
+    public function editDivisi($id){
+        $divisi = Divisi::where('id',$id)->first();
+        return view('editdivisi',['divisi' => $divisi]);
+    }
+
+    public function deleteDivisi(Request $request){
+        $id = $request['id'];
+		if (Divisi::where('id', '=', $id)->exists()) {
+            $Divisi = Divisi::where('id',$id)->delete();
+            return redirect()->route('listdivisi')->with('success', 'Divisi Berhasil Dihapus');
+        }
+		return redirect('listdivisi')->withErrors('Divisi tidak ditemukan');
+    }
+    
+    public function updateDivisi(Request $request){
+        $request->validate([
+            'nama' => 'required',
+        ]);
+        Divisi::where('id',$request->id)->update([
+			'nama' => $request->nama,
+		]);
+        return redirect()->route('divisi.edit', [$request->id])->with('success', 'Divisi Berhasil Diupdate');
+    }
+
+    public function listkegiatanpanitia(Request $request)
+    {
+        $data = KegiatanPanitia::join('tahap','kegiatan_panitia.tahap','=','tahap.id')->join('divisi','kegiatan_panitia.divisi','=','divisi.id')->select(
+            'kegiatan_panitia.*', 'tahap.nama as nama_tahap', 'divisi.nama as nama_divisi' )->where([
+            ['kegiatan_panitia.id','!=',NULL]
+        ])->where(function ($query) use ($request) {
+            $query->where('nama_kegiatan', 'LIKE', '%' . $request->term . '%' )->orWhere('tahap', 'LIKE', '%' . $request->term . '%' )->orWhere(
+                'divisi', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('kegiatan_panitia.id','asc')->paginate(10);
+        return view('listkegiatanpanitia',['kegiatans' => $data]);
+    }
+    public function tambahkegiatanpanitia()
+    {
+        $divisi = Divisi::get();
+        $tahap = Tahap::where([['tipe','=','0']])->get();
+        return view('tambahkegiatanpanitia',['tahaps'=> $tahap, 'divisis' => $divisi]);
+    }
+    public function addkegiatanpanitia(Request $request)
+    {
+        $request->validate([
+            'tahap'=> 'required',
+            'nama_kegiatan'=> 'required',
+            'divisi'=> 'required',
+            'sn'=> 'required',
+        ]);
+        KegiatanPanitia::create([
+            'tahap' => $request['tahap'],
+            'nama_kegiatan' => $request['nama_kegiatan'],
+            'divisi' => $request['divisi'],
+            'sn' => $request['sn'],
+        ]);
+        return redirect()->route('tambahkegiatanpanitia')->with('success', 'Kegiatan Berhasil Ditambahkan');
+    }
+    public function editkegiatanpanitia($id){
+        $kegiatan = KegiatanPanitia::where('id',$id)->first();
+        return view('editkegiatanpanitia',['kegiatan' => $kegiatan]);
+    }
+
+    public function deletekegiatanpanitia(Request $request){
+        $id = $request['id'];
+		if (KegiatanPanitia::where('id', '=', $id)->exists()) {
+            $Panitia = KegiatanPanitia::where('id',$id)->delete();
+            return redirect()->route('listkegiatanpanitia')->with('success', 'Kegiatan Berhasil Dihapus');
+        }
+		return redirect('listkegiatanpanitia')->withErrors('Kegiatan tidak ditemukan');
+    }
+    
+    public function updatekegiatanpanitia(Request $request){
+        $request->validate([
+            'tahap'=> 'required',
+            'nama_kegiatan'=> 'required',
+            'divisi'=> 'required',
+            'sn'=> 'required',
+        ]);
+        KegiatanPanitia::where('id',$request->id)->update([
+			'tahap' => $request['tahap'],
+            'nama_kegiatan' => $request['nama_kegiatan'],
+            'divisi' => $request['divisi'],
+            'sn' => $request['sn'],
+		]);
+        return redirect()->route('kegiatanpanitia.edit', [$request->id])->with('success', 'Kegiatan Berhasil Diupdate');
+    }
+
 }
