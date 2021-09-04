@@ -53,6 +53,19 @@ Route::post('/tambahpanitia/add', [AdminController::class, 'addPanitia'])->name(
 Route::get('/panitia/{id}/edit', [AdminController::class, 'editpanitia'])->name('panitia.edit');
 Route::post('/panitia/update', [AdminController::class, 'updatepanitia'])->name('panitia.update');
 Route::post('/panitia/{id}/delete', [AdminController::class, 'deletePanitia'])->name('panitia.delete');
+Route::get('/listdivisi', [AdminController::class, 'listdivisi'])->name('listdivisi');
+Route::get('/tambahdivisi', [AdminController::class, 'tambahdivisi'])->name('tambahdivisi');
+Route::post('/tambahdivisi/add', [AdminController::class, 'adddivisi'])->name('tambahdivisi.post');
+Route::get('/divisi/{id}/edit', [AdminController::class, 'editdivisi'])->name('divisi.edit');
+Route::post('/divisi/update', [AdminController::class, 'updatedivisi'])->name('divisi.update');
+Route::post('/divisi/{id}/delete', [AdminController::class, 'deletedivisi'])->name('divisi.delete');
+Route::get('/listkegiatanpanitia', [AdminController::class, 'listkegiatanpanitia'])->name('listkegiatanpanitia');
+Route::get('/tambahkegiatanpanitia', [AdminController::class, 'tambahkegiatanpanitia'])->name('tambahkegiatanpanitia');
+Route::post('/tambahkegiatanpanitia/add', [AdminController::class, 'addkegiatanpanitia'])->name('tambahkegiatanpanitia.post');
+Route::get('/kegiatanpanitia/{id}/edit', [AdminController::class, 'editkegiatanpanitia'])->name('kegiatanpanitia.edit');
+Route::post('/kegiatanpanitia/update', [AdminController::class, 'updatekegiatanpanitia'])->name('kegiatanpanitia.update');
+Route::post('/kegiatanpanitia/{id}/delete', [AdminController::class, 'deletekegiatanpanitia'])->name('kegiatanpanitia.delete');
+
 
 /* Ormawa ROUTES */
 Route::get('/ormawa',[OrmawaController::class, 'index'])->name('ormawa');
