@@ -1,4 +1,4 @@
-@extends('layouts.sidenav')
+@extends('layouts.panitiasidenav')
 
 @section('content')
 @include('flash-message')
@@ -9,11 +9,11 @@
             <div class="relative">
                 <form action="{{route('listkegiatan')}}" method="GET" role='search'>
                     @csrf
-                    <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
+                    <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="/pictures/search_grey.png" alt="">
                     <input class="rounded-lg h-9 w-64 pl-10" type="text" name="term" id="term" placeholder="Search">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default">
-                            <img class="w-5 " src="pictures/search_grey.png" alt="">
+                            <img class="w-5 " src="/pictures/search_grey.png" alt="">
                         </button>
                     </span>
                 </form>
@@ -56,7 +56,7 @@
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['nama_kegiatan']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['sn']}}</div>
                     <div class="table-cell w-32 text-center align-middle relative">
-                        <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
+                        <button class="editbtn" id=""><img src="/pictures/titik.png" alt=""></button>
                         <div id=""
                             class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl z-10">
                             <button id=""

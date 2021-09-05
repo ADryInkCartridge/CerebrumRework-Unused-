@@ -6,7 +6,7 @@
         <a href="{{route('listkegiatan')}}" class="pb-4">
             Kegiatan Ormawa
         </a>
-        <a href="" class="pb-4">
+        <a href="{{route('listmhsormawa')}}" class="pb-4">
             Tambah Mahasiswa
         </a>
         <a href="" class="pb-4">

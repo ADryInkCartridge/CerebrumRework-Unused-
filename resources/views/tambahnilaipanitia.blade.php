@@ -1,4 +1,4 @@
-@extends('layouts.sidenav')
+@extends('layouts.panitiasidenav')
 
 @section('content')
 
