@@ -378,8 +378,9 @@ class AdminController extends Controller
         return redirect()->route('tambahkegiatanpanitia')->with('success', 'Kegiatan Berhasil Ditambahkan');
     }
     public function editkegiatanpanitia($id){
-        $kegiatan = KegiatanPanitia::where('id',$id)->first();
-        return view('editkegiatanpanitia',['kegiatan' => $kegiatan]);
+        $tahap = Tahap::where([['tipe','=','0']])->get();
+        $divisi = Divisi::get();
+        return view('editkegiatanpanitia',['tahaps' => $tahap,'divisis'=>$divisi,'id_kegiatan'=>$id]);
     }
 
     public function deletekegiatanpanitia(Request $request){

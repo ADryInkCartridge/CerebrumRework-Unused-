@@ -63,6 +63,7 @@
                                 class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">
                             </button>
+                            @if(Auth::user()->role == 'Super User')
                             <a href="{{route('kegiatanpanitia.edit', $kegiatan->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
@@ -78,6 +79,7 @@
                                     </div>
                                 </button>
                             </form>
+                            @endif
                             <a href="{{route('nilaiPanitia', $kegiatan->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Tambah Nilai
