@@ -8,6 +8,7 @@
         @include('flash-message')
         <form class="flex flex-col gap-y-8  h-full" method="post" action="{{route('tambahnilaipanitia.post')}}">
             @csrf
+            {{$id_kegiatan}}
             <input type="hidden" id="id" name="id" value="{{$id_kegiatan}}">
             <input type="hidden" id="id_panitia" name="id_panitia" value="{{$id_panitia}}">
             <div class="flex flex-col gap-y-5">
