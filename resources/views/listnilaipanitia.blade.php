@@ -18,13 +18,6 @@
             </div>
 
         </div>
-        <div class="flex flex-col justify-end">
-            <a href="{{route('tambahNilaiPanitia', [$id_panitia->id,$id_kegiatan])}}"
-                class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
-                Nilai Mahasiswa +
-            </a>
-
-        </div>
 
 
     </div>
@@ -60,7 +53,7 @@
                                 class="self-end items-center closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class=" w-3" src="/pictures/close.png" alt="">
                             </button>
-                            <a href="{{route('kegiatan.edit',$id_kegiatan)}}">
+                            <a href="{{route('editNilaiPanitia',$nilai->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
                                 </div>

@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Ormawa;
 use App\Models\Divisi;
 use App\Models\Panitia;
+use App\Models\NilaiPanitia;
 use App\Models\KegiatanPanitia;
 use Response;
 use App\Models\Kegiatan;
@@ -369,12 +370,22 @@ class AdminController extends Controller
             'divisi'=> 'required',
             'sn'=> 'required',
         ]);
-        KegiatanPanitia::create([
+        $keg = KegiatanPanitia::create([
             'tahap' => $request['tahap'],
             'nama_kegiatan' => $request['nama_kegiatan'],
             'divisi' => $request['divisi'],
             'sn' => $request['sn'],
         ]);
+        $sn = $keg->sn;
+        $mhs = Mahasiswa::get();
+        foreach($mhs as $m){
+            NilaiPanitia::create([
+                'id_kegiatan' => $keg->id,
+                'id_mhs'=> $m->id,
+                'bn'=> 0,
+                'tn'=> 0 * $sn,
+            ]);
+        }
         return redirect()->route('tambahkegiatanpanitia')->with('success', 'Kegiatan Berhasil Ditambahkan');
     }
     public function editkegiatanpanitia($id){
