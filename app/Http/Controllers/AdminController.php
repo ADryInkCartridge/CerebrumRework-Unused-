@@ -348,7 +348,7 @@ class AdminController extends Controller
     public function listkegiatanpanitia(Request $request)
     {
         $data = KegiatanPanitia::join('tahap','kegiatan_panitia.tahap','=','tahap.id')->join('divisi','kegiatan_panitia.divisi','=','divisi.id')->select(
-            'kegiatan_panitia.*', 'tahap.nama as nama_tahap', 'divisi.nama as nama_divisi' )->where([
+            'kegiatan_panitia.*', 'tahap.nama as nama_tahap','tahap.status as status', 'divisi.nama as nama_divisi' )->where([
             ['kegiatan_panitia.id','!=',NULL]
         ])->where(function ($query) use ($request) {
             $query->where('nama_kegiatan', 'LIKE', '%' . $request->term . '%' )->orWhere('tahap', 'LIKE', '%' . $request->term . '%' )->orWhere(
@@ -398,6 +398,7 @@ class AdminController extends Controller
         $id = $request['id'];
 		if (KegiatanPanitia::where('id', '=', $id)->exists()) {
             $Panitia = KegiatanPanitia::where('id',$id)->delete();
+            $Nilai = NilaiPanitia::where('id_kegiatan',$id)->delete();
             return redirect()->route('listkegiatanpanitia')->with('success', 'Kegiatan Berhasil Dihapus');
         }
 		return redirect('listkegiatanpanitia')->withErrors('Kegiatan tidak ditemukan');

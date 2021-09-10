@@ -30,6 +30,18 @@ class PanitiaController extends Controller
         }
         return redirect('login');
     }
+    public function listkegiatanpanitia(Request $request)
+    {
+        $data = KegiatanPanitia::join('tahap','kegiatan_panitia.tahap','=','tahap.id')->join('divisi','kegiatan_panitia.divisi','=','divisi.id')->select(
+            'kegiatan_panitia.*', 'tahap.nama as nama_tahap', 'divisi.nama as nama_divisi' )->where([
+            ['kegiatan_panitia.id','!=',NULL],
+            ['tahap','=','1']
+        ])->where(function ($query) use ($request) {
+            $query->where('nama_kegiatan', 'LIKE', '%' . $request->term . '%' )->orWhere('tahap', 'LIKE', '%' . $request->term . '%' )->orWhere(
+                'divisi', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('kegiatan_panitia.id','asc')->paginate(10);
+        return view('listkegiatanpanitia',['kegiatans' => $data]);
+    }
     public function nilaiPanitia($id, Request $request){
         
         $iduser = Auth::user()->user_id;
