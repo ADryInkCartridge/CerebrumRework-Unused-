@@ -14,9 +14,20 @@ class MahasiswaController extends Controller
     {
        return view('file-import');
     }
-    public function listmahasiswa()
+    public function listmahasiswa(Request $request)
     {
-        $data = Mahasiswa::paginate(10);
+        if($request->term){
+            $data = Mahasiswa::where(function ($query) use ($request) {
+                $query->where('id_cerebrum', 'LIKE', '%' . $request->term . '%' )->orWhere('nama', 'LIKE', '%' . $request->term . '%' )->orWhere(
+                    'kelompok', 'LIKE', '%' . $request->term . '%' );
+                })->paginate(100);
+        }
+        else{
+            $data = Mahasiswa::where(function ($query) use ($request) {
+                $query->where('id_cerebrum', 'LIKE', '%' . $request->term . '%' )->orWhere('nama', 'LIKE', '%' . $request->term . '%' )->orWhere(
+                    'kelompok', 'LIKE', '%' . $request->term . '%' );
+                })->paginate(10);
+        }
         return view('listmahasiswa',['listOfMahasiswa' => $data]);
     }
     /**
@@ -30,7 +41,7 @@ class MahasiswaController extends Controller
         if($extension!='xlsx')
             return redirect()->back()->withErrors(['File extension needs to be in xlsx format']);
         Excel::import(new MahasiswaImport, $request->file('file')->store('temp'));
-        return back();
+        return back()->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**

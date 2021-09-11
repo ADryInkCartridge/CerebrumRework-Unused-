@@ -20,26 +20,29 @@
             @if($errors->any())
             <h4>Error</h4>
             @endif
+            @include('flash-message')
             <div class="flex justify-start pl-16 items-center pb-10">
                 <form class="w-2/5" action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="w-96 h-10 pb-16">
-                        <input placeholder="Upload File" class="bg-white text-base" type="file" name="file" id="customFile">
+                        <input placeholder="Upload File" class="bg-white text-base" type="file" name="file"
+                            id="customFile">
                     </div>
                     <div class="flex flex-row">
                         <div class="w-32 h-10 bg-greenTable1 rounded-lg flex justify-center items-center">
                             <button class="btn btn-primary text-sm">Import data</button>
                         </div>
                         <div class="flex justify-center">
-                            <a class="btn btn-success rounded-lg text-sm bg-greenTable1 w-32 h-10 flex justify-center items-center" href="{{ route('file-export') }}">Export data</a>
+                            <a class="btn btn-success rounded-lg text-sm bg-greenTable1 w-32 h-10 flex justify-center items-center"
+                                href="{{ route('file-export') }}">Export data</a>
                         </div>
                     </div>
                 </form>
             </div>
-            
+
         </div>
     </div>
-    
+
 </body>
 
 </html>

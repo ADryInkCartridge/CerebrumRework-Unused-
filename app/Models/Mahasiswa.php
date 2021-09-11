@@ -17,6 +17,7 @@ class Mahasiswa extends Model
     protected $fillable = [
         'id_cerebrum',
         'nama',
+        'tanggal_lahir',
         'kelompok',
     ];
 

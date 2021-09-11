@@ -14,10 +14,13 @@ class MahasiswaImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Mahasiswa([
+        $unixDate = ($row[1] - 25569) * 86400;
+        $date =  gmdate("d/m/Y", $unixDate);
+            return new Mahasiswa([
             'id_cerebrum' => $row[0],
-            'nama' => $row[1],
-            'kelompok' => $row[2],
+            'tanggal_lahir' => $date,
+            'nama' => $row[2],
+            'kelompok' => $row[3],
         ]);
     }
 }
