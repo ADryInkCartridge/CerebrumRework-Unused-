@@ -37,12 +37,48 @@
                 Orientasi Ormawa
             </a>
         </div>
-        <a href="{{route('listUser')}}" class="pb-4">
-            Manajemen User
-        </a>
-        <a href="{{route('listtahap')}}" class="pb-4">
-            Manajemen Kegiatan
-        </a>
+        <button id="listuser">
+            <div class="flex items-center gap-x-28 pb-4">
+                <div>
+                    Manajemen User
+                </div>
+                <div class="w-4">
+                    <img src="pictures/dropdown.png" alt="">
+                </div>
+            </div>
+        </button>
+        <div id="droplistuser" class="hidden flex-col pl-10 text-lg">
+            <a href="{{route('listUser')}}" class="pb-4">
+                List User
+            </a>
+            <a href="" class="pb-4">
+                List Panitia
+            </a>
+            <a href="" class="pb-4">
+                List Ormawa
+            </a>
+        </div>
+        <button id="listkegiatan">
+            <div class="flex items-center gap-x-28 pb-4">
+                <div>
+                    Kegiatan
+                </div>
+                <div class="w-4">
+                    <img src="pictures/dropdown.png" alt="">
+                </div>
+            </div>
+        </button>
+        <div id="droplistkegiatan" class="hidden flex-col pl-10 text-lg">
+            <a href="{{route('listtahap')}}" class="pb-4">
+                Manajemen Kegiatan
+            </a>
+            <a href="{{route('listdivisi')}}" class="pb-4">
+                List Divisi
+            </a>
+            <a href="{{route('listkegiatanpanitia')}}" class="pb-4">
+                List Kegiatan
+            </a>
+        </div>
         <form action="{{route('logout.post')}}" method="POST">
             @csrf
             <div class="flex justify-center mt-2">
@@ -92,4 +128,28 @@
 
     })
 </script>
+
+<script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const nilaibtn = document.querySelector('#listuser')
+            const nilai = document.querySelector('#droplistuser')
+            nilaibtn.addEventListener('click', () => {
+                nilai.classList.toggle('hidden');
+                nilai.classList.toggle('flex');
+            })
+        })
+</script>
+
+<script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const nilaibtn = document.querySelector('#listkegiatan')
+            const nilai = document.querySelector('#droplistkegiatan')
+            nilaibtn.addEventListener('click', () => {
+                nilai.classList.toggle('hidden');
+                nilai.classList.toggle('flex');
+            })
+        })
+</script>
+
+
 @endsection('content')

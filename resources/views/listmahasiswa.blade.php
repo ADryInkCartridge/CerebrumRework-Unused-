@@ -71,7 +71,7 @@
 
     </div>
     <div class="pt-5 w-full">
-        <div class="table w-full rounded-2xl overflow-hidden">
+        <div class="table w-full rounded-2xl ">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>

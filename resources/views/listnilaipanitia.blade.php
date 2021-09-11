@@ -1,4 +1,4 @@
-@extends('layouts.panitiasidenav')
+@extends('layouts.sidenav')
 @section('content')
 @include('flash-message')
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">

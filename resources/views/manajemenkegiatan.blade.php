@@ -23,7 +23,7 @@
         <div class="flex flex-col justify-end">
             <a href="{{route('tambahtahap')}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 flex justify-center items-center">
-                Tambah Jenis Kegiatan +
+                Tambah Tahap +
             </a>
             <div class="flex gap-x-4 items-center">
                 <span class="text-white">Show :</span>
