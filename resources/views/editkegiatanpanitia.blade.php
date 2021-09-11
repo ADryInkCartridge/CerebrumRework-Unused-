@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="p-10">
-    <div class="font-medium text-white text-3xl pb-4">Tambah Kegiatan</div>
+    <div class="font-medium text-white text-3xl pb-4">Edit Kegiatan</div>
     <div class="w-full tambahuserheight bg-white rounded-xl p-10 relative">
         @include('flash-message')
         <form class="flex flex-col gap-y-8  h-full" method="POST" action="{{route('kegiatanpanitia.update')}}">
@@ -34,7 +34,7 @@
                 <input type="number" step="0.1" name="sn" class="form-control w-96 rounded-lg" />
             </div>
             <div class="flex flex-1 items-end justify-end  absolute bottom-10 right-10">
-                <button class="w-36 h-12 rounded-lg bg-backgroundCerebrum text-white" type="Submit">Tambah</button>
+                <button class="w-36 h-12 rounded-lg bg-backgroundCerebrum text-white" type="Submit">Update</button>
             </div>
         </form>
     </div>

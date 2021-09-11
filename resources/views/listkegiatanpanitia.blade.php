@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
-
+                
                 @foreach($kegiatans as $index => $kegiatan)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">

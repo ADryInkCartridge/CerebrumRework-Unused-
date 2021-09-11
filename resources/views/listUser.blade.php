@@ -31,7 +31,7 @@
 
     </div>
     <div class="pt-5 w-full">
-        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
+        <div class="table table-fixed w-full rounded-2xl">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>
@@ -55,7 +55,7 @@
                     <div class="table-cell w-32 text-center align-middle relative">
                         <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
                         <div id=""
-                            class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl z-10">
+                            class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md shadow-xl z-10">
                             <button id=""
                                 class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">

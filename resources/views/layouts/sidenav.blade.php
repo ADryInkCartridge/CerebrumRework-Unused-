@@ -45,27 +45,49 @@
                         </a>
                     </div>
                 </button>
-                <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconmanajemennilai.png" alt=""><a class=""
-                        href="">Manajemen Penilaian</a></div>
 
                 <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                     <div class="flex gap-x-3">
                         <img src="/pictures/iconnilai.png" class="w-5" alt="">
                         Nilai Mahasiswa
                     </div>
-
                     <img src="/pictures/dropdown.png" class="w-2 end" alt="">
-
                 </button>
                 <div id="dropnilai" class="hidden flex-col pl-8 gap-y-2">
                     <a href="">Penyambutan</a>
                     <a href="">Pembinaan</a>
                     <a href="">Orientasi Ormawa</a>
                 </div>
-                <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconmanajemenuser.png" alt=""><a class=""
-                        href="{{route('listUser')}}">Manajemen User</a></div>
-                <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconkegiatan.png" alt=""><a class=""
-                        href="{{route('listtahap')}}">Manajemen Kegiatan</a></div>
+                <!-- <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconmanajemenuser.png" alt=""><a class=""
+                        href="{{route('listUser')}}">Manajemen User</a></div> -->
+                
+
+                <button id="listuser" class="flex items-center justify-between w-full gap-x-3">
+                    <div class="flex gap-x-3">
+                        <img src="/pictures/iconmanajemenuser.png" class="w-5" alt="">
+                        Manajemen User
+                    </div>
+                    <img src="/pictures/dropdown.png" class="w-2 end" alt="">
+                </button>
+                <div id="droplistuser" class="hidden flex-col pl-8 gap-y-2">
+                    <a href="{{route('listUser')}}">List User</a>
+                    <a href="{{route('listpanitia')}}">List Panitia</a>
+                    <a href="{{route('listormawa')}}">List Ormawa</a>
+                </div>
+
+
+                        <button id="listkegiatan" class="flex items-center justify-between w-full gap-x-3">
+                    <div class="flex gap-x-3">
+                        <img src="/pictures/iconkegiatan.png" class="w-5" alt="">
+                        Kegiatan
+                    </div>
+                    <img src="/pictures/dropdown.png" class="w-2 end" alt="">
+                </button>
+                <div id="droplistkegiatan" class="hidden flex-col pl-8 gap-y-2">
+                    <a href="{{route('listtahap')}}">Manajemen Kegiatan</a>
+                    <a href="{{route('listdivisi')}}">List Divisi</a>
+                    <a href="{{route('listkegiatanpanitia')}}">List Kegiatan</a>
+                </div>   
             </nav>
 
             <form action="{{route('logout.post')}}" method="POST">
@@ -92,6 +114,26 @@
                 mana.classList.toggle('hidden');
                 mana.classList.toggle('flex');
             })
+            nilaibtn.addEventListener('click', () => {
+                nilai.classList.toggle('hidden');
+                nilai.classList.toggle('flex');
+            })
+        })
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const nilaibtn = document.querySelector('#listuser')
+            const nilai = document.querySelector('#droplistuser')
+            nilaibtn.addEventListener('click', () => {
+                nilai.classList.toggle('hidden');
+                nilai.classList.toggle('flex');
+            })
+        })
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const nilaibtn = document.querySelector('#listkegiatan')
+            const nilai = document.querySelector('#droplistkegiatan')
             nilaibtn.addEventListener('click', () => {
                 nilai.classList.toggle('hidden');
                 nilai.classList.toggle('flex');
@@ -159,7 +201,7 @@
             <div class="flex w-full justify-center items-center gap-x-5 pb-10">
                 <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
-                    <span class="font-semibold">SKP</span>
+                    <span class="font-semibold">{{{Auth::user()->nama}}}</span>
                     <span>Ormawa</span>
                 </div>
             </div>
@@ -173,10 +215,6 @@
                         href="">Penilaian</a></div>
 
             </nav>
-            <div class="flex items-center justify-start w-full px-4 gap-x-5">
-                <img src="pictures/logout_gray.png" class="w-10" alt="">
-                Log Out
-            </div>
         </div>
         <div class="w-full flex-1">
             @yield('content')
@@ -287,9 +325,9 @@
                     Buku Hijau Cerebrum
                 </div>
                 <div class="flex w-full justify-start items-center gap-x-5 pb-10">
-                    <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
+                    <img class="w-20 h-20" src="/pictures/fotoadmin.png" alt="">
                     <div class="flex flex-col items-start">
-                        <span class="font-semibold">PJ Kelompok 1</span>
+                        <span class="font-semibold">{{{Auth::user()->nama}}}</span>
                         <span>Panitia</span>
                     </div>
                 </div>
@@ -297,11 +335,11 @@
 
                     <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                         <div class="flex gap-x-3">
-                            <img src="pictures/iconnilai.png" class="w-5" alt="">
-                            Nilai Mahasiswa
+                            <img src="/pictures/iconnilai.png" class="w-5" alt="">
+                            <a href="">Nilai Mahasiswa</a>
                         </div>
 
-                        <img src="pictures/dropdown.png" class="w-2 end" alt="">
+                        <img src="/pictures/dropdown.png" class="w-2 end" alt="">
 
                     </button>
                     <div id="dropnilai" class="hidden flex-col pl-8 gap-y-2">
@@ -311,16 +349,12 @@
 
                     <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
                         <div class="flex gap-x-3">
-                            <img src="pictures/iconmahasiswa.png" class="w-5" alt="">
+                            <img src="/pictures/iconmahasiswa.png" class="w-5" alt="">
                             Manajemen Mahasiswa
                         </div>
                     </button>
 
                 </nav>
-                <div class="flex items-center justify-start w-full px-4 gap-x-5">
-                    <img src="pictures/logout_gray.png" class="w-10" alt="">
-                    Log Out
-                </div>
             </div>
             <div class="w-full flex-1">
                 @yield('content')
