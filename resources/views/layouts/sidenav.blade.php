@@ -62,7 +62,7 @@
                         href="{{route('listUser')}}">Manajemen User</a></div> -->
                 
 
-                <button id="listuser" class="flex items-center justify-between w-full gap-x-3">
+                <button id="listuser" class="flex items-center justify-between w-full">
                     <div class="flex gap-x-3">
                         <img src="/pictures/iconmanajemenuser.png" class="w-5" alt="">
                         Manajemen User
@@ -209,13 +209,21 @@
             <!-- Navbar -->
             <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm pr-10">
                 <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class=""
-                        href="">Kegiatan Ormawa</a></div>
+                        href="listkegiatan">Kegiatan Ormawa</a></div>
 
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconnilai.png" alt=""><a class=""
-                        href="">Penilaian</a></div>
+                <div class="flex gap-x-3"><img class="w-5" src="pictures/user many_grey 3.png" alt=""><a class=""
+                        href="{{route('listmhsormawa')}}">Alokasi Mahasiswa</a></div>
 
             </nav>
+            <form action="{{route('logout.post')}}" method="POST">
+                @csrf
+                <div class="flex justify-center mt-2">
+                    <button type="submit"
+                        class="text-white text-xs bg-backgroundCerebrum w-24 h-7 rounded-full">Logout</button>
+                </div>
+            </form>
         </div>
+        
         <div class="w-full flex-1">
             @yield('content')
         </div>
@@ -353,8 +361,15 @@
                             Manajemen Mahasiswa
                         </div>
                     </button>
-
+        
                 </nav>
+                <form action="{{route('logout.post')}}" method="POST">
+                @csrf
+                <div class="flex justify-center mt-2">
+                    <button type="submit"
+                        class="text-white text-xs bg-backgroundCerebrum w-24 h-7 rounded-full">Logout</button>
+                </div>
+                </form>
             </div>
             <div class="w-full flex-1">
                 @yield('content')

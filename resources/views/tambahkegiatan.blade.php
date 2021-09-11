@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="p-10">
-    <div class="font-medium text-white text-3xl pb-4">Tambah Kegiatan</div>
+    <div class="font-medium text-white text-3xl pb-4">Tambah Kegiatan Ormawa</div>
     <div class="w-full tambahuserheight bg-white rounded-xl p-10 relative">
         @include('flash-message')
         <form class="flex flex-col gap-y-8  h-full" action="{{route('tambahkegiatan.post')}}">

@@ -1177,6 +1177,9 @@ select {
 .justify-between {
 	justify-content: space-between;
 }
+.justify-around {
+	justify-content: space-around;
+}
 .gap-4 {
 	gap: 1rem;
 }
@@ -1228,9 +1231,6 @@ select {
 .gap-x-8 {
 	-moz-column-gap: 2rem;
 	     column-gap: 2rem;
-}
-.gap-y-3 {
-	row-gap: 0.75rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
