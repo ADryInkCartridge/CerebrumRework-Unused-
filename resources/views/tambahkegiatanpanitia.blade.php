@@ -30,7 +30,7 @@
             </div>
             <div class="flex flex-col gap-y-5">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">SN</label>
-                <input type="number" step="0.1" name="sn" class="form-control" />
+                <input type="number" step="0.1" name="sn" class="form-control w-96 rounded-lg" />
             </div>
             <div class="flex flex-1 items-end justify-end  absolute bottom-10 right-10">
                 <button class="w-36 h-12 rounded-lg bg-backgroundCerebrum text-white" type="Submit">Tambah</button>
