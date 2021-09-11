@@ -30,21 +30,49 @@ class PanitiaController extends Controller
         }
         return redirect('login');
     }
-    public function nilaiPanitia($id){
-        $data = NilaiPanitia::join('mahasiswa','nilai_panitia.id_mhs','=','mahasiswa.id')->where(
-            'nilai_panitia.id_kegiatan','=',$id)->orderBy('nilai_panitia.id_mhs','asc')->paginate(10);
+    public function listkegiatanpanitia(Request $request)
+    {
+        $data = KegiatanPanitia::join('tahap','kegiatan_panitia.tahap','=','tahap.id')->join('divisi','kegiatan_panitia.divisi','=','divisi.id')->select(
+            'kegiatan_panitia.*', 'tahap.nama as nama_tahap', 'divisi.nama as nama_divisi' )->where([
+            ['kegiatan_panitia.id','!=',NULL],
+            ['tahap','=','1']
+        ])->where(function ($query) use ($request) {
+            $query->where('nama_kegiatan', 'LIKE', '%' . $request->term . '%' )->orWhere('tahap', 'LIKE', '%' . $request->term . '%' )->orWhere(
+                'divisi', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('kegiatan_panitia.id','asc')->paginate(10);
+        return view('listkegiatanpanitia',['kegiatans' => $data]);
+    }
+    public function nilaiPanitia($id, Request $request){
+        
+        $iduser = Auth::user()->user_id;
+        $data = Mahasiswa::whereIn('kelompok', function($query) use ($iduser)
+        {
+            $query->select('kelompok')->from(with(new Panitia)->getTable())->where('user_id', $iduser);
+        })->join('nilai_panitia','nilai_panitia.id_mhs','=','mahasiswa.id')->where(
+        'nilai_panitia.id_kegiatan','=',$id)->where(function ($query) use ($request) {
+            $query->where('mahasiswa.nama', 'LIKE', '%' . $request->term . '%' )->orWhere('mahasiswa.id_cerebrum', 'LIKE', '%' . $request->term . '%' );
+        })->orderBy('nilai_panitia.id_mhs','asc')->paginate(10);
         $id_panitia = KegiatanPanitia::where('id','=',$id)->first();
 
         return view('listnilaipanitia',['nilais' => $data,'id_kegiatan' => $id,'id_panitia'=> $id_panitia]);
     }
-    public function tambahNilaiPanitia($id_panitia, $id_kegiatan)
+
+    // public function tambahNilaiPanitia($id_panitia, $id_kegiatan)
+    // {
+    //     $id = Auth::user()->user_id;
+    //     $data = Mahasiswa::whereIn('kelompok', function($query) use ($id)
+    //     {
+    //         $query->select('kelompok')->from(with(new Panitia)->getTable())->where('user_id', $id);
+    //     })->get();
+    //     return view('tambahnilaipanitia',['mahasiswas' => $data,'id_kegiatan' => $id_kegiatan,'id_panitia' => $id_panitia]);
+    // }
+
+    public function editNilaiPanitia($id_nilai,)
     {
-        $id = Auth::user()->user_id;
-        $data = Mahasiswa::whereIn('kelompok', function($query) use ($id)
-        {
-            $query->select('kelompok')->from(with(new Panitia)->getTable())->where('user_id', $id);
-        })->get();
-        return view('tambahnilaipanitia',['mahasiswas' => $data,'id_kegiatan' => $id_kegiatan,'id_panitia' => $id_panitia]);
+        $nilai = nilaiPanitia::join('mahasiswa','mahasiswa.id','=','nilai_panitia.id_mhs')->where('nilai_panitia.id','=',$id_nilai)->select(
+            'nilai_panitia.*','mahasiswa.nama','mahasiswa.id_cerebrum'
+        )->first();
+        return view('editnilaipanitia',['nilai'=> $nilai]);
     }
     public function addNilaiPanitia(Request $request)
     {
@@ -68,6 +96,23 @@ class PanitiaController extends Controller
             $query->select('kelompok')->from(with(new Panitia)->getTable())->where('user_id', $id->user_id);
         })->get();
         return view('tambahnilaipanitia',['mahasiswas' => $data,'id_kegiatan' => $request->id,'id_panitia' => $request->id_panitia]);
+    }
+    
+    public function updateNilaiPanitia(Request $request)
+    {
+        $nil = NilaiPanitia::where('id','=',$request->id)->first();
+        $keg = KegiatanPanitia::where('id','=',$nil->id_kegiatan)->first();
+        $sn = $keg->sn;
+        $request->validate([
+            'id' => 'required',
+            'bn'=> 'required',
+        ]);
+        NilaiPanitia::where('id',$request->id)->update([
+            'bn'=> $request['bn'],
+            'tn'=> $request['bn'] * $sn,
+        ]);
+
+        return redirect()->route('nilaiPanitia',[$keg->id]);
     }
     
 }

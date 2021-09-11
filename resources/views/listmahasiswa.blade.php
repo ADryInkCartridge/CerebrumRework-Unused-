@@ -48,10 +48,10 @@
         <div class="flex flex-col">
             <span class="text-3xl pb-4 text-white">List Mahasiswa</span>
             <div class="relative">
-                <form action="/search" method="POST" role='search'>
+                <form action="{{route('listmahasiswa')}}" method="get" role='search'>
                     @csrf
                     <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
-                    <input class="rounded-lg h-9 w-64 pl-10" type="text" name="" id="" placeholder="Search">
+                    <input class="rounded-lg h-9 w-64 pl-10" type="text" name="term" id="term" placeholder="Search">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default">
                             <img class="w-5 " src="pictures/search_grey.png" alt="">
@@ -83,10 +83,10 @@
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
 
-                @foreach($listOfMahasiswa as $Mahasiswa)
+                @foreach($listOfMahasiswa as $index => $Mahasiswa)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
-                        <span class="">{{$Mahasiswa['id']}}</span>
+                        <span class="">{{($listOfMahasiswa->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['id_cerebrum']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['nama']}}</div>

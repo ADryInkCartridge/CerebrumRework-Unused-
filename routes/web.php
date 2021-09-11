@@ -102,5 +102,7 @@ Route::post('/tambahmhsormawa-post', [MhsormawaController::class, 'addMhsormawa'
 Route::get('/panitia', [PanitiaController::class, 'index'])->name('panitia');
 Route::get('/listtahappanitia', [PanitiaController::class, 'listtahappanitia'])->name('listtahappanitia');
 Route::get('/nilaipanitia/{id}',[PanitiaController::class, 'nilaiPanitia'])->name('nilaiPanitia');
-Route::get('/nilaipanitia/{id_panitia}/{id_kegiatan}',[PanitiaController::class, 'tambahNilaiPanitia'])->name('tambahNilaiPanitia');
+// Route::get('/nilaipanitia/{id_panitia}/{id_kegiatan}',[PanitiaController::class, 'tambahNilaiPanitia'])->name('tambahNilaiPanitia');
 Route::post('/nilaipanitia/post',[PanitiaController::class, 'addNilaiPanitia'])->name('tambahnilaipanitia.post');
+Route::get('/nilaipanitia/{id}/edit',[PanitiaController::class, 'editNilaiPanitia'])->name('editNilaiPanitia');
+Route::post('/nilaipanitia/edit/post',[PanitiaController::class, 'updateNilaiPanitia'])->name('nilaiPanitia.edit');

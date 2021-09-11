@@ -1,0 +1,6 @@
+Mahasiswa: Search, edit delete
+Mhs ormwa: Edit delete search, tambah mhsormawa dijadiin checklist / excel
+Nilai ormawa: list kebawah dan edit nilai jangan di page baru
+Nilai panitia: list kebawah dan edit nilai jangan di page baru
+
+fokus minggu ini panitia benerin + launch server.

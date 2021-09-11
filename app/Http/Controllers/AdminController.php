@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Ormawa;
 use App\Models\Divisi;
 use App\Models\Panitia;
+use App\Models\NilaiPanitia;
 use App\Models\KegiatanPanitia;
 use Response;
 use App\Models\Kegiatan;
@@ -347,7 +348,7 @@ class AdminController extends Controller
     public function listkegiatanpanitia(Request $request)
     {
         $data = KegiatanPanitia::join('tahap','kegiatan_panitia.tahap','=','tahap.id')->join('divisi','kegiatan_panitia.divisi','=','divisi.id')->select(
-            'kegiatan_panitia.*', 'tahap.nama as nama_tahap', 'divisi.nama as nama_divisi' )->where([
+            'kegiatan_panitia.*', 'tahap.nama as nama_tahap','tahap.status as status', 'divisi.nama as nama_divisi' )->where([
             ['kegiatan_panitia.id','!=',NULL]
         ])->where(function ($query) use ($request) {
             $query->where('nama_kegiatan', 'LIKE', '%' . $request->term . '%' )->orWhere('tahap', 'LIKE', '%' . $request->term . '%' )->orWhere(
@@ -369,12 +370,22 @@ class AdminController extends Controller
             'divisi'=> 'required',
             'sn'=> 'required',
         ]);
-        KegiatanPanitia::create([
+        $keg = KegiatanPanitia::create([
             'tahap' => $request['tahap'],
             'nama_kegiatan' => $request['nama_kegiatan'],
             'divisi' => $request['divisi'],
             'sn' => $request['sn'],
         ]);
+        $sn = $keg->sn;
+        $mhs = Mahasiswa::get();
+        foreach($mhs as $m){
+            NilaiPanitia::create([
+                'id_kegiatan' => $keg->id,
+                'id_mhs'=> $m->id,
+                'bn'=> 0,
+                'tn'=> 0 * $sn,
+            ]);
+        }
         return redirect()->route('tambahkegiatanpanitia')->with('success', 'Kegiatan Berhasil Ditambahkan');
     }
     public function editkegiatanpanitia($id){
@@ -387,6 +398,7 @@ class AdminController extends Controller
         $id = $request['id'];
 		if (KegiatanPanitia::where('id', '=', $id)->exists()) {
             $Panitia = KegiatanPanitia::where('id',$id)->delete();
+            $Nilai = NilaiPanitia::where('id_kegiatan',$id)->delete();
             return redirect()->route('listkegiatanpanitia')->with('success', 'Kegiatan Berhasil Dihapus');
         }
 		return redirect('listkegiatanpanitia')->withErrors('Kegiatan tidak ditemukan');
