@@ -1,4 +1,4 @@
-@extends('layouts.panitiasidenav')
+@extends('layouts.sidenav')
 
 @section('content')
 @include('flash-message')

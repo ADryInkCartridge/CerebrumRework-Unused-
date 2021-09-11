@@ -5,12 +5,6 @@
 <div class="pt-10 pr-10">
     <div class="font-medium text-white text-3xl pb-4">Edit User</div>
     <div class="w-full tambahuserheight bg-white rounded-xl">
-        <div>
-            {{$user->user_id}}
-            {{$user->username}}
-            {{$user->nama}}
-            {{$user->role}}
-        </div>
         @if($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             @foreach ($errors->all() as $error)
