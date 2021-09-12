@@ -11,7 +11,7 @@
             <input type="hidden" id="id" name="id" value="{{$panitia->id}}">
             <div class="flex flex-col gap-y-5">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">Kelompok</label>
-                <input type="number" step="1" name="kelompok" class="form-control" />
+                <input type="number" step="1" name="kelompok" class="form-control w-96 rounded-lg" />
             </div>
             <select name="user_id" id="user_id" class="w-96 rounded-lg">
                 @foreach($users as $user)

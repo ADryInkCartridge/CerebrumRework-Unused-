@@ -86,7 +86,7 @@
                                 @csrf
                                 <input type='hidden' name='id' value="{{$tahap->id}}">
                                 <button type="submit">
-                                    <div class="text-left pl-2 h-6">
+                                    <div class="border-b-2 h-6 pl-2 text-left">
                                         Hapus
                                     </div>
                                 </button>
