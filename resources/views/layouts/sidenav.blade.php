@@ -76,7 +76,7 @@
                 </div>
 
 
-                        <button id="listkegiatan" class="flex items-center justify-between w-full gap-x-3">
+                <button id="listkegiatan" class="flex items-center justify-between w-full gap-x-3">
                     <div class="flex gap-x-3">
                         <img src="/pictures/iconkegiatan.png" class="w-5" alt="">
                         Kegiatan
@@ -90,6 +90,11 @@
                 </div>   
             </nav>
 
+            
+            <button class="flex justify-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs">
+                    Back
+            </button>
+            
             <form action="{{route('logout.post')}}" method="POST">
                 @csrf
                 <div class="flex justify-center mt-2">
@@ -103,6 +108,13 @@
         </div>
     </div>
 
+    <!-- <script>
+        let btnBack = document.querySelector('backbtn');
+
+        btnBack.addEventListener('click', () => {
+            window.history.back();
+        })
+    </script> -->
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {

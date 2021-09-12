@@ -6,7 +6,7 @@
     <div class="font-medium text-white text-3xl pb-4">Edit Kegiatan</div>
     <div class="w-full tambahuserheight bg-white rounded-xl p-10 relative">
         @include('flash-message')
-        <form class="flex flex-col gap-y-8  h-full" method="POST" action="{{route('kegiatanpanitia.update')}}">
+        <form class="flex flex-col gap-y-8 h-full" method="POST" action="{{route('kegiatanpanitia.update')}}">
             @csrf
             <input type="hidden" id="id" name="id" value="{{$id_kegiatan}}">
             <div class="flex flex-col gap-y-5">

@@ -1,7 +1,7 @@
 @extends('layouts.sidenav')
 
 @section('content')
-<div id="tambahoverlay" class="absolute inset-0 hidden justify-center bg-black bg-opacity-50 z-10 items-center">
+<!-- <div id="tambahoverlay" class="absolute inset-0 hidden justify-center bg-black bg-opacity-50 z-10 items-center">
     <div class="w-1/3 bg-white h-1/3 rounded-xl py-10 flex flex-col items-center justify-center gap-y-10 relative">
         <button id="closeoverlaybtn" class="absolute top-5 right-5 z-10">
             <img class="w-4" src="pictures/close.png" alt="">
@@ -42,7 +42,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">
     <div class="flex justify-between">
         <div class="flex flex-col">
@@ -63,9 +63,10 @@
         </div>
         <div class="flex flex-col justify-end">
             <button id="tambahbtn" class="bg-greenTableheader rounded-md h-8 px-2 text-white font-semibold mb-3">
-                Tambah Mahasiswa +
+                <a href="">
+                    Tambah Mahasiswa +
+                </a>
             </button>
-
         </div>
 
 
