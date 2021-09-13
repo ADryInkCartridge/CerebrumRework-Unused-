@@ -80,7 +80,7 @@ Route::get('/kegiatan/{id}/edit', [OrmawaController::class, 'editKegiatan'])->na
 
 
 /* Mahasiswa ROUTES */
-Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport']);
+Route::get('file-import-export', [MahasiswaController::class, 'fileImportExport'])->name('fileImportExport');
 Route::post('file-import', [MahasiswaController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [MahasiswaController::class, 'fileExport'])->name('file-export');
 Route::get('/listmahasiswa', [MahasiswaController::class, 'listmahasiswa'])->name('listmahasiswa');

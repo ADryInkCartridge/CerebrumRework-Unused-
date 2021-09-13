@@ -51,10 +51,10 @@
             <a href="{{route('listUser')}}" class="pb-4">
                 List User
             </a>
-            <a href="" class="pb-4">
+            <a href="{{route('listpanitia')}}" class="pb-4">
                 List Panitia
             </a>
-            <a href="" class="pb-4">
+            <a href="{{route('listormawa')}}" class="pb-4">
                 List Ormawa
             </a>
         </div>
