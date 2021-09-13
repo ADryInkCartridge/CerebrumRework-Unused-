@@ -7,10 +7,7 @@
             Kegiatan Ormawa
         </a>
         <a href="{{route('listmhsormawa')}}" class="pb-4">
-            Tambah Mahasiswa
-        </a>
-        <a href="" class="pb-4">
-            Nilai Mahasiswa
+            Alokasi Mahasiswa
         </a>
         <form action="{{route('logout.post')}}" method="POST">
             @csrf

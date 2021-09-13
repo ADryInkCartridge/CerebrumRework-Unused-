@@ -4,7 +4,7 @@
 <div class="py-8 pr-10 pl-5 flex flex-col font-sans">
     <div class="flex justify-between">
         <div class="flex flex-col">
-            <span class="text-3xl pb-4 text-white">Alokasi Mahasiswa</span>
+            <span class="text-3xl pb-4 text-white">List Nilai</span>
             <div class="relative">
                 <form action="{{route('listormawa')}}" method="GET" role='search'>
                     @csrf
@@ -22,7 +22,7 @@
         <div class="flex flex-col justify-end">
             <a href="{{route('tambahNilaiOrmawa', [$id_ormawa->id_ormawa,$id_kegiatan])}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
-                Alokasi Mahasiswa +
+                Tambah Nilai +
             </a>
 
         </div>
@@ -30,7 +30,7 @@
 
     </div>
     <div class="pt-5 w-full">
-        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
+        <div class="table table-fixed w-full rounded-2xl ">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>

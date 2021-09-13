@@ -20,13 +20,14 @@
             </div>
 
         </div>
+        @if(Auth::user()->role=='Super User')
         <div class="flex flex-col justify-end">
             <a href="{{route('tambahkegiatanpanitia')}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
                 Tambah Kegiatan +
             </a>
-
         </div>
+        @endif
 
 
     </div>

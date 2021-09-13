@@ -91,9 +91,11 @@
             </nav>
 
             
-            <button class="flex justify-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs">
-                    Back
-            </button>
+            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
+                Home
+            </a>
+            
+            
             
             <form action="{{route('logout.post')}}" method="POST">
                 @csrf
@@ -107,14 +109,6 @@
             @yield('content')
         </div>
     </div>
-
-    <!-- <script>
-        let btnBack = document.querySelector('backbtn');
-
-        btnBack.addEventListener('click', () => {
-            window.history.back();
-        })
-    </script> -->
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -211,7 +205,7 @@
                 Buku Hijau Cerebrum
             </div>
             <div class="flex w-full justify-center items-center gap-x-5 pb-10">
-                <img class="w-20 h-20" src="pictures/fotoadmin.png" alt="">
+                <img class="w-20 h-20" src="/pictures/fotoadmin.png" alt="">
                 <div class="flex flex-col items-start">
                     <span class="font-semibold">{{{Auth::user()->nama}}}</span>
                     <span>Ormawa</span>
@@ -220,13 +214,18 @@
 
             <!-- Navbar -->
             <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm pr-10">
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/iconkegiatan.png" alt=""><a class=""
+                <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconkegiatan.png" alt=""><a class=""
                         href="listkegiatan">Kegiatan Ormawa</a></div>
 
-                <div class="flex gap-x-3"><img class="w-5" src="pictures/user many_grey 3.png" alt=""><a class=""
+                <div class="flex gap-x-3"><img class="w-5" src="/pictures/user many_grey 3.png" alt=""><a class=""
                         href="{{route('listmhsormawa')}}">Alokasi Mahasiswa</a></div>
 
             </nav>
+
+            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
+                Home
+            </a>
+
             <form action="{{route('logout.post')}}" method="POST">
                 @csrf
                 <div class="flex justify-center mt-2">
