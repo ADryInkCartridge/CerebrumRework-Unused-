@@ -16,6 +16,12 @@
                 <p>
                     {{$nilai->id_cerebrum}}
                 </p>
+                <p>
+                    {{$nilai->divisi}}
+                </p>
+                <p>
+                    {{$nilai->tahap}}
+                </p>
             </div>
             <div class="flex flex-col gap-y-5">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">BN</label>

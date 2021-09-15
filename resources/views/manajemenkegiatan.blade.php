@@ -82,6 +82,15 @@
                                     Edit
                                 </div>
                             </a>
+                            <form action="{{route('tahap.ubah',[$tahap->id])}}" method="post">
+                                @csrf
+                                <input type='hidden' name='id' value="{{$tahap->id}}">
+                                <button type="submit">
+                                    <div class="border-b-2 h-6 pl-2 text-left">
+                                        Ubah Status
+                                    </div>
+                                </button>
+                            </form>
                             <form action="{{route('tahap.delete',[$tahap->id])}}" method="post">
                                 @csrf
                                 <input type='hidden' name='id' value="{{$tahap->id}}">

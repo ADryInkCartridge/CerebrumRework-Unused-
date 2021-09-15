@@ -3,10 +3,10 @@
 @section('content')
 <div class="grid grid-cols-2 h-full pt-32">
     <div class="flex flex-col items-start px-28 text-left text-2xl text-gray-600">
-        <a href="{{route('listkegiatanpanitia')}}" class="pb-4">
+        <a href="{{route('listkegiatan.panitia')}}" class="pb-4">
             List Kegiatan
         </a>
-        <a href="" class="pb-4">
+        <a href="{{route('panitia.manage')}}" class="pb-4">
             Manajemen Mahasiswa
         </a>
         <form action="{{route('logout.post')}}" method="POST">

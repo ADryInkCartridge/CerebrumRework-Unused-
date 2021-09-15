@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="table-row-group overflow-y-scroll h-96">
-                
+
                 @foreach($kegiatans as $index => $kegiatan)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
@@ -81,11 +81,15 @@
                                 </button>
                             </form>
                             @endif
+                            @if($kegiatan['status']==1)
                             <a href="{{route('nilaiPanitia', $kegiatan->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Tambah Nilai
                                 </div>
                             </a>
+                            @else
+                            <p>Sudah Ditutup</p>
+                            @endif
                         </div>
 
 
