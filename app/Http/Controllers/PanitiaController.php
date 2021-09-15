@@ -10,6 +10,7 @@ use App\Models\Tahap;
 use App\Models\Panitia;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use PDF;
 
 use Illuminate\Http\Request;
 
@@ -132,24 +133,6 @@ class PanitiaController extends Controller
     }
     public function detailTahapPanitia($id)
     {
-        // $nilai = nilaiPanitia::join(
-        //     'kegiatan_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->join(
-        //         'tahap','tahap.id','=','kegiatan_panitia.tahap')->join(
-        //             'divisi','divisi.id','=','kegiatan_panitia.divisi')->where(
-        //         'nilai_panitia.id_mhs','=',$id)->select(
-        //         DB::raw("SUM(nilai_panitia.tn) as total_tn"),DB::raw("SUM(nilai_ormawa.tn) as total_tn2"),'tahap.nama as tahap'
-        // )->groupBy('tahap.nama')->orderBy('tahap.id','asc')->paginate(10);
-        // return view('detailTahapMahasiswa',['nilais'=> $nilai,'id'=> $id]);
-
-        // $nilai = Mahasiswa::join('nilai_ormawa','nilai_ormawa.id_mhs','=','id')->join(
-        //     'kegiatan_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
-        //         'tahap','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
-        //             'kegiatan_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->join(
-        //                 'tahap','tahap.id','=','kegiatan_panitia.tahap')->join(
-        //                     'nilai_panitia','nilai_panitia.id_mhs','=','mahasiswa_id')->where(
-        //                         'nilai_panitia.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
-        //                             DB::raw("SUM(nilai_panitia.tn) as total_tn"),DB::raw("SUM(nilai_ormawa.tn) as total_tn2"),'tahap.nama as tahap'
-        // )->groupBy('tahap.nama')->orderBy('tahap.id','asc')->paginate(10);
 
         $nilai = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
             'kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->leftJoin(
@@ -172,6 +155,21 @@ class PanitiaController extends Controller
             'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan','divisi.nama as divisi','tahap.nama as tahap'
         )->orderBy('nilai_panitia.id','asc')->paginate(10);
         return view('detailMahasiswa',['nilais'=> $nilai]);
+    }
+
+    public function pdfDownload($id){
+        $nilais = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
+            'kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->leftJoin(
+                'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->leftJoin(
+                    'divisi','divisi.id','=','kegiatan_panitia.divisi')->leftJoin(
+                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->leftJoin(
+                        'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
+                                'nilai_panitia.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
+                                    'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan',
+                                    'divisi.nama as divisi','tahap.nama as tahap','nilai_ormawa.bn as bn2','nilai_ormawa.tn as tn2','kegiatan_ormawa.sn as sn2',
+                                    'kegiatan_ormawa.nama_kegiatan as kegiatan2',)->orderBy('tahap.id')->get();
+        $pdf = PDF::loadView('rapotPDF',['nilais'=>$nilais,'id'=>$id]);
+        return $pdf->download('contacts_list.pdf');
     }
     
 }
