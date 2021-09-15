@@ -109,4 +109,5 @@ Route::get('/nilaipanitia/{id}/edit',[PanitiaController::class, 'editNilaiPaniti
 Route::post('/nilaipanitia/edit/post',[PanitiaController::class, 'updateNilaiPanitia'])->name('nilaiPanitia.edit');
 Route::get('/panitia/manajemen', [PanitiaController::class, 'manajemenMahasiswaPanitia'])->name('panitia.manage');
 Route::get('/panitia/manajemem/{id}', [PanitiaController::class, 'detailTahapPanitia'])->name('panitia.detail');
+Route::get('/panitia/manajemem/{id}/pdf', [PanitiaController::class, 'pdfDownload'])->name('panitia.pdf');
 Route::get('/panitia/manajemem/{tahap}/{id}', [PanitiaController::class, 'detailMahasiswa'])->name('panitia.detailnilai');

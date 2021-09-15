@@ -7,10 +7,8 @@
             <span class="text-3xl pb-4 text-white">Nilai Mahasiswa</span>
             <div class="relative">
             </div>
-
+            <a href="{{route('panitia.pdf',$id)}}">PDF</a>
         </div>
-
-
     </div>
     <div class="pt-5 w-full">
         <div class="table table-fixed w-full rounded-2xl overflow-hidden">
