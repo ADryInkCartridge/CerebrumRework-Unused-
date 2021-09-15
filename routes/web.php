@@ -90,6 +90,7 @@ Route::get('/listtahap', [TahapController::class, 'listtahap'])->name('listtahap
 Route::get('/tambahtahap', [TahapController::class, 'tambahTahap'])->name('tambahtahap');
 Route::post('/tambahtahap-post', [TahapController::class, 'addTahap'])->name('tambahtahap.post');
 Route::get('/tahap/{id}/edit', [TahapController::class, 'editTahap'])->name('tahap.edit');
+Route::post('/tahap/{id}/ubah', [TahapController::class, 'statusTahap'])->name('tahap.ubah');
 Route::POST('/tahap/{id}/delete', [TahapController::class, 'deleteTahap'])->name('tahap.delete');
 Route::POST('/tahap/update', [TahapController::class, 'updateTahap'])->name('tahap.update');
 
@@ -102,7 +103,10 @@ Route::post('/tambahmhsormawa-post', [MhsormawaController::class, 'addMhsormawa'
 Route::get('/panitia', [PanitiaController::class, 'index'])->name('panitia');
 Route::get('/listtahappanitia', [PanitiaController::class, 'listtahappanitia'])->name('listtahappanitia');
 Route::get('/nilaipanitia/{id}',[PanitiaController::class, 'nilaiPanitia'])->name('nilaiPanitia');
-// Route::get('/nilaipanitia/{id_panitia}/{id_kegiatan}',[PanitiaController::class, 'tambahNilaiPanitia'])->name('tambahNilaiPanitia');
+Route::get('/listkegiatan/panitia', [PanitiaController::class, 'listkegiatanpanitia'])->name('listkegiatan.panitia');
 Route::post('/nilaipanitia/post',[PanitiaController::class, 'addNilaiPanitia'])->name('tambahnilaipanitia.post');
 Route::get('/nilaipanitia/{id}/edit',[PanitiaController::class, 'editNilaiPanitia'])->name('editNilaiPanitia');
 Route::post('/nilaipanitia/edit/post',[PanitiaController::class, 'updateNilaiPanitia'])->name('nilaiPanitia.edit');
+Route::get('/panitia/manajemen', [PanitiaController::class, 'manajemenMahasiswaPanitia'])->name('panitia.manage');
+Route::get('/panitia/manajemem/{id}', [PanitiaController::class, 'detailTahapPanitia'])->name('panitia.detail');
+Route::get('/panitia/manajemem/{tahap}/{id}', [PanitiaController::class, 'detailMahasiswa'])->name('panitia.detailnilai');

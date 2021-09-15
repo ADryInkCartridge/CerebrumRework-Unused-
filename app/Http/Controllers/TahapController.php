@@ -55,7 +55,26 @@ class TahapController extends Controller
         }
 		return redirect('listtahap')->withErrors('Tahap tidak ditemukan');
     }
-    
+
+    public function statusTahap(Request $request){
+        $id = $request['id'];
+		if (Tahap::where('id', '=', $id)->exists()) {
+            $stat = Tahap::where('id',$id)->first();
+            if($stat->status==1){
+                $tahap = Tahap::where('id',$id)->update([
+                    'status' => '0'
+                ]);
+            }
+            else {
+                $tahap = Tahap::where('id',$id)->update([
+                    'status' => '1'
+                ]);
+            }
+            return redirect()->route('listtahap')->with('success', 'Status Berhasil Diubah');
+        }
+		return redirect('listtahap')->withErrors('Tahap tidak ditemukan');
+    }
+
     public function updateTahap(Request $request){
         
         $request->validate([
