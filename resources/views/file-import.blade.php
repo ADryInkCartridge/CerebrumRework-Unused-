@@ -12,7 +12,11 @@
     <div class="w-3/6 pt-48">
         <div class="bg-white border-2 border-black rounded-2xl py-10 flex flex-col">
             <div class="flex justify-end pr-10 text-xl">
-                <button>X</button>
+                <button>
+                    <a href="{{route('listmahasiswa')}}">
+                        <img class="w-4" src="pictures/close.png" alt="">
+                    </a>
+                </button>
             </div>
             <h2 class="mb-6 text-4xl font-medium flex justify-start pl-16">
                 Upload File

@@ -13,9 +13,6 @@
             </a>
         </button>
 
-        <a href="{{route('listkegiatanpanitia')}}" class="pb-4">
-            Manajemen Penilaian
-        </a>
         <button id="button2">
             <div class="flex items-center gap-x-28 pb-4">
                 <div>
