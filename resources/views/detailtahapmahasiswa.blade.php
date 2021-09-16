@@ -7,11 +7,13 @@
             <span class="text-3xl pb-4 text-white">Nilai Mahasiswa</span>
             <div class="relative">
             </div>
-            <a href="{{route('panitia.pdf',$id)}}">PDF</a>
+            <div class="bg-greenTable1 flex justify-center w-48 rounded-md">
+                <a class="text-lg font-medium text-white" href="{{route('panitia.pdf',$id)}}">Download PDF</a>
+            </div>
         </div>
     </div>
     <div class="pt-5 w-full">
-        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
+        <div class="table table-fixed w-full rounded-2xl ">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No</div>
@@ -30,7 +32,7 @@
                     <div class="table-cell w-32 text-center align-middle  ">
                         <span class="">{{$index+1}}</span>
                     </div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tahap']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle bg">{{$nilai['tahap']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">
                         @if($nilai->total_tn)
                         @php
@@ -61,9 +63,19 @@
                     </div>
                 </div>
                 @endforeach
-                <p>{{$total}}</p>
+
+                <!-- <p>{{$total}}</p> -->
             </div>
         </div>
+        <div class="bg-greenTableheader flex justify-center items-center h-20 gap-x-14 w-full text-center align-middle col-span-full text-white font-semibold text-lg">
+            <div>
+                Total
+            </div>
+            <div>
+                {{$total}}
+            </div>
+        </div>
+
         <div class="flex flex-row mt-4">
             <div>
                 <div class="flex flex-row gap-x-4">

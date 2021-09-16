@@ -81,9 +81,9 @@
                 @endforeach
             </div>
         </div>
-        <div class="flex flex-row mt-4">
+        <div class="flex flex-row mt-4 w-full justify-center">
             <div>
-                <div class="flex flex-row gap-x-4">
+                <div class="flex flex-row gap-x-4 ">
                     {{ $listOfUsers->links('custompaginator') }}
                 </div>
             </div>

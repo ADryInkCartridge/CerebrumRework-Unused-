@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex justify-center text-center">
-    <h1 class="text-3xl">Penyambutan - <span>NAMATITID</span></h1>
+    <h1 class="text-3xl">Penyambutan - <span>NAMA</span></h1>
 
 </div>
 <div class="table table-fixed w-full rounded-2xl ">
