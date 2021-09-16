@@ -1093,6 +1093,7 @@ select {
 }
 .w-6 {
 	width: 1.5rem;
+
 }
 .w-60 {
 	width: 15rem;
@@ -1108,6 +1109,7 @@ select {
 }
 .max-w-7xl {
 	max-width: 80rem;
+
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -1327,6 +1329,7 @@ select {
 }
 .border-transparent {
 	border-color: transparent;
+
 }
 .bg-white {
 	--tw-bg-opacity: 1;
@@ -1335,16 +1338,28 @@ select {
 .bg-greenTableheader {
 	--tw-bg-opacity: 1;
 	background-color: rgba(50, 115, 112, var(--tw-bg-opacity));
+
+}
+.bg-white {
+	--tw-bg-opacity: 1;
+	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+
+.bg-greenTableheader {
+	--tw-bg-opacity: 1;
+	background-color: rgba(50, 115, 112, var(--tw-bg-opacity));
 }
 .bg-backgroundCerebrum {
 	--tw-bg-opacity: 1;
 	background-color: rgba(66, 89, 88, var(--tw-bg-opacity));
 }
+
 .bg-greenTable1 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(123, 166, 164, var(--tw-bg-opacity));
 }
 .bg-gray-100 {
+
 	--tw-bg-opacity: 1;
 	background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
@@ -1445,6 +1460,7 @@ select {
 .py-6 {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
+
 }
 .pr-10 {
 	padding-right: 2.5rem;
