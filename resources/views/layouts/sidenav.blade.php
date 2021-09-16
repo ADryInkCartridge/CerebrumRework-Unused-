@@ -60,7 +60,7 @@
                 </div>
                 <!-- <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconmanajemenuser.png" alt=""><a class=""
                         href="{{route('listUser')}}">Manajemen User</a></div> -->
-                
+
 
                 <button id="listuser" class="flex items-center justify-between w-full">
                     <div class="flex gap-x-3">
@@ -87,16 +87,17 @@
                     <a href="{{route('listtahap')}}">Manajemen Kegiatan</a>
                     <a href="{{route('listdivisi')}}">List Divisi</a>
                     <a href="{{route('listkegiatanpanitia')}}">List Kegiatan</a>
-                </div>   
+                </div>
             </nav>
 
-            
-            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
+
+            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs"
+                href="{{route('admin')}}">
                 Home
             </a>
-            
-            
-            
+
+
+
             <form action="{{route('logout.post')}}" method="POST">
                 @csrf
                 <div class="flex justify-center mt-2">
@@ -125,6 +126,7 @@
                 nilai.classList.toggle('flex');
             })
         })
+
     </script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -135,6 +137,7 @@
                 nilai.classList.toggle('flex');
             })
         })
+
     </script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -145,6 +148,7 @@
                 nilai.classList.toggle('flex');
             })
         })
+
     </script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -197,10 +201,11 @@
 
             })
         })
+
     </script>
     @elseif(Auth::user()->role == 'Ormawa')
     <div class="flex gap-x-5 ">
-        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4">
+        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
@@ -222,7 +227,8 @@
 
             </nav>
 
-            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
+            <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs"
+                href="{{route('admin')}}">
                 Home
             </a>
 
@@ -234,8 +240,8 @@
                 </div>
             </form>
         </div>
-        
-        <div class="w-full flex-1">
+
+        <div class="ml-64 pl-4 flex-1">
             @yield('content')
         </div>
     </div>
@@ -259,6 +265,7 @@
             })
 
         })
+
     </script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -314,6 +321,7 @@
         $(document).ready(function () {
             $('.select2').select2();
         });
+
     </script>
     @elseif(Auth::user()->role == 'Panitia')
     <!DOCTYPE html>
@@ -339,7 +347,7 @@
     <body class=" bg-backgroundCerebrum font-sans">
         <div class="flex gap-x-5 ">
             <div
-                class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4">
+                class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
                 <div class="flex text-xl font-semibold pb-10">
                     Buku Hijau Cerebrum
                 </div>
@@ -355,33 +363,36 @@
                     <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                         <div class="flex gap-x-3">
                             <img src="/pictures/iconnilai.png" class="w-5" alt="">
-                            <a href="{{route('listkegiatanpanitia')}}">Nilai Mahasiswa</a>
-                        </div>
 
+                            <a href="{{route('listkegiatan.panitia')}}">List Kegiatan</a>
+                        </div>
                     </button>
 
                     <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
                         <div class="flex gap-x-3">
                             <img src="/pictures/iconmahasiswa.png" class="w-5" alt="">
+
                             <a href="{{route('panitia.manage')}}">Manajemen Mahasiswa</a>
+
                         </div>
                     </button>
-        
+
                 </nav>
+
 
                 <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
                 Home
                 </a>
 
                 <form action="{{route('logout.post')}}" method="POST">
-                @csrf
-                <div class="flex justify-center mt-2">
-                    <button type="submit"
-                        class="text-white text-xs bg-backgroundCerebrum w-24 h-7 rounded-full">Logout</button>
-                </div>
+                    @csrf
+                    <div class="flex justify-center mt-2">
+                        <button type="submit"
+                            class="text-white text-xs bg-backgroundCerebrum w-24 h-7 rounded-full">Logout</button>
+                    </div>
                 </form>
             </div>
-            <div class="w-full flex-1">
+            <div class="ml-64 pl-4 flex-1">
                 @yield('content')
             </div>
         </div>
@@ -405,6 +416,7 @@
                 })
 
             })
+
         </script>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
@@ -424,6 +436,7 @@
                 })
 
             })
+
         </script>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
@@ -479,6 +492,7 @@
             $(document).ready(function () {
                 $('.select2').select2();
             });
+
         </script>
     </body>
     @endif
