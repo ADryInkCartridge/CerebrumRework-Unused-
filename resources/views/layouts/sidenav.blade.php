@@ -363,28 +363,25 @@
                     <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
                         <div class="flex gap-x-3">
                             <img src="/pictures/iconnilai.png" class="w-5" alt="">
+
                             <a href="{{route('listkegiatan.panitia')}}">List Kegiatan</a>
                         </div>
                     </button>
-                    <div id="dropnilai" class="hidden flex-col pl-8 gap-y-2">
-                        <a href="">Penyambutan</a>
-                        <a href="">Pembinaan</a>
-                    </div>
 
                     <button id="manajemen" class="flex items-center justify-between w-full gap-x-3">
                         <div class="flex gap-x-3">
                             <img src="/pictures/iconmahasiswa.png" class="w-5" alt="">
-                            <a href="{{route('panitia.manage')}}">
-                                Manajemen Mahasiswa
-                            </a>
+
+                            <a href="{{route('panitia.manage')}}">Manajemen Mahasiswa</a>
+
                         </div>
                     </button>
 
                 </nav>
 
-                <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs"
-                    href="{{route('admin')}}">
-                    Home
+
+                <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
+                Home
                 </a>
 
                 <form action="{{route('logout.post')}}" method="POST">
