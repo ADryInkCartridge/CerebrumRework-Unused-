@@ -68,7 +68,7 @@ class PanitiaController extends Controller
     //     return view('tambahnilaipanitia',['mahasiswas' => $data,'id_kegiatan' => $id_kegiatan,'id_panitia' => $id_panitia]);
     // }
 
-    public function editNilaiPanitia($id_nilai,)
+    public function editNilaiPanitia($id_nilai)
     {
         $nilai = nilaiPanitia::join('mahasiswa','mahasiswa.id','=','nilai_panitia.id_mhs')->join(
             'kegiatan_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->join(
