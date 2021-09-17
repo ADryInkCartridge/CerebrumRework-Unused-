@@ -147,11 +147,11 @@ class PanitiaController extends Controller
                 'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
                     'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
                                 'nilai_ormawa.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
-                                    DB::raw("SUM(nilai_ormawa.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.id','asc')->get();
+                                    DB::raw("SUM(nilai_ormawa.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
         $nilai = Tahap::join('kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->join(
                         'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
                                 'nilai_panitia.id_mhs','=',$id)->select(
-                                    DB::raw("SUM(nilai_panitia.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.id','asc')->get();
+                                    DB::raw("SUM(nilai_panitia.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
         foreach($ormawas as $ormawa) {
             $nilai->add($ormawa);
         }
