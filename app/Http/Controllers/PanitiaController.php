@@ -179,7 +179,7 @@ class PanitiaController extends Controller
                             'nilai_ormawa.*','kegiatan_ormawa.sn as sn','kegiatan_ormawa.nama_kegiatan as kegiatan','tahap.nama as tahap')->orderBy('nilai_ormawa.id','asc')->paginate(10);;
             
         }
-        return view('detailMahasiswa',['nilais'=> $nilai]);
+        return view('detailmahasiswa',['nilais'=> $nilai]);
     }
     
 
@@ -195,7 +195,7 @@ class PanitiaController extends Controller
                                     'divisi.nama as divisi','tahap.nama as tahap','nilai_ormawa.bn as bn2','nilai_ormawa.tn as tn2','kegiatan_ormawa.sn as sn2',
                                     'kegiatan_ormawa.nama_kegiatan as kegiatan2',)->orderBy('tahap.id')->get();
         $pdf = PDF::loadView('rapotPDF',['nilais'=>$nilais,'id'=>$id]);
-        return $pdf->download('contacts_list.pdf');
+        return $pdf->download('Rapor.pdf');
     }
     
 }
