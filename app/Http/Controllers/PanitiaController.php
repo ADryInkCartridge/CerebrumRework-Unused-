@@ -156,7 +156,7 @@ class PanitiaController extends Controller
             $nilai->add($ormawa);
         }
         // dd($nilai);
-        return view('detailTahapMahasiswa',['nilais'=> $nilai,'id'=> $id]);
+        return view('detailtahapmahasiswa',['nilais'=> $nilai,'id'=> $id]);
     }
 
     public function detailMahasiswa($tahap,$id)
