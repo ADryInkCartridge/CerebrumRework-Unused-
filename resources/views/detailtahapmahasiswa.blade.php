@@ -67,7 +67,8 @@
                 <!-- <p>{{$total}}</p> -->
             </div>
         </div>
-        <div class="bg-greenTableheader flex justify-center items-center h-20 gap-x-14 w-full text-center align-middle col-span-full text-white font-semibold text-lg">
+        <div
+            class="bg-greenTableheader flex justify-center items-center h-20 gap-x-14 w-full text-center align-middle col-span-full text-white font-semibold text-lg">
             <div>
                 Total
             </div>
@@ -79,7 +80,7 @@
         <div class="flex flex-row mt-4">
             <div>
                 <div class="flex flex-row gap-x-4">
-                    {{ $nilais->links('custompaginator') }}
+
                 </div>
             </div>
         </div>

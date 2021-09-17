@@ -134,28 +134,54 @@ class PanitiaController extends Controller
     public function detailTahapPanitia($id)
     {
 
-        $nilai = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
-            'kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->leftJoin(
-                'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->leftJoin(
-                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->leftJoin(
+        // $nilai = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
+        //     'kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->leftJoin(
+        //         'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->leftJoin(
+        //             'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->leftJoin(
+        //                 'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
+        //                         'nilai_panitia.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
+        //                             DB::raw("SUM(nilai_panitia.tn) as total_tn"),DB::raw("SUM(nilai_ormawa.tn) as total_tn2"),'tahap.nama as tahap'
+        // )->groupBy('tahap.nama')->orderBy('tahap.id','asc')->paginate(10);
+        
+        $ormawas = Tahap::join('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
+                'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
+                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
+                                'nilai_ormawa.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
+                                    DB::raw("SUM(nilai_ormawa.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.id','asc')->get();
+        $nilai = Tahap::join('kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->join(
                         'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
-                                'nilai_panitia.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
-                                    DB::raw("SUM(nilai_panitia.tn) as total_tn"),DB::raw("SUM(nilai_ormawa.tn) as total_tn2"),'tahap.nama as tahap'
-        )->groupBy('tahap.nama')->orderBy('tahap.id','asc')->paginate(10);
+                                'nilai_panitia.id_mhs','=',$id)->select(
+                                    DB::raw("SUM(nilai_panitia.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.id','asc')->get();
+        foreach($ormawas as $ormawa) {
+            $nilai->add($ormawa);
+        }
+        // dd($nilai);
         return view('detailTahapMahasiswa',['nilais'=> $nilai,'id'=> $id]);
     }
 
     public function detailMahasiswa($tahap,$id)
     {
-        $nilai = nilaiPanitia::join(
-            'kegiatan_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->join(
-                'tahap','tahap.id','=','kegiatan_panitia.tahap')->join(
-                    'divisi','divisi.id','=','kegiatan_panitia.divisi')->where(
-                'nilai_panitia.id_mhs','=',$id)->where('tahap.nama','=',$tahap)->select(
-            'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan','divisi.nama as divisi','tahap.nama as tahap'
-        )->orderBy('nilai_panitia.id','asc')->paginate(10);
+        $tipe = Tahap::where('nama','=',$tahap)->first();
+        if($tipe->tipe == 0){
+            $nilai = nilaiPanitia::join(
+                'kegiatan_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->join(
+                    'tahap','tahap.id','=','kegiatan_panitia.tahap')->join(
+                        'divisi','divisi.id','=','kegiatan_panitia.divisi')->where(
+                    'nilai_panitia.id_mhs','=',$id)->where('tahap.nama','=',$tahap)->select(
+                'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan','divisi.nama as divisi','tahap.nama as tahap'
+            )->orderBy('nilai_panitia.id','asc')->paginate(10);
+        }
+        else {
+            $nilai = Tahap::join('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
+                'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
+                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
+                        'nilai_ormawa.id_mhs','=',$id)->where('tahap.nama','=',$tahap)->select(
+                            'nilai_ormawa.*','kegiatan_ormawa.sn as sn','kegiatan_ormawa.nama_kegiatan as kegiatan','tahap.nama as tahap')->orderBy('nilai_ormawa.id','asc')->paginate(10);;
+            
+        }
         return view('detailMahasiswa',['nilais'=> $nilai]);
     }
+    
 
     public function pdfDownload($id){
         $nilais = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
