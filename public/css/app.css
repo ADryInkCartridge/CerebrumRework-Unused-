@@ -1578,6 +1578,10 @@ select {
 .pb-1 {
 	padding-bottom: 0.25rem;
 }
+
+.pt-16 {
+	padding-top: 4rem;
+
 .pl-8 {
 	padding-left: 2rem;
 }
@@ -1586,7 +1590,10 @@ select {
 }
 .pt-24 {
 	padding-top: 6rem;
+
 }
+
+
 .text-left {
 	text-align: left;
 }
