@@ -111,3 +111,7 @@ Route::get('/panitia/manajemen', [PanitiaController::class, 'manajemenMahasiswaP
 Route::get('/panitia/manajemem/{id}', [PanitiaController::class, 'detailTahapPanitia'])->name('panitia.detail');
 Route::get('/panitia/manajemem/{id}/pdf', [PanitiaController::class, 'pdfDownload'])->name('panitia.pdf');
 Route::get('/panitia/manajemem/{tahap}/{id}', [PanitiaController::class, 'detailMahasiswa'])->name('panitia.detailnilai');
+
+/* Mahasiswa ROUTES */
+Route::get('/nilaimahasiswa/',[MahasiswaController::class, 'searchMhs'])->name('mahasiswa.search');
+Route::get('/mahasiswa/{tahap}/{id}', [MahasiswaController::class, 'detailMhs'])->name('mahasiswa.detailnilai');

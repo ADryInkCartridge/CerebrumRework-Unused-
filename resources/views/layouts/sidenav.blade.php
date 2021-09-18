@@ -22,7 +22,127 @@
 </head>
 
 <body id="body" class=" bg-backgroundCerebrum font-sans">
-    @if(Auth::user()->role == 'Super User')
+    @if(!Auth::check())
+    <!DOCTYPE html>
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
+    </head>
+
+    <body class=" bg-backgroundCerebrum font-sans">
+        @yield('content')
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const manabtn = document.querySelector('#manajemen')
+                const mana = document.querySelector('#dropmanajemen')
+                const nilaibtn = document.querySelector('#nilai')
+                const nilai = document.querySelector('#dropnilai')
+                manabtn.addEventListener('click', () => {
+                    mana.classList.toggle('hidden');
+                    mana.classList.toggle('flex');
+
+                })
+                nilaibtn.addEventListener('click', () => {
+                    nilai.classList.toggle('hidden');
+                    nilai.classList.toggle('flex');
+
+                })
+
+            })
+
+        </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const manabtn = document.querySelector('#manajemen')
+                const mana = document.querySelector('#dropmanajemen')
+                const nilaibtn = document.querySelector('#nilai')
+                const nilai = document.querySelector('#dropnilai')
+                manabtn.addEventListener('click', () => {
+                    mana.classList.toggle('hidden');
+                    mana.classList.toggle('flex');
+
+                })
+                nilaibtn.addEventListener('click', () => {
+                    nilai.classList.toggle('hidden');
+                    nilai.classList.toggle('flex');
+
+                })
+
+            })
+
+        </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const editbtn = document.getElementsByClassName('editbtn')
+                const edit = document.getElementsByClassName('editdropdown')
+                const editclose = document.getElementsByClassName('closeedit')
+                const tambahbtn = document.querySelector('#tambahbtn')
+                const tambahoverlay = document.querySelector('#tambahoverlay')
+                const closeoverlay = document.querySelector('#closeoverlaybtn')
+                const uploadbtn = document.querySelector('#uploadbtn')
+                const uploadoverlay = document.querySelector('#uploadoverlay')
+                const closeuploadoverlay = document.querySelector('#closeuploadoverlaybtn')
+                const body = document.querySelector('#body')
+                for (let i = 0; i < editbtn.length; i++) {
+                    editbtn[i].onclick = function () {
+                        edit[i].style.display = "block";
+                    }
+                }
+                for (let i = 0; i < editclose.length; i++) {
+                    editclose[i].onclick = function () {
+                        edit[i].style.display = "none";
+                    }
+                }
+                editbtn.addEventListener('click', () => {
+                    edit.classList.toggle('hidden');
+                    edit.classList.toggle('flex');
+                })
+                editclose.addEventListener('click', () => {
+                    edit.classList.toggle('hidden');
+                    edit.classList.toggle('flex');
+                })
+                tambahbtn.addEventListener('click', () => {
+                    tambahoverlay.classList.toggle('hidden');
+                    tambahoverlay.classList.toggle('flex');
+                    body.classList.toggle('overflow-hidden');
+                })
+                closeoverlay.addEventListener('click', () => {
+                    tambahoverlay.classList.toggle('hidden');
+                    tambahoverlay.classList.toggle('flex');
+                    body.classList.remove('overflow-hidden');
+
+                })
+                uploadbtn.addEventListener('click', () => {
+                    uploadoverlay.classList.toggle('hidden');
+                    uploadoverlay.classList.toggle('flex');
+                })
+                closeuploadoverlay.addEventListener('click', () => {
+                    uploadoverlay.classList.toggle('hidden');
+                    uploadoverlay.classList.toggle('flex');
+
+                })
+            })
+            $(document).ready(function () {
+                $('.select2').select2();
+            });
+
+        </script>
+    </body>
+    @elseif(Auth::user()->role == 'Super User')
     <div class="flex gap-x-5 ">
         <div
             class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
@@ -205,7 +325,8 @@
     </script>
     @elseif(Auth::user()->role == 'Ormawa')
     <div class="flex gap-x-5 ">
-        <div class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
+        <div
+            class="flex flex-col w-64 text-backgroundCerebrum bg-white m-4 sidenavheight items-center rounded-3xl p-4 fixed">
             <div class="flex text-xl font-semibold pb-10">
                 Buku Hijau Cerebrum
             </div>
@@ -380,8 +501,9 @@
                 </nav>
 
 
-                <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs" href="{{route('admin')}}">
-                Home
+                <a class="flex justify-center items-center text-white bg-backgroundCerebrum w-24 h-7 rounded-full text-xs"
+                    href="{{route('admin')}}">
+                    Home
                 </a>
 
                 <form action="{{route('logout.post')}}" method="POST">
@@ -496,4 +618,6 @@
         </script>
     </body>
     @endif
+
+
 </body>
