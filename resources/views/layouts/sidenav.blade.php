@@ -166,21 +166,6 @@
                     </div>
                 </button>
 
-                <button id="nilai" class="flex items-center justify-between  w-full gap-x-3">
-                    <div class="flex gap-x-3">
-                        <img src="/pictures/iconnilai.png" class="w-5" alt="">
-                        Nilai Mahasiswa
-                    </div>
-                    <img src="/pictures/dropdown.png" class="w-2 end" alt="">
-                </button>
-                <div id="dropnilai" class="hidden flex-col pl-8 gap-y-2">
-                    <a href="">Penyambutan</a>
-                    <a href="">Pembinaan</a>
-                    <a href="">Orientasi Ormawa</a>
-                </div>
-                <!-- <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconmanajemenuser.png" alt=""><a class=""
-                        href="{{route('listUser')}}">Manajemen User</a></div> -->
-
 
                 <button id="listuser" class="flex items-center justify-between w-full">
                     <div class="flex gap-x-3">
