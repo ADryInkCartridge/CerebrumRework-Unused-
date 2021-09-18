@@ -28,6 +28,8 @@ Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name
 
 /* ADMIN ROUTES */
 Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
+Route::get('/petunjuk/upload',[AdminController::class, 'uploadpetunjuk'])->name('uploadpetunjuk');
+Route::post('/petunjuk/upload/post',[AdminController::class, 'upload'])->name('petunjuk.post');
 Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
