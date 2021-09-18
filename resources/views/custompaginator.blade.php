@@ -5,7 +5,7 @@
             @if (!$paginator->onFirstPage())
             <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">
                     <button class="w-10 flex items-center">
-                        <img src="pictures/leftbutton.png" alt="">
+                        <img src="/pictures/leftbutton.png" alt="">
                     </button>
                 </a>
             </li>
@@ -30,7 +30,7 @@
             </div>
             @if ($paginator->hasMorePages())
             <li><a href="{{ $paginator->nextPageUrl() }}" rel="next"><button class="w-10 flex items-center">
-                        <img src="pictures/rightbutton.png" alt="">
+                        <img src="/pictures/rightbutton.png" alt="">
                     </button></a></li>
             @endif
         </div>

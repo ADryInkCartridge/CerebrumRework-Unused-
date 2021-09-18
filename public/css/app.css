@@ -1118,6 +1118,9 @@ select {
 .table-fixed {
 	table-layout: fixed;
 }
+.border-collapse {
+	border-collapse: collapse;
+}
 .scale-70 {
 	--tw-scale-x: 0.7;
 	--tw-scale-y: 0.7;

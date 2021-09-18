@@ -1,63 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTY`P`E html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
 
-<body>
-    <div class="pt-5 w-full">
-        <div class="table table-fixed w-full rounded-2xl overflow-hidden">
-            <div class="table-header-group">
-                <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle ">No</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Divisi</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Tahap</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kegiatan</div>
-                    <div class="table-cell w-1/4 text-center align-middle">SN</div>
-                    <div class="table-cell w-1/4 text-center align-middle">BN</div>
-                    <div class="table-cell w-1/4 text-center align-middle">TN</div>
-                    <div class="table-cell w-32 text-center align-middle "></div>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-                </div>
-            </div>
-            <div class="table-row-group overflow-y-scroll h-96">
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            
+            .total{
+                text-align: center;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body>
+                <table>
                 @php
                 $total = 0
                 @endphp
+                <tr>
+                    <th>No</th>
+                    <th>Divisi</th>
+                    <th>Tahap</th>
+                    <th>Kegiatan</th>
+                    <th>SN</th>
+                    <th>BN</th>
+                    <th>TN</th>
+                </tr>
                 @foreach($nilais as $index => $nilai)
-                <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
-                        <span class="">{{$index+1}}</span>
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">
-                        @if($nilai->divisi)
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td> @if($nilai->divisi)
                         {{$nilai['divisi']}}
                         @else
                         Ormawa
-                        @endif
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tahap']}}</div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['kegiatan']}}</div>
-                    <div class="table-cell w-1/4 text-center align-middle">
-                        @if($nilai->sn)
+                        @endif</td>
+                    <td>{{$nilai['tahap']}}</td>
+                    <td>{{$nilai['kegiatan']}}</td>
+                    <td> @if($nilai->sn)
                         {{$nilai['sn']}}
                         @else
                         {{$nilai['sn2']}}
-                        @endif
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">
-                        @if($nilai->sn)
+                        @endif</td>
+                    <td> @if($nilai->sn)
                         {{$nilai['bn']}}
                         @else
                         {{$nilai['bn2']}}
-                        @endif
-                    </div>
-                    <div class="table-cell w-1/4 text-center align-middle">
-                        @if($nilai->tn)
+                        @endif</td>
+                    <td> @if($nilai->tn)
                         @php
                         $total = $total + $nilai->tn
                         @endphp
@@ -67,13 +78,14 @@
                         $total = $total + $nilai->tn2
                         @endphp
                         {{$nilai['tn2']}}
-                        @endif
-                    </div>
-                </div>
+                        @endif</td>
+                </tr>
                 @endforeach
-                <p>{{$total}}</p>
-            </div>
-        </div>
-</body>
+                <tr class="total">
+                    <td class="total" colspan="7">{{$total}}</td>
+                </tr>
+            </table>
+            
+    </body>
 
-</html>
+    </html>
