@@ -23,16 +23,13 @@ use Illuminate\Support\Facades\Request;
 */
 
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
-Route::get('/testing',[HomeController::class, 'testing'])->name('testing');
-Route::get('/panitia',[PanitiaController::class, 'index'])->name('panitia');
+Route::get('/petunjuk',[HomeController::class, 'petunjuk'])->name('petunjuk');
 Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
-Route::get('/editmahasiswa', [HomeController::class, 'editmahasiswa'])->name('editmahasiswa');
-Route::get('/setpermission', [HomeController::class, 'setpermission'])->name('setpermission');
-Route::get('/mahasiswaimportpdf', [HomeController::class, 'mahasiswaimportpdf'])->name('mahasiswaimportpdf');
-
 
 /* ADMIN ROUTES */
 Route::get('/login',[AdminController::class, 'loginpage'])->name('login');
+Route::get('/petunjuk/upload',[AdminController::class, 'uploadpetunjuk'])->name('uploadpetunjuk');
+Route::post('/petunjuk/upload/post',[AdminController::class, 'upload'])->name('petunjuk.post');
 Route::post('/loginUser',[AdminController::class, 'login'])->name('login.post');
 Route::get('/admin',[AdminController::class, 'index'])->name('admin');
 Route::post('/logout',[AdminController::class, 'logout'])->name('logout.post');
@@ -69,6 +66,7 @@ Route::post('/kegiatanpanitia/{id}/delete', [AdminController::class, 'deletekegi
 
 
 /* Ormawa ROUTES */
+
 Route::get('/ormawa',[OrmawaController::class, 'index'])->name('ormawa');
 Route::get('/nilaiormawa/{id}',[OrmawaController::class, 'nilaiOrmawa'])->name('nilaiOrmawa');
 Route::get('/nilaiormawa/{id_ormawa}/{id_kegiatan}',[OrmawaController::class, 'tambahNilai'])->name('tambahNilaiOrmawa');

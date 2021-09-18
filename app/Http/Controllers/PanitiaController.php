@@ -194,7 +194,7 @@ class PanitiaController extends Controller
                                     'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan',
                                     'divisi.nama as divisi','tahap.nama as tahap','nilai_ormawa.bn as bn2','nilai_ormawa.tn as tn2','kegiatan_ormawa.sn as sn2',
                                     'kegiatan_ormawa.nama_kegiatan as kegiatan2',)->orderBy('tahap.id')->get();
-        $pdf = PDF::loadView('rapotPDF',['nilais'=>$nilais,'id'=>$id]);
+        $pdf = PDF::loadView('rapotpdf',['nilais'=>$nilais,'id'=>$id]);
         return $pdf->download('Rapor.pdf');
     }
     

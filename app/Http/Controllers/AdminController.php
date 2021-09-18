@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use App\Models\Ormawa;
+use App\Models\Petunjuk;
 use App\Models\Divisi;
 use App\Models\Panitia;
 use App\Models\NilaiPanitia;
@@ -51,6 +52,7 @@ class AdminController extends Controller
         ])->orderBy('user_id','asc')->paginate(10);
         return view('listUser',['listOfUsers' => $data]);
     }
+
 
     public function tambahUser()
     {
@@ -418,6 +420,30 @@ class AdminController extends Controller
             'sn' => $request['sn'],
 		]);
         return redirect()->route('kegiatanpanitia.edit', [$request->id])->with('success', 'Kegiatan Berhasil Diupdate');
+    }
+
+    public function uploadpetunjuk()
+    {
+        return view('mahasiswaimportpdf');
+    }
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'required|mimes:pdf|max:4096'
+            ]);
+            $request->file->store('petunjuk', 'public');
+            $petunjuk = new Petunjuk([
+                "file_path" => $request->file->hashName()
+            ]);
+            $petunjuk->save(); 
+           
+            
+            return redirect()->back()->withSuccess('File succesfully uploaded');
+        }
+        else {
+            return redirect()->back()->withErrors(['No file given']);
+        }
     }
 
 }

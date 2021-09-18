@@ -23,19 +23,18 @@
 
 <body id="body" class=" bg-backgroundCerebrum font-sans">
     <div class="flex flex-col">
-        <nav class="bg-white rounded-b-xl">  
+        <nav class="bg-white rounded-b-xl">
             <div class="flex h-28 items-center px-10 gap-x-28">
                 <img class="object-contain h-20" src="pictures/logo cerebrum.png" alt="">
-                <a class="text-2xl nav-link text-tabletext" href="#">Petunjuk Umum</a>
-                <a class="text-2xl nav-link text-tabletext" href="#">Rapor Kaderisasi</a>
+                <a class="text-2xl nav-link text-tabletext" href="{{route('petunjuk')}}">Petunjuk Umum</a>
+                <a class="text-2xl nav-link text-tabletext" href="/">Rapor Kaderisasi</a>
             </div>
-        </nav> 
+        </nav>
         <div class="flex flex-col px-20">
             @yield('content')
-    
+
         </div>
     </div>
 
 
 </body>
-
