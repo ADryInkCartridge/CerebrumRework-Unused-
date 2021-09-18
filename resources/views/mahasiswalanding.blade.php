@@ -8,7 +8,7 @@
         <input class="w-72 border-2 border-grayCerebrum h-8 rounded-lg" type="text" name="id_cerebrum" id=""
             placeholder="NIM">
         <input class="w-72 border-2 border-grayCerebrum h-8 rounded-lg" type="text" name="tanggal_lahir" id=""
-            placeholder="Tanggal Lahir dengan format(tanggal/bulan/tahun)">
+            placeholder="Tanggal Lahir (dd/mm/yyyy)">
         <button
             class="w-24 h-6 bg-backgroundCerebrum flex items-center justify-center text-xs text-white rounded-xl">Search</button>
     </form>
