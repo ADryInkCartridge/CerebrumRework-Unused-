@@ -62,21 +62,24 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required'
         ]);
         $mhs = Mahasiswa::where('id_cerebrum','=',$request->id_cerebrum)->where('tanggal_lahir','=', $request->tanggal_lahir)->first();
-        $id = $mhs->id;
-        $ormawas = Tahap::join('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
-            'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
-                'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
-                            'nilai_ormawa.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
-                                DB::raw("SUM(nilai_ormawa.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
-        $nilai = Tahap::join('kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->join(
-                        'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
-                                'nilai_panitia.id_mhs','=',$id)->select(
-                                    DB::raw("SUM(nilai_panitia.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
-        foreach($ormawas as $ormawa) {
-            $nilai->add($ormawa);
-        }
+        if($mhs){
+            $id = $mhs->id;
+            $ormawas = Tahap::join('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
+                'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
+                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
+                                'nilai_ormawa.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
+                                    DB::raw("SUM(nilai_ormawa.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
+            $nilai = Tahap::join('kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->join(
+                            'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
+                                    'nilai_panitia.id_mhs','=',$id)->select(
+                                        DB::raw("SUM(nilai_panitia.tn) as total_tn"),'tahap.nama as tahap')->groupBy('tahap.nama')->orderBy('tahap.nama','asc')->get();
+            foreach($ormawas as $ormawa) {
+                $nilai->add($ormawa);
+            }
         
-        return view('nilaiMahasiswa',['nilais'=> $nilai,'id'=> $id,'mhs'=>$mhs]);
+            return view('nilaiMahasiswa',['nilais'=> $nilai,'id'=> $id,'mhs'=>$mhs]);
+        }
+        else return redirect('/')->withErrors('Credentials details are not valid');
     }
 
     public function detailMhs($tahap,$id){
