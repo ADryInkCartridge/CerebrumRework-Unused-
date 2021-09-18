@@ -28,6 +28,7 @@ Route::get('/panitia',[PanitiaController::class, 'index'])->name('panitia');
 Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
 Route::get('/editmahasiswa', [HomeController::class, 'editmahasiswa'])->name('editmahasiswa');
 Route::get('/setpermission', [HomeController::class, 'setpermission'])->name('setpermission');
+Route::get('/mahasiswaimportpdf', [HomeController::class, 'mahasiswaimportpdf'])->name('mahasiswaimportpdf');
 
 
 /* ADMIN ROUTES */
