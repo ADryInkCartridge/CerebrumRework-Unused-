@@ -1536,9 +1536,12 @@ select {
 .pb-1 {
 	padding-bottom: 0.25rem;
 }
+<<<<<<< Updated upstream
 .pt-16 {
 	padding-top: 4rem;
 }
+=======
+>>>>>>> Stashed changes
 .text-left {
 	text-align: left;
 }
