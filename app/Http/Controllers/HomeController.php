@@ -19,5 +19,9 @@ class HomeController extends Controller
     {
         return view('mahasiswadownload');
     }
+    public function mahasiswaimportpdf()
+    {
+        return view('mahasiswaimportpdf');
+    }
     
 }
