@@ -15,9 +15,9 @@ class HomeController extends Controller
     {
         return view('mahasiswalanding');
     }
-    public function testing()
+    public function petunjuk()
     {
-        return view('mahasiswarapor');
+        return view('mahasiswadownload');
     }
     
 }

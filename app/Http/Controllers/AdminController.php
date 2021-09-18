@@ -52,6 +52,26 @@ class AdminController extends Controller
         return view('listUser',['listOfUsers' => $data]);
     }
 
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'required|mimes:pdf|max:4096'
+            ]);
+            $request->file->store('petunjuk', 'public');
+            $petunjuk = new Petunjuk([
+                "file_path" => $request->file
+            ]);
+            $verif->save(); 
+           
+            
+            return redirect()->back()->withErrors(['File successfuly uploaded!']);
+        }
+        else {
+            return redirect()->back()->withErrors(['No file given']);
+        }
+    }
+
     public function tambahUser()
     {
         if(Auth::check()){
