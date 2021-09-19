@@ -845,6 +845,15 @@ select {
 .my-10 {
 	margin-top: 2.5rem;
 	margin-bottom: 2.5rem;
+
+.my-10 {
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+
+.my-auto {
+	margin-top: auto;
+	margin-bottom: auto;
+
 }
 .ml-3 {
 	margin-left: 0.75rem;
@@ -903,6 +912,14 @@ select {
 .mb-1 {
 	margin-bottom: 0.25rem;
 }
+
+.mt-10 {
+	margin-top: 2.5rem;
+}
+.mt-3 {
+	margin-top: 0.75rem;
+}
+
 .-mr-0\.5 {
 	margin-right: -0.125rem;
 }
@@ -920,6 +937,9 @@ select {
 }
 .mt-1 {
 	margin-top: 0.25rem;
+}
+.mt-10 {
+	margin-top: 2.5rem;
 }
 .mt-10 {
 	margin-top: 2.5rem;
