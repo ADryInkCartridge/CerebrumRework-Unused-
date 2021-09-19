@@ -516,14 +516,19 @@ class AdminController extends Controller
        return view('reset');
     }
     public function deleteAll(Request $request){
-        Divisi::whereNotNull('id')->delete();
-        Kegiatan::whereNotNull('id')->delete();
-        KegiatanPanitia::whereNotNull('id')->delete();
-        Mahasiswa::whereNotNull('id')->delete();
-        Mhsormawa::whereNotNull('id')->delete();
-        NilaiOrmawa::whereNotNull('id')->delete();
-        NilaiPanitia::whereNotNull('id')->delete();
-        Tahap::whereNotNull('id')->delete();
+        if(Auth::check()){
+            $user = Auth::user();
+            if($user->role == 'Super User'){
+                Divisi::whereNotNull('id')->delete();
+                Kegiatan::whereNotNull('id')->delete();
+                KegiatanPanitia::whereNotNull('id')->delete();
+                Mahasiswa::whereNotNull('id')->delete();
+                Mhsormawa::whereNotNull('id')->delete();
+                NilaiOrmawa::whereNotNull('id')->delete();
+                NilaiPanitia::whereNotNull('id')->delete();
+                Tahap::whereNotNull('id')->delete();
+            }
+        }
         return redirect('admin');
     }
 }
