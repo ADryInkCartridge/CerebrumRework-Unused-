@@ -62,6 +62,20 @@
                 </div>
             </div>
         </a>
+        <a class="text-red-500" href="{{route('reset')}}">
+            <div class="flex items-center gap-x-5 pb-4">
+                <div>
+                    Reset Database
+                </div>
+            </div>
+        </a>
+        <form action="{{route('backup')}}" method="POST">
+            @csrf
+            <div class="flex justify-center mt-2">
+                <button type="submit"
+                    class="text-white text-xs bg-backgroundCerebrum w-24 h-7 rounded-full">Backup</button>
+            </div>
+        </form>
         <form action="{{route('logout.post')}}" method="POST">
             @csrf
             <div class="flex justify-center mt-2">

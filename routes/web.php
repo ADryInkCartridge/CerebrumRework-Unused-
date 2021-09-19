@@ -67,7 +67,9 @@ Route::post('/tambahkegiatanpanitia/add', [AdminController::class, 'addkegiatanp
 Route::get('/kegiatanpanitia/{id}/edit', [AdminController::class, 'editkegiatanpanitia'])->name('kegiatanpanitia.edit');
 Route::post('/kegiatanpanitia/update', [AdminController::class, 'updatekegiatanpanitia'])->name('kegiatanpanitia.update');
 Route::post('/kegiatanpanitia/{id}/delete', [AdminController::class, 'deletekegiatanpanitia'])->name('kegiatanpanitia.delete');
-
+Route::post('/backup',[AdminController::class, 'backup'])->name('backup');
+Route::get('/reset', [AdminController::class, 'reset'])->name('reset');
+Route::post('/reset/purge',[AdminController::class, 'deleteAll'])->name('purge');
 
 /* Ormawa ROUTES */
 
