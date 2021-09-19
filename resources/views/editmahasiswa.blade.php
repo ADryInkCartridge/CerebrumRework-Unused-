@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="p-10">
-    <div class="font-medium text-white text-3xl pb-4">Tambah Mahasiswa</div>
+    <div class="font-medium text-white text-3xl pb-4">Edit Mahasiswa</div>
     <div class="w-full tambahuserheight bg-white rounded-xl p-10 relative">
         <!-- <div>
             {{$mahasiswa->nama}}
@@ -20,19 +20,19 @@
         <form class="flex flex-col gap-y-8  h-full" method="POST" action="{{route('mahasiswa.update')}}">
             @csrf
             <input type="hidden" id="id" name="id" value="{{$mahasiswa->id}}">
-            <div class="flex flex-col gap-y-5">
+            <div class="flex flex-col gap-y-2">
                 <label class="font-semibold pr-28 text-2xl text-grayCerebrum" for="">Nama Mahasiswa</label>
                 <input type="text" id="nama" value="{{$mahasiswa->nama}}" name="nama" class="w-96 rounded-lg">
             </div>
-            <div class="flex flex-col gap-y-5">
+            <div class="flex flex-col gap-y-2">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">NIM</label>
                 <input type="text" id="id_cerebrum" value="{{$mahasiswa->id_cerebrum}}" name="id_cerebrum" nameid_cerebrum class="w-96 rounded-lg">
             </div>
-            <div class="flex flex-col gap-y-5">
+            <div class="flex flex-col gap-y-2">
                 <label class="font-semibold pr-40 text-2xl text-grayCerebrum" for="">Tanggal Lahir</label>
                 <input type="text" id="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}" name="tanggal_lahir" class="w-96 rounded-lg">
             </div>
-            <div class="flex flex-col gap-y-5">
+            <div class="flex flex-col gap-y-2">
                 <label class="font-semibold pr-44 text-2xl text-grayCerebrum" for="">Kelompok</label>
                 <input type="text" id="" name="kelompok" value="{{$mahasiswa->kelompok}}" class="w-96 rounded-lg">
             </div>
