@@ -8,15 +8,17 @@ use App\Models\Mahasiswa;
 use App\Models\User;
 use App\Models\Ormawa;
 use App\Models\Petunjuk;
+use App\Models\Mhsormawa;
 use App\Models\Divisi;
 use App\Models\Panitia;
 use App\Models\NilaiPanitia;
 use App\Models\KegiatanPanitia;
-use Response;
 use App\Models\Kegiatan;
 use App\Models\Tahap;
 use App\Models\NilaiOrmawa;
 use Illuminate\Support\Facades\Hash;
+use PDF;
+use Response;
 
 class AdminController extends Controller
 {
@@ -491,5 +493,37 @@ class AdminController extends Controller
             return redirect()->route('listmahasiswa')->with('success', 'Mahasiswa Berhasil Dihapus');
         }
 		return redirect('listmahasiswa')->withErrors('Mahasiswa tidak ditemukan');
+    }
+
+    public function backup(Request $request){
+        // Mahasiswa::all()
+        // $nilais = Tahap::leftJoin('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->leftJoin(
+        //     'kegiatan_panitia','tahap.id','=','kegiatan_panitia.tahap')->leftJoin(
+        //         'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->leftJoin(
+        //             'divisi','divisi.id','=','kegiatan_panitia.divisi')->leftJoin(
+        //             'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->leftJoin(
+        //                 'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
+        //                         'nilai_panitia.id_mhs','=',$id)->orWhere('nilai_ormawa.id_mhs','=',$id)->select(
+        //                             'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan',
+        //                             'divisi.nama as divisi','tahap.nama as tahap','nilai_ormawa.bn as bn2','nilai_ormawa.tn as tn2','kegiatan_ormawa.sn as sn2',
+        //                             'kegiatan_ormawa.nama_kegiatan as kegiatan2',)->orderBy('tahap.id')->get();
+        // $mhs = Mahasiswa::where('id','=',$id)->first();
+        // $pdf = PDF::loadView('rapotpdf',['nilais'=>$nilais,'id'=>$id,'mhs'=>$mhs]);
+        // $nama = $mhs->nama .= '.pdf';                       
+        // return $pdf->download($nama);
+    }
+    public function reset(){
+       return view('reset');
+    }
+    public function deleteAll(Request $request){
+        Divisi::whereNotNull('id')->delete();
+        Kegiatan::whereNotNull('id')->delete();
+        KegiatanPanitia::whereNotNull('id')->delete();
+        Mahasiswa::whereNotNull('id')->delete();
+        Mhsormawa::whereNotNull('id')->delete();
+        NilaiOrmawa::whereNotNull('id')->delete();
+        NilaiPanitia::whereNotNull('id')->delete();
+        Tahap::whereNotNull('id')->delete();
+        return redirect('admin');
     }
 }

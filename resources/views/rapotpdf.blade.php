@@ -24,68 +24,88 @@
             tr:nth-child(even) {
                 background-color: #dddddd;
             }
-            
-            .total{
+
+            .total {
                 text-align: center;
             }
 
+            .nama {
+                font-family: arial, sans-serif;
+                font-size: 14px;
+            }
+
+            .id {
+                font-family: arial, sans-serif;
+                font-size: 14px;
+            }
         </style>
 
 
     </head>
 
     <body>
-                <table>
-                @php
-                $total = 0
-                @endphp
-                <tr>
-                    <th>No</th>
-                    <th>Divisi</th>
-                    <th>Tahap</th>
-                    <th>Kegiatan</th>
-                    <th>SN</th>
-                    <th>BN</th>
-                    <th>TN</th>
-                </tr>
-                @foreach($nilais as $index => $nilai)
-                <tr>
-                    <td>{{$index+1}}</td>
-                    <td> @if($nilai->divisi)
-                        {{$nilai['divisi']}}
-                        @else
-                        Ormawa
-                        @endif</td>
-                    <td>{{$nilai['tahap']}}</td>
-                    <td>{{$nilai['kegiatan']}}</td>
-                    <td> @if($nilai->sn)
-                        {{$nilai['sn']}}
-                        @else
-                        {{$nilai['sn2']}}
-                        @endif</td>
-                    <td> @if($nilai->sn)
-                        {{$nilai['bn']}}
-                        @else
-                        {{$nilai['bn2']}}
-                        @endif</td>
-                    <td> @if($nilai->tn)
-                        @php
-                        $total = $total + $nilai->tn
-                        @endphp
-                        {{$nilai['tn']}}
-                        @else
-                        @php
-                        $total = $total + $nilai->tn2
-                        @endphp
-                        {{$nilai['tn2']}}
-                        @endif</td>
-                </tr>
-                @endforeach
-                <tr class="total">
-                    <td class="total" colspan="7">{{$total}}</td>
-                </tr>
-            </table>
-            
+        <div class='nama'>
+            {{$mhs->nama}}
+        </div>
+        <div class='id'>
+            {{$mhs->id_cerebrum}}
+        </div>
+        <table>
+            @php
+            $total = 0
+            @endphp
+            <tr>
+                <th>No</th>
+                <th>Divisi</th>
+                <th>Tahap</th>
+                <th>Kegiatan</th>
+                <th>SN</th>
+                <th>BN</th>
+                <th>TN</th>
+            </tr>
+            @foreach($nilais as $index => $nilai)
+            <tr>
+                <td>{{$index+1}}</td>
+                <td> @if($nilai->divisi)
+                    {{$nilai['divisi']}}
+                    @else
+                    Ormawa
+                    @endif</td>
+                <td>{{$nilai['tahap']}}</td>
+                <td>@if($nilai->kegiatan)
+                    {{$nilai['kegiatan']}}
+                    @else
+                    {{$nilai['kegiatan2']}}
+                    @endif
+                </td>
+                <td> @if($nilai->sn)
+                    {{$nilai['sn']}}
+                    @else
+                    {{$nilai['sn2']}}
+                    @endif</td>
+                <td> @if($nilai->sn)
+                    {{$nilai['bn']}}
+                    @else
+                    {{$nilai['bn2']}}
+                    @endif</td>
+                <td> @if($nilai->tn)
+                    @php
+                    $total = $total + $nilai->tn
+                    @endphp
+                    {{$nilai['tn']}}
+                    @else
+                    @php
+                    $total = $total + $nilai->tn2
+                    @endphp
+                    {{$nilai['tn2']}}
+                    @endif</td>
+            </tr>
+            @endforeach
+            <tr class="total">
+                <td class="total" colspan="7">{{$total}}</td>
+            </tr>
+        </table>
+
     </body>
 
     </html>
