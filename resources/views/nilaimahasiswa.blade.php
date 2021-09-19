@@ -7,9 +7,11 @@
             <span class="text-3xl pb-4 text-white">Nilai Mahasiswa</span>
             <div class="relative">
             </div>
-            <div class="bg-greenTable1 flex justify-center w-48 rounded-md">
-                <a class="text-lg font-medium text-white" href="{{route('panitia.pdf',$id)}}">Download PDF</a>
-            </div>
+            <button>
+                <div class="bg-greenTable1 flex justify-center w-48 rounded-md">
+                    <a class="text-lg font-medium text-white" href="{{route('panitia.pdf',$id)}}">Download PDF</a>
+                </div>
+            </button>
         </div>
         <div>
             <span class="text-3xl pb-4 text-white">{{$mhs->nama}}</span>
