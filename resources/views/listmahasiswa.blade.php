@@ -23,7 +23,11 @@
         <div class="flex flex-col justify-end">
             <a href="{{route('fileImportExport')}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
-                Tambah User +
+                Import Mahasiswa +
+            </a>
+            <a href="{{route('tambahmahasiswa')}}"
+                class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
+                Tambah Mahasiswa +
             </a>
 
         </div>
