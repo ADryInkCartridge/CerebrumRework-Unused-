@@ -1088,6 +1088,9 @@ select {
 .w-6 {
 	width: 1.5rem;
 }
+.w-1\/6 {
+	width: 16.666667%;
+}
 .w-3\/6 {
 	width: 50%;
 }
@@ -1105,12 +1108,6 @@ select {
 }
 .w-3\/4 {
 	width: 75%;
-}
-.w-1\/5 {
-	width: 20%;
-}
-.w-1\/6 {
-	width: 16.666667%;
 }
 .min-w-0 {
 	min-width: 0px;
@@ -1135,6 +1132,9 @@ select {
 }
 .table-fixed {
 	table-layout: fixed;
+}
+.border-collapse {
+	border-collapse: collapse;
 }
 .scale-70 {
 	--tw-scale-x: 0.7;
@@ -1542,6 +1542,9 @@ select {
 .pb-10 {
 	padding-bottom: 2.5rem;
 }
+.pr-44 {
+	padding-right: 11rem;
+}
 .pr-20 {
 	padding-right: 5rem;
 }
@@ -1553,9 +1556,6 @@ select {
 }
 .pt-8 {
 	padding-top: 2rem;
-}
-.pr-44 {
-	padding-right: 11rem;
 }
 .pt-32 {
 	padding-top: 8rem;
