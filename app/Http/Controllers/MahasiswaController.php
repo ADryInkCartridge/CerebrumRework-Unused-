@@ -34,49 +34,8 @@ class MahasiswaController extends Controller
         }
         return view('listmahasiswa',['listOfMahasiswa' => $data]);
     }
-    public function tambahMahasiswa()
-    {
-        $data = User::where('role','Ormawa')->get();
-        return view('tambahormawa',['users' => $data]);
-    }
-    public function addMahasiswa(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'user_id'=> 'required'
-        ]);
-        Ormawa::create([
-            'nama' => $request['nama'],
-            'user_id'=> $request['user_id']
-        ]);
-        return redirect()->route('tambahormawa')->with('success', 'Ormawa Berhasil Ditambahkan');
-    }
-    public function editMahasiswa($id){
-		$ormawa = Ormawa::where('id',$id)->first();
-        $data = User::where('role','Ormawa')->get();
-        return view('editormawa',['ormawa' => $ormawa,'users' => $data]);
-    }
-
-    public function deleteMahasiswa(Request $request){
-        $id = $request['id'];
-		if (Ormawa::where('id', '=', $id)->exists()) {
-            $Ormawa = Ormawa::where('id',$id)->delete();
-            return redirect()->route('listormawa')->with('success', 'Ormawa Berhasil Dihapus');
-        }
-		return redirect('listormawa')->withErrors('Ormawa tidak ditemukan');
-    }
     
-    public function updateMahasiswa(Request $request){
-        $request->validate([
-            'nama' => 'required',
-            'user_id'=> 'required'
-        ]);
-        Ormawa::where('id',$request->id)->update([
-			'nama' => $request->nama,
-            'user_id' => $request->user_id,
-		]);
-        return redirect()->route('ormawa.edit', [$request->id])->with('success', 'Ormawa Berhasil Diupdate');
-    }
+    
     /**
     * @return \Illuminate\Support\Collection
     */

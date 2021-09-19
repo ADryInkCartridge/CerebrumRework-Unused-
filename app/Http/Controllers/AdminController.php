@@ -445,5 +445,51 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['No file given']);
         }
     }
-
+    public function tambahMahasiswa()
+    {
+        return view('tambahmahasiswa');
+    }
+    public function editMahasiswa($id){
+        $mahasiswa = Mahasiswa::where('id','=',$id)->first();
+        return view('editmahasiswa',['mahasiswa'=>$mahasiswa]);
+    }
+    public function addMahasiswa(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'id_cerebrum'=> 'required|unique:mahasiswa,id_cerebrum',
+            'tanggal_lahir' => 'required',
+            'kelompok' => 'required'
+        ]);
+        Mahasiswa::create([
+            'nama' => $request['nama'],
+            'id_cerebrum'=> $request['id_cerebrum'],
+            'tanggal_lahir' => $request['tanggal_lahir'],
+            'kelompok' => $request['kelompok'],
+        ]);
+        return redirect()->route('tambahmahasiswa')->with('success', 'Mahasiswa Berhasil Ditambahkan');
+    }
+    public function updateMahasiswa(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'id_cerebrum'=> 'required',
+            'tanggal_lahir' => 'required',
+            'kelompok' => 'required'
+        ]);
+        Mahasiswa::where('id',$request->id)->update([
+			'nama' => $request['nama'],
+            'id_cerebrum'=> $request['id_cerebrum'],
+            'tanggal_lahir' => $request['tanggal_lahir'],
+            'kelompok' => $request['kelompok'],
+		]);
+        return redirect()->route('listmahasiswa')->with('success', 'Mahasiswa Berhasil Ditambahkan');
+    }
+    public function deleteMahasiswa(Request $request){
+        $id = $request['id'];
+		if (Mahasiswa::where('id', '=', $id)->exists()) {
+            $Mahasiswa = Mahasiswa::where('id',$id)->delete();
+            return redirect()->route('listmahasiswa')->with('success', 'Mahasiswa Berhasil Dihapus');
+        }
+		return redirect('listmahasiswa')->withErrors('Mahasiswa tidak ditemukan');
+    }
 }
