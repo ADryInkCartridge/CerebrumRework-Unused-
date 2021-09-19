@@ -8,7 +8,9 @@
             <div class="relative">
             </div>
             <div class="bg-greenTable1 flex justify-center w-48 rounded-md">
-                <a class="text-lg font-medium text-white" href="{{route('panitia.pdf',$id)}}">Download PDF</a>
+                <button>
+                    <a class="text-lg font-medium text-white" href="{{route('panitia.pdf',$id)}}">Download PDF</a>
+                </button>
             </div>
         </div>
     </div>

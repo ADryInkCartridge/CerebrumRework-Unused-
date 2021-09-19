@@ -13,27 +13,6 @@
             </a>
         </button>
 
-        <button id="button2">
-            <div class="flex items-center gap-x-28 pb-4">
-                <div>
-                    Nilai Mahasiswa
-                </div>
-                <div class="w-4">
-                    <img src="pictures/dropdown.png" alt="">
-                </div>
-            </div>
-        </button>
-        <div id="dropdown2" class="hidden flex-col pl-10 text-lg">
-            <a href="" class="pb-4">
-                Penyambutan
-            </a>
-            <a href="" class="pb-4">
-                Pembinaan
-            </a>
-            <a href="" class="pb-4">
-                Orientasi Ormawa
-            </a>
-        </div>
         <button id="listuser">
             <div class="flex items-center gap-x-28 pb-4">
                 <div>
@@ -76,6 +55,13 @@
                 List Kegiatan
             </a>
         </div>
+        <a href="{{route('uploadpetunjuk')}}">
+            <div class="flex items-center gap-x-5 pb-4">
+                <div>
+                    Upload Petunjuk Umum
+                </div>
+            </div>
+        </a>
         <form action="{{route('logout.post')}}" method="POST">
             @csrf
             <div class="flex justify-center mt-2">
@@ -124,28 +110,31 @@
         })
 
     })
+
 </script>
 
 <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const nilaibtn = document.querySelector('#listuser')
-            const nilai = document.querySelector('#droplistuser')
-            nilaibtn.addEventListener('click', () => {
-                nilai.classList.toggle('hidden');
-                nilai.classList.toggle('flex');
-            })
+    window.addEventListener('DOMContentLoaded', () => {
+        const nilaibtn = document.querySelector('#listuser')
+        const nilai = document.querySelector('#droplistuser')
+        nilaibtn.addEventListener('click', () => {
+            nilai.classList.toggle('hidden');
+            nilai.classList.toggle('flex');
         })
+    })
+
 </script>
 
 <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const nilaibtn = document.querySelector('#listkegiatan')
-            const nilai = document.querySelector('#droplistkegiatan')
-            nilaibtn.addEventListener('click', () => {
-                nilai.classList.toggle('hidden');
-                nilai.classList.toggle('flex');
-            })
+    window.addEventListener('DOMContentLoaded', () => {
+        const nilaibtn = document.querySelector('#listkegiatan')
+        const nilai = document.querySelector('#droplistkegiatan')
+        nilaibtn.addEventListener('click', () => {
+            nilai.classList.toggle('hidden');
+            nilai.classList.toggle('flex');
         })
+    })
+
 </script>
 
 
