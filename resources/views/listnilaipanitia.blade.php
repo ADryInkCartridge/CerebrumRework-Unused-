@@ -58,15 +58,7 @@
                                     Edit
                                 </div>
                             </a>
-                            <form action="" method="post" class="flex justify-start">
-                                @csrf
-                                <input type='hidden' name='user_id' value="">
-                                <button type="submit">
-                                    <div class="text-left font-semibold pl-2 h-6">
-                                        Hapus
-                                    </div>
-                                </button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
