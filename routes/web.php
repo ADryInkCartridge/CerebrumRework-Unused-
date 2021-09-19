@@ -24,7 +24,11 @@ use Illuminate\Support\Facades\Request;
 
 Route::get('/',[HomeController::class, 'landing'])->name('landing');
 Route::get('/petunjuk',[HomeController::class, 'petunjuk'])->name('petunjuk');
-Route::get('/tambahmahasiswa', [HomeController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
+Route::get('/tambahmahasiswa', [AdminController::class, 'tambahMahasiswa'])->name('tambahmahasiswa');
+Route::post('/tambahmahasiswa/add', [AdminController::class, 'addMahasiswa'])->name('tambahmahasiswa.post');
+Route::get('/mahasiswa/{id}/edit', [AdminController::class, 'editMahasiswa'])->name('mahasiswa.edit');
+Route::post('/mahasiswa/update', [AdminController::class, 'updateMahasiswa'])->name('mahasiswa.update');
+Route::post('/mahasiswa/{id}/delete', [AdminController::class, 'deleteMahasiswa'])->name('mahasiswa.delete');
 
 /* ADMIN ROUTES */
 Route::get('/login',[AdminController::class, 'loginpage'])->name('login');

@@ -34,10 +34,11 @@
         <div class="table w-full rounded-2xl ">
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle ">No</div>
-                    <div class="table-cell w-1/4 text-center align-middle">ID Cerebrum</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Nama</div>
-                    <div class="table-cell w-1/4 text-center align-middle">Kelompok</div>
+                    <div class="table-cell w-1/6 text-center align-middle ">No</div>
+                    <div class="table-cell w-1/6 text-center align-middle">ID Cerebrum</div>
+                    <div class="table-cell w-1/6 text-center align-middle">Nama</div>
+                    <div class="table-cell w-1/6 text-center align-middle">Tanggal Lahir</div>
+                    <div class="table-cell w-1/6 text-center align-middle">Kelompok</div>
                     <div class="table-cell w-32 text-center align-middle "></div>
                 </div>
             </div>
@@ -45,31 +46,39 @@
 
                 @foreach($listOfMahasiswa as $index => $Mahasiswa)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
-                    <div class="table-cell w-32 text-center align-middle  ">
+                    <div class="table-cell w-1/6  text-center align-middle  ">
                         <span class="">{{($listOfMahasiswa->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['id_cerebrum']}}</div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['nama']}}</div>
-                    <div class="table-cell w-1/4 text-center align-middle">{{$Mahasiswa['kelompok']}}</div>
+                    <div class="table-cell w-1/6  text-center align-middle">{{$Mahasiswa['id_cerebrum']}}</div>
+                    <div class="table-cell w-1/6  text-center align-middle">{{$Mahasiswa['nama']}}</div>
+                    <div class="table-cell w-1/6  text-center align-middle">{{$Mahasiswa['tanggal_lahir']}}</div>
+                    <div class="table-cell w-1/6  text-center align-middle">{{$Mahasiswa['kelompok']}}</div>
                     <div class="table-cell w-32 text-center align-middle relative">
-                        <button id="editbtn"><img src="pictures/titik.png" alt=""></button>
-                        <div id="editdropdown"
-                            class="absolute bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl">
-                            <button id="closeedit"
-                                class="self-end bg-greenTableheader w-full flex justify-end pr-2 h-6">
+                        @if(Auth::check() && Auth::user()->role == 'Super User')
+                        <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
+                        <div id=""
+                            class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md shadow-xl z-10">
+                            <button id=""
+                                class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">
                             </button>
-                            <a href="">
+                            <a href="{{route('mahasiswa.edit',$Mahasiswa->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
                                 </div>
                             </a>
-                            <a href="">
-                                <div class="text-left pl-2 h-6">
-                                    Hapus
-                                </div>
-                            </a>
+                            <form action="{{route('mahasiswa.delete',$Mahasiswa->id)}}" method="post"
+                                class="flex justify-start">
+                                @csrf
+                                <input type='hidden' name='user_id' value="">
+                                <button type="submit">
+                                    <div class="text-left font-semibold pl-2 h-6">
+                                        Hapus
+                                    </div>
+                                </button>
+                            </form>
                         </div>
+                        @endif
                     </div>
                 </div>
                 @endforeach
