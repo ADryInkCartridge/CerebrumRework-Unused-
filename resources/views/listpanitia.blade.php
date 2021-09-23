@@ -45,7 +45,7 @@
                 @foreach($panitias as $index => $panitia)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
-                        <span class="">{{$index+1}}</span>
+                        <span class="">{{($panitias->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$panitia['kelompok']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$panitia['namauser']}}</div>

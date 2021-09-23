@@ -56,7 +56,7 @@
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <input class="mb-1 " type="checkbox" name="" id="">
-                        <span class="pl-5">{{$index+1}}</span>
+                        <span class="pl-5">{{($tahaps->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$tahap['nama']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">

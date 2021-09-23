@@ -49,7 +49,7 @@
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <!-- <span class="">{{$index+1}}</span> -->
-                        <span class="">{{$kegiatan['id_kegiatan']}}</span>
+                        <span class="">{{($kegiatans->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['nama_kegiatan']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$kegiatan['nama_ormawa']}}</div>

@@ -45,7 +45,7 @@
                 @foreach($ormawas as $index => $ormawa)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
-                        <span class="">{{$index+1}}</span>
+                        <span class="">{{($ormawas->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$ormawa['namaormawa']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$ormawa['namauser']}}</div>
@@ -62,7 +62,8 @@
                                     Edit
                                 </div>
                             </a>
-                            <form class="flex justify-start" action="{{route('ormawa.delete',[$ormawa->id])}}" method="post">
+                            <form class="flex justify-start" action="{{route('ormawa.delete',[$ormawa->id])}}"
+                                method="post">
                                 @csrf
                                 <input type='hidden' name='user_id' value="{{$ormawa->id}}">
                                 <button type="submit">
