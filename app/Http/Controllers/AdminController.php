@@ -170,7 +170,7 @@ class AdminController extends Controller
         }
         else return redirect('login');
 		$user = User::where('user_id',$id)->first();
-        return view('editUser',['user' => $user]);
+        return view('edituser',['user' => $user]);
     }
 
     public function destroy(Request $request){
