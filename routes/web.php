@@ -104,7 +104,8 @@ Route::POST('/tahap/update', [TahapController::class, 'updateTahap'])->name('tah
 /* MhsOrmawa ROUTES */
 Route::get('/listmhsormawa', [MhsormawaController::class, 'listmhsormawa'])->name('listmhsormawa');
 Route::get('/tambahmhsormawa', [MhsormawaController::class, 'tambahmhsormawa'])->name('tambahmhsormawa');
-Route::post('/tambahmhsormawa-post', [MhsormawaController::class, 'addMhsormawa'])->name('tambahmhsormawa.post');
+Route::get('/mhsormawa/edit/{id}', [MhsormawaController::class, 'editmhsormawa'])->name('editmhsormawa');
+Route::post('/mhsormawa/post', [MhsormawaController::class, 'updateMhsormawa'])->name('editmhsormawa.post');
 
 /* Panitia ROUTES */
 Route::get('/panitia', [PanitiaController::class, 'index'])->name('panitia');

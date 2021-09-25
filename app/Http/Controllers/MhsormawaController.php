@@ -38,7 +38,35 @@ class MhsormawaController extends Controller
         ]);
         return redirect()->route('tambahmhsormawa')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
-    
+
+    public function editMhsormawa($id){
+        $userid = Auth::user()->user_id;
+        $data = Ormawa::where('user_id',$userid)->get();
+        $mhs = Mahasiswa::all();
+        return view('editmhsormawa',['ormawas'=> $data,'mahasiswas' => $mhs ,'id'=>$id]);
+    }
+
+    public function updateMhsormawa(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'mahasiswa_id' => 'required',
+            'ormawa_id' => 'required',
+        ]);
+        Mhsormawa::where('id',$request->id)->update([
+			'mahasiswa_id' => $request['mahasiswa_id'],
+            'ormawa_id' => $request['ormawa_id'],
+		]);
+        return redirect()->route('listmhsormawa')->with('success', 'Mahasiswa Berhasil Diupdate');
+    }
+    public function deleteMhsormawa(Request $request){
+        $id = $request['id'];
+		if (Mhsormawa::where('id', '=', $id)->exists()) {
+            $Mahasiswa = Mhsormawa::where('id',$id)->delete();
+            return redirect()->route('listmhsormawa')->with('success', 'Mahasiswa Berhasil Dihapus');
+        }
+		return redirect('listmhsormawa')->withErrors('Mahasiswa tidak ditemukan');
+    }
+
     public function listmhsormawa(Request $request)
     {
         $userid = Auth::user()->user_id;
@@ -54,5 +82,5 @@ class MhsormawaController extends Controller
         }
         return view('listmhsormawa',['mhsormawas' => $data]);
     }
-
+    
 }
