@@ -78,7 +78,7 @@ class MahasiswaController extends Controller
             foreach($ormawas as $ormawa) {
                 $nilai->add($ormawa);
             }
-        
+            
             return view('nilaimahasiswa',['nilais'=> $nilai,'id'=> $id,'mhs'=>$mhs]);
         }
         else return redirect('/')->withErrors('Credentials details are not valid');
