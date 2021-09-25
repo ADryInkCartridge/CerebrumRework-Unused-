@@ -906,9 +906,6 @@ select {
 .mb-1 {
 	margin-bottom: 0.25rem;
 }
-.mt-10 {
-	margin-top: 2.5rem;
-}
 .mt-3 {
 	margin-top: 0.75rem;
 }
@@ -929,6 +926,9 @@ select {
 }
 .ml-64 {
 	margin-left: 16rem;
+}
+.mt-10 {
+	margin-top: 2.5rem;
 }
 .ml-6 {
 	margin-left: 1.5rem;
@@ -1240,9 +1240,6 @@ select {
 }
 .gap-y-10 {
 	row-gap: 2.5rem;
-}
-.gap-y-1 {
-	row-gap: 0.25rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
@@ -1751,6 +1748,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(167, 243, 208, var(--tw-text-opacity));
 }
+.text-red-500 {
+	--tw-text-opacity: 1;
+	color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
 .text-red-600 {
 	--tw-text-opacity: 1;
 	color: rgba(220, 38, 38, var(--tw-text-opacity));
@@ -1766,10 +1767,6 @@ select {
 .text-green-600 {
 	--tw-text-opacity: 1;
 	color: rgba(5, 150, 105, var(--tw-text-opacity));
-}
-.text-red-500 {
-	--tw-text-opacity: 1;
-	color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;

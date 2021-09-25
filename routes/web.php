@@ -82,6 +82,8 @@ Route::get('/editkegiatan', [OrmawaController::class, 'editkegiatan'])->name('ed
 Route::get('/listkegiatan', [OrmawaController::class, 'listkegiatan'])->name('listkegiatan');
 Route::get('/tambahkegiatan/post', [OrmawaController::class, 'addKegiatan'])->name('tambahkegiatan.post');
 Route::get('/kegiatan/{id}/edit', [OrmawaController::class, 'editKegiatan'])->name('kegiatan.edit');
+Route::get('/ormawa/import', [OrmawaController::class, 'fileImportExport'])->name('importOrmawa');
+Route::post('/ormawa/import/post', [OrmawaController::class, 'fileImport'])->name('importOrmawa.post');
 
 
 /* Mahasiswa ROUTES */

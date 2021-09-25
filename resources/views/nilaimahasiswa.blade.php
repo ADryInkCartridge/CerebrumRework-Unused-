@@ -36,7 +36,7 @@
                 @php
                 $total = 0
                 @endphp
-                @foreach($nilais as $index => $nilai)
+                @foreach($nilais as $index => $nilai
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
                         <span class="">{{$index+1}}</span>

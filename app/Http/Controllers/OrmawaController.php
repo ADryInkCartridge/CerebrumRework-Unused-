@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ormawa;
 use App\Models\Mahasiswa;
+use Excel;
+use App\Imports\MhsormawaImport;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Response;
@@ -29,6 +31,20 @@ class OrmawaController extends Controller
     {
         $data = Mahasiswa::join('in_ormawa','mahasiswa.id','=','in_ormawa.mahasiswa_id')->where('ormawa_id','=',$id_ormawa)->get();
         return view('tambahnilaiormawa',['mahasiswas' => $data,'id_kegiatan' => $id_kegiatan,'id_ormawa' => $id_ormawa]);
+    }
+    public function fileImportExport()
+    {
+       return view('importmhsormawa');
+    }
+    public function fileImport(Request $request) 
+    {
+        if($request->file('file')==NULL)
+            return redirect()->back()->withErrors(['Please supply a file with an xslx format']);
+        $extension = $request->file('file')->getClientOriginalExtension();
+        if($extension!='xlsx')
+            return redirect()->back()->withErrors(['File extension needs to be in xlsx format']);
+        Excel::import(new MhsormawaImport, $request->file('file')->store('temp'));
+        return back()->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
     public function addNilai(Request $request)
     {

@@ -31,7 +31,7 @@
                 @foreach($nilais as $index => $nilai)
                 <div class="table-row h-20 text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle  ">
-                        <span class="">{{$index+1}}</span>
+                        <span class="">{{($nilais->currentPage()-1) * 10 + $index+1}}</span>
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['divisi']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tahap']}}</div>
