@@ -78,11 +78,13 @@ Route::get('/nilaiormawa/{id}',[OrmawaController::class, 'nilaiOrmawa'])->name('
 Route::get('/nilaiormawa/{id_ormawa}/{id_kegiatan}',[OrmawaController::class, 'tambahNilai'])->name('tambahNilaiOrmawa');
 Route::post('/nilaiormawa/post',[OrmawaController::class, 'addNilai'])->name('tambahnilaiormawa.post');
 Route::get('/tambahkegiatan', [OrmawaController::class, 'tambahkegiatan'])->name('tambahkegiatan');
-Route::get('/editkegiatan', [OrmawaController::class, 'editkegiatan'])->name('editkegiatan');
+Route::get('/ormawa/kegiatan/edit/{id}', [OrmawaController::class, 'editkegiatan'])->name('editkegiatan');
 Route::get('/listkegiatan', [OrmawaController::class, 'listkegiatan'])->name('listkegiatan');
 Route::get('/tambahkegiatan/post', [OrmawaController::class, 'addKegiatan'])->name('tambahkegiatan.post');
 Route::get('/kegiatan/{id}/edit', [OrmawaController::class, 'editKegiatan'])->name('kegiatan.edit');
+Route::post('/kegiatan/edit/post', [OrmawaController::class, 'updatekegiatan'])->name('editkegiatan.post');
 Route::get('/ormawa/import', [OrmawaController::class, 'fileImportExport'])->name('importOrmawa');
+Route::post('/ormawa/import', [OrmawaController::class, 'deleteKegiatan'])->name('kegiatan.delete');
 Route::post('/ormawa/import/post', [OrmawaController::class, 'fileImport'])->name('importOrmawa.post');
 
 

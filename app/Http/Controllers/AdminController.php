@@ -421,6 +421,12 @@ class AdminController extends Controller
             'divisi' => $request['divisi'],
             'sn' => $request['sn'],
 		]);
+        $Nilai = NilaiPanitia::where('id_kegiatan',$request->id)->get();
+        foreach($Nilai as $n){
+            NilaiPanitia::where('id','=',$n->id)->update([
+                'tn' => $request['sn'] * $n->bn
+            ]);
+        }
         return redirect()->route('kegiatanpanitia.edit', [$request->id])->with('success', 'Kegiatan Berhasil Diupdate');
     }
 

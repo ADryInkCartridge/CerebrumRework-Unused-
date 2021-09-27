@@ -67,7 +67,10 @@ class OrmawaController extends Controller
     
     public function editkegiatan($id){
 		$Kegiatan = Kegiatan::where('id',$id)->first();
-        return view('editkegiatan',['kegiatan' => $Kegiatan]);
+        $userid = Auth::user()->user_id;
+        $data = Ormawa::where('user_id',$userid)->get();
+        $tahap = Tahap::where([['status','=','1'],['tipe','=','1']])->get();
+        return view('editkegiatan',['id'=> $id,'kegiatan' => $Kegiatan,'ormawas'=> $data,'tahaps' => $tahap]);
     }
 
     public function tambahKegiatan()
@@ -77,7 +80,6 @@ class OrmawaController extends Controller
         $tahap = Tahap::where([['status','=','1'],['tipe','=','1']])->get();
         return view('tambahkegiatan',['ormawas'=> $data,'tahaps' => $tahap]);
     }
-    
     public function addKegiatan(Request $request)
     {
         $request->validate([
@@ -86,15 +88,75 @@ class OrmawaController extends Controller
             'jenis_kegiatan' => 'required',
             'sn' => 'required',
         ]);
-
-        Kegiatan::create([
+        $keg = Kegiatan::create([
             'nama_kegiatan' => $request['nama_kegiatan'],
             'id_ormawa' => $request['id_ormawa'],
             'jenis_kegiatan' => $request['jenis_kegiatan'],
             'sn' => $request['sn'],
         ]);
+        $sn = $keg->sn;
+        $mhs = Mahasiswa::join('in_ormawa','mahasiswa.id','=','in_ormawa.mahasiswa_id')->where('ormawa_id','=',$request->id_ormawa)->get();
+        foreach($mhs as $m){
+            NilaiOrmawa::create([
+                'id_kegiatan' => $keg->id,
+                'id_mhs'=> $m->mahasiswa_id,
+                'bn'=> 0,
+                'tn'=> 0 * $sn,
+            ]);
+        }
         return redirect()->route('tambahkegiatan')->with('success', 'Kegiatan Berhasil Ditambahkan');
     }
+
+    public function updateNilai(Request $request)
+    {
+        $nil = NilaiPanitia::where('id','=',$request->id)->first();
+        $keg = KegiatanPanitia::where('id','=',$nil->id_kegiatan)->first();
+        $sn = $keg->sn;
+        $request->validate([
+            'id' => 'required',
+            'bn'=> 'required',
+        ]);
+        NilaiPanitia::where('id',$request->id)->update([
+            'bn'=> $request['bn'],
+            'tn'=> $request['bn'] * $sn,
+        ]);
+
+        return redirect()->route('nilaiPanitia',[$keg->id]);
+    }
+
+    public function updatekegiatan(Request $request){
+        $request->validate([
+            'nama_kegiatan' => 'required',
+            'id_ormawa' => 'required',
+            'jenis_kegiatan' => 'required',
+            'sn' => 'required',
+        ]);
+        Kegiatan::where('id',$request->id)->update([
+			'nama_kegiatan' => $request['nama_kegiatan'],
+            'id_ormawa' => $request['id_ormawa'],
+            'jenis_kegiatan' => $request['jenis_kegiatan'],
+            'sn' => $request['sn'],
+		]);
+        $Nilai = NilaiOrmawa::where('id_kegiatan',$request->id)->get();
+        foreach($Nilai as $n){
+            NilaiOrmawa::where('id','=',$n->id)->update([
+                'tn' => $request['sn'] * $n->bn
+            ]);
+        }
+        return redirect()->route('kegiatanpanitia.edit', [$request->id])->with('success', 'Kegiatan Berhasil Diupdate');
+    }
+    
+    public function deleteKegiatan(Request $request)
+    {
+        $id = $request['id'];
+		if (Kegiatan::where('id', '=', $id)->exists()) {
+            $Panitia = Kegiatan::where('id',$id)->delete();
+            $Nilai = NilaiOrmawa::where('id_kegiatan',$id)->delete();
+            return redirect()->route('listkegiatan')->with('success', 'Kegiatan Berhasil Dihapus');
+        }
+		return redirect('listkegiatan')->withErrors('Kegiatan tidak ditemukan');
+    }
+
     public function listkegiatan(Request $request)
     {
         $userid = Auth::user()->user_id;

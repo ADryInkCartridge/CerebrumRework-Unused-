@@ -63,13 +63,13 @@
                                 class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
                                 <img class="pt-1 w-3" src="pictures/close.png" alt="">
                             </button>
-                            <a href="{{route('kegiatan.edit', $kegiatan->id_kegiatan)}}">
+                            <a href="{{route('editkegiatan', $kegiatan->id_kegiatan)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
                                 </div>
                             </a>
                             <form class="flex justify-start font-semibold"
-                                action="{{route('deleteUser',[$kegiatan->id_kegiatan])}}" method="post">
+                                action="{{route('kegiatan.delete',[$kegiatan->id_kegiatan])}}" method="post">
                                 @csrf
                                 <input type='hidden' name='id' value="{{$kegiatan->id_kegiatan}}">
                                 <button type="submit">
