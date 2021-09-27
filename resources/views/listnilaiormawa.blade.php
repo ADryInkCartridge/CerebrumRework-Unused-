@@ -54,21 +54,22 @@
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['bn']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tn']}}</div>
                     <div class="table-cell w-32 text-center align-middle relative">
-                        <button class="editbtn" id=""><img src="pictures/titik.png" alt=""></button>
+                        <button class="editbtn" id=""><img src="/pictures/titik.png" alt=""></button>
                         <div id=""
                             class="absolute editdropdown bg-white text-black text-sm hidden flex-col mx-auto right-0 w-32 left-0 rounded-md overflow-hidden shadow-xl z-10">
                             <button id=""
-                                class="self-end closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
-                                <img class="pt-1 w-3" src="pictures/close.png" alt="">
+                                class="self-end items-center closeedit bg-greenTableheader w-full flex justify-end pr-2 h-6">
+                                <img class=" w-3" src="/pictures/close.png" alt="">
                             </button>
-                            <a href="">
+                            <a href="{{route('editNilai',$nilai->id)}}">
                                 <div class="border-b-2 h-6 pl-2 text-left">
                                     Edit
                                 </div>
                             </a>
-                            <form action="" method="post" class="flex justify-start">
+                            <form action="{{route('nilaiOrmawa.delete')}}" method="POST" class="flex justify-start">
                                 @csrf
-                                <input type='hidden' name='user_id' value="">
+                                <input type='hidden' name='id_kegiatan' value="{{$nilai->id_kegiatan}}">
+                                <input type='hidden' name='id' value="{{$nilai->id}}">
                                 <button type="submit">
                                     <div class="text-left font-semibold pl-2 h-6">
                                         Hapus

@@ -86,6 +86,9 @@ Route::post('/kegiatan/edit/post', [OrmawaController::class, 'updatekegiatan'])-
 Route::get('/ormawa/import', [OrmawaController::class, 'fileImportExport'])->name('importOrmawa');
 Route::post('/ormawa/import', [OrmawaController::class, 'deleteKegiatan'])->name('kegiatan.delete');
 Route::post('/ormawa/import/post', [OrmawaController::class, 'fileImport'])->name('importOrmawa.post');
+Route::post('/ormawa/nilai/post', [OrmawaController::class, 'updateNilaiOrmawa'])->name('nilaiOrmawa.post');
+Route::get('/ormawa/nilai/edit/{id}', [OrmawaController::class, 'editNilaiOrmawa'])->name('editNilai');
+Route::post('/ormawa/nilai/delete', [OrmawaController::class, 'deleteNilai'])->name('nilaiOrmawa.delete');
 
 
 /* Mahasiswa ROUTES */
