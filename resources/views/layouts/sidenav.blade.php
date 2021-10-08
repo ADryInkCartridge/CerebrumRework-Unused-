@@ -326,7 +326,7 @@
             <!-- Navbar -->
             <nav class="= flex-1 flex flex-col text-backgroundCerebrum items-start gap-y-4 text-sm pr-10">
                 <div class="flex gap-x-3"><img class="w-5" src="/pictures/iconkegiatan.png" alt=""><a class=""
-                        href="listkegiatan">Kegiatan Ormawa</a></div>
+                        href="{{route('listkegiatan')}}">Kegiatan Ormawa</a></div>
 
                 <div class="flex gap-x-3"><img class="w-5" src="/pictures/user many_grey 3.png" alt=""><a class=""
                         href="{{route('listmhsormawa')}}">Alokasi Mahasiswa</a></div>
