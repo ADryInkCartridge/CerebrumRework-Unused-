@@ -152,10 +152,11 @@ class OrmawaController extends Controller
     }
     public function deleteNilai(Request $request){
     
+        dd($request);
         $id = $request['id'];
 		if (NilaiOrmawa::where('id', '=', $id)->exists()) {
             $Ormawa = NilaiOrmawa::where('id',$id)->delete();
-            return redirect()->route('nilaiOrmawa',[$request->id_kegiatan])->with('success', 'Ormawa Berhasil Dihapus');
+            return redirect()->route('nilaiOrmawa',[$request->id_kegiatan])->with('success', 'Nilai Berhasil Dihapus');
         }
 		return redirect('nilaiOrmawa',[$request->id_kegiatan])->withErrors('Ormawa tidak ditemukan');
     }
@@ -196,7 +197,7 @@ class OrmawaController extends Controller
     public function listkegiatan(Request $request)
     {
         $userid = Auth::user()->user_id;
-        $data = Kegiatan::join('ormawa','id_ormawa','=','ormawa.id')->where([
+        $data = Kegiatan::join('ormawa','id_ormawa','=','ormawa.id')->join('tahap','kegiatan_ormawa.jenis_kegiatan','=','tahap.id')->where([
             ['id_ormawa','!=',NULL],
             ['user_id','=',$userid],
             [function ($query) use ($request) {
@@ -204,8 +205,9 @@ class OrmawaController extends Controller
                     $query->orWhere('nama_kegiatan','LIKE','%'. $term .'%')->get();
                 }
             }]
-        ])->select('kegiatan_ormawa.id as id_kegiatan', 'id_ormawa','nama_kegiatan','ormawa.nama as nama_ormawa','jenis_kegiatan','sn')->orderBy(
+        ])->select('kegiatan_ormawa.id as id_kegiatan', 'id_ormawa','nama_kegiatan','ormawa.nama as nama_ormawa','tahap.nama as jenis_kegiatan','sn')->orderBy(
             'kegiatan_ormawa.id','asc')->paginate(10);
+       
         return view('listkegiatan',['kegiatans' => $data]);
     }
 }
