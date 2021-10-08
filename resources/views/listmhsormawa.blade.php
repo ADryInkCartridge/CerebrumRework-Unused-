@@ -19,11 +19,13 @@
             </div>
 
         </div>
-        <a href="{{route('importOrmawa')}}"
-            class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
-            Import Mahasiswa +
-        </a>
+
+
         <div class="flex flex-col justify-end">
+            <a href="{{route('importOrmawa')}}"
+                class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
+                Import Mahasiswa +
+            </a>
             <a href="{{route('tambahmhsormawa')}}"
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
                 Alokasi Mahasiswa +
