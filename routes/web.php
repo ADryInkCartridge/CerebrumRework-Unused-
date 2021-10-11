@@ -48,7 +48,7 @@ Route::get('/tambahormawa', [AdminController::class, 'tambahormawa'])->name('tam
 Route::post('/tambahormawa/add', [AdminController::class, 'addOrmawa'])->name('tambahormawa.post');
 Route::get('/ormawa/{id}/edit', [AdminController::class, 'editOrmawa'])->name('ormawa.edit');
 Route::post('/ormawa/update', [AdminController::class, 'updateOrmawa'])->name('ormawa.update');
-Route::post('/ormawa/{id}/delete', [AdminController::class, 'deleteOrmawa'])->name('ormawa.delete');
+Route::post('/ormawa/{id}/delete/post', [AdminController::class, 'deleteOrmawa'])->name('ormawa.delete');
 Route::get('/listpanitia', [AdminController::class, 'listpanitia'])->name('listpanitia');
 Route::get('/tambahpanitia', [AdminController::class, 'tambahpanitia'])->name('tambahpanitia');
 Route::post('/tambahpanitia/add', [AdminController::class, 'addPanitia'])->name('tambahpanitia.post');
@@ -88,7 +88,7 @@ Route::post('/ormawa/import', [OrmawaController::class, 'deleteKegiatan'])->name
 Route::post('/ormawa/import/post', [OrmawaController::class, 'fileImport'])->name('importOrmawa.post');
 Route::post('/ormawa/nilai/post', [OrmawaController::class, 'updateNilaiOrmawa'])->name('nilaiOrmawa.post');
 Route::get('/ormawa/nilai/edit/{id}', [OrmawaController::class, 'editNilaiOrmawa'])->name('editNilai');
-Route::post('/ormawa/nilai/delete', [OrmawaController::class, 'deleteNilai'])->name('nilaiOrmawa.delete');
+Route::post('/ormawa/nilai/delete', [OrmawaController::class, 'deleteNilaiOrmawa'])->name('nilaiOrmawa.delete');
 
 
 /* Mahasiswa ROUTES */

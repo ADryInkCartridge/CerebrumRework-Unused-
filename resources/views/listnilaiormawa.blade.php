@@ -66,7 +66,7 @@
                                     Edit
                                 </div>
                             </a>
-                            <form action="{{route('nilaiOrmawa.delete')}}" method="POST" class="flex justify-start">
+                            <form action="{{route('nilaiOrmawa.delete')}}" method="post" class="flex justify-start">
                                 @csrf
                                 <input type='hidden' name='id_kegiatan' value="{{$nilai->id_kegiatan}}">
                                 <input type='hidden' name='id' value="{{$nilai->id}}">

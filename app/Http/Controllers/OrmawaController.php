@@ -62,7 +62,8 @@ class OrmawaController extends Controller
             'tn'=> $request['bn'] * $sn,
         ]);
         $data = Mahasiswa::join('in_ormawa','mahasiswa.id','=','in_ormawa.mahasiswa_id')->where('ormawa_id','=',$request->id_ormawa)->get();
-        return view('tambahnilaiormawa',['mahasiswas' => $data,'id_kegiatan' => $request->id,'id_ormawa' => $request->id_ormawa]);
+        return redirect()->route('tambahNilaiOrmawa',['mahasiswas' => $data,'id_kegiatan' => $request->id,'id_ormawa' => $request->id_ormawa])->with('success', 'Nilai Berhasil Ditambah');
+        
     }
     
     public function editkegiatan($id){
@@ -150,15 +151,14 @@ class OrmawaController extends Controller
 
         return redirect()->route('nilaiOrmawa',[$keg->id]);
     }
-    public function deleteNilai(Request $request){
+    public function deleteNilaiOrmawa(Request $request){
     
-        dd($request);
         $id = $request['id'];
 		if (NilaiOrmawa::where('id', '=', $id)->exists()) {
             $Ormawa = NilaiOrmawa::where('id',$id)->delete();
             return redirect()->route('nilaiOrmawa',[$request->id_kegiatan])->with('success', 'Nilai Berhasil Dihapus');
         }
-		return redirect('nilaiOrmawa',[$request->id_kegiatan])->withErrors('Ormawa tidak ditemukan');
+		return redirect('nilaiOrmawa',[$request->id_kegiatan])->withErrors('Nilai tidak ditemukan');
     }
 
     public function updatekegiatan(Request $request){
