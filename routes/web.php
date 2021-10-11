@@ -112,6 +112,7 @@ Route::get('/tambahmhsormawa', [MhsormawaController::class, 'tambahmhsormawa'])-
 Route::post('/tambahmhsormawa/post', [MhsormawaController::class, 'addMhsormawa'])->name('tambahmhsormawa.post');
 Route::get('/mhsormawa/edit/{id}', [MhsormawaController::class, 'editmhsormawa'])->name('editmhsormawa');
 Route::post('/mhsormawa/post', [MhsormawaController::class, 'updateMhsormawa'])->name('editmhsormawa.post');
+Route::post('/mhsormawa/delete', [MhsormawaController::class, 'deleteMhsormawa'])->name('mhsormawa.delete');
 
 /* Panitia ROUTES */
 Route::get('/panitia', [PanitiaController::class, 'index'])->name('panitia');

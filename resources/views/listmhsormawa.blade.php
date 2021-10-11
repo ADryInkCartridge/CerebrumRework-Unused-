@@ -70,9 +70,9 @@
                                     Edit
                                 </div>
                             </a>
-                            <form action="" method="post" class="flex justify-start">
+                            <form action="{{route('mhsormawa.delete')}}" method="post" class="flex justify-start">
                                 @csrf
-                                <input type='hidden' name='user_id' value="">
+                                <input type='hidden' name='id' value="{{$mhsormawa['id']}}">
                                 <button type="submit">
                                     <div class="text-left font-semibold pl-2 h-6">
                                         Hapus
