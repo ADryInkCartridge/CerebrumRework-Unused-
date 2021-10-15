@@ -8,6 +8,7 @@ use App\Models\Mahasiswa;
 use App\Models\Tahap;
 use App\Models\Mhsormawa;
 use App\Models\Ormawa;
+use App\Models\NilaiOrmawa;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -36,6 +37,16 @@ class MhsormawaController extends Controller
             'mahasiswa_id' => $request['mahasiswa_id'],
             'ormawa_id' => $request['ormawa_id'],
         ]);
+        $keg = Kegiatan::where('id_ormawa','=',$request['ormawa_id'])->get();
+            foreach ($keg as $k){
+                
+                NilaiOrmawa::create([
+                    'id_kegiatan' => $k->id,
+                    'id_mhs'=> $request['mahasiswa_id'],
+                    'bn'=> 0,
+                    'tn'=> 0 * $k->sn,
+                ]);
+            }
         return redirect()->route('tambahmhsormawa')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
@@ -61,6 +72,8 @@ class MhsormawaController extends Controller
     public function deleteMhsormawa(Request $request){
         $id = $request['id'];
 		if (Mhsormawa::where('id', '=', $id)->exists()) {
+            $id2 = Mhsormawa::where('id',$id)->first();
+            $nilai = NilaiOrmawa::where('id_mhs',$id2->mahasiswa_id)->delete();
             $Mahasiswa = Mhsormawa::where('id',$id)->delete();
             return redirect()->route('listmhsormawa')->with('success', 'Mahasiswa Berhasil Dihapus');
         }

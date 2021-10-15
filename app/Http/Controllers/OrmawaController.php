@@ -44,7 +44,7 @@ class OrmawaController extends Controller
         if($extension!='xlsx')
             return redirect()->back()->withErrors(['File extension needs to be in xlsx format']);
         Excel::import(new MhsormawaImport, $request->file('file')->store('temp'));
-        return back()->with('success', 'Mahasiswa Berhasil Ditambahkan');
+        return redirect()->route('listmhsormawa')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
     public function addNilai(Request $request)
     {
