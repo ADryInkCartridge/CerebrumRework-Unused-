@@ -71,9 +71,12 @@ class MhsormawaController extends Controller
     }
     public function deleteMhsormawa(Request $request){
         $id = $request['id'];
+        $userid = Auth::user()->user_id;
+        $ormawa = Ormawa::where('user_id',$userid)->first();
+
 		if (Mhsormawa::where('id', '=', $id)->exists()) {
             $id2 = Mhsormawa::where('id',$id)->first();
-            $nilai = NilaiOrmawa::where('id_mhs',$id2->mahasiswa_id)->delete();
+            $nilai = NilaiOrmawa::where('id_mhs',$id2->mahasiswa_id)->join('kegiatan_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->where('id_ormawa',$ormawa->id)->delete();
             $Mahasiswa = Mhsormawa::where('id',$id)->delete();
             return redirect()->route('listmhsormawa')->with('success', 'Mahasiswa Berhasil Dihapus');
         }
@@ -91,9 +94,22 @@ class MhsormawaController extends Controller
             ])->select('mahasiswa.id as mahasiswa_id','ormawa.nama as nama_ormawa'
             ,'mahasiswa.nama as namamhs','mahasiswa.id_cerebrum as id_cerebrum','in_ormawa.id as id')->where(function ($query) use ($request) {
                 $query->where('mahasiswa.nama', 'LIKE', '%' . $request->term . '%' )->orWhere('ormawa.nama', 'LIKE', '%' . $request->term . '%' );
-            })->orderBy('id','asc')->paginate(10);
+            })->orderBy('id_cerebrum','asc')->paginate(10);
         }
         return view('listmhsormawa',['mhsormawas' => $data]);
+    }
+
+    public function deleteallmhsormawa(Request $request){
+        $userid = Auth::user()->user_id;
+        $ormawa = Ormawa::where('user_id',$userid)->first();
+        $mhs = Mhsormawa::where('ormawa_id',$ormawa->id)->get();
+
+        foreach($mhs as $m){
+            $nilai = NilaiOrmawa::where('id_mhs',$m->mahasiswa_id)->join('kegiatan_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->where('id_ormawa',$ormawa->id)->delete();
+            $Mahasiswa = Mhsormawa::where('id',$m->id)->delete();
+        }
+            
+        return redirect('listmhsormawa')->withErrors('Mahasiswa berhasil dihapus');
     }
     
 }

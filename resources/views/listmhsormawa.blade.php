@@ -30,6 +30,12 @@
                 class="bg-greenTableheader rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
                 Alokasi Mahasiswa +
             </a>
+            <form action="{{route('mhsormawa.deleteall')}}" method="POST">
+                @csrf
+               <button class="bg-red-600 rounded-md h-8 text-white font-semibold mb-3 px-2 flex justify-center items-center">
+                    Delete All
+               </button>
+            </form>   
 
         </div>
 
