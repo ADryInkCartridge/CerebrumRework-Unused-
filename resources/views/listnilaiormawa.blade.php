@@ -6,7 +6,7 @@
         <div class="flex flex-col">
             <span class="text-3xl pb-4 text-white">List Nilai</span>
             <div class="relative">
-                <form action="{{route('listormawa')}}" method="GET" role='search'>
+                <form action="{{route('nilaiOrmawa',$id_kegiatan)}}" method="GET" role='search'>
                     @csrf
                     <img class="absolute w-4 left-3 top-0 bottom-0 my-auto" src="pictures/search_grey.png" alt="">
                     <input class="rounded-lg h-9 w-64 pl-10" type="text" name="term" id="term" placeholder="Search">

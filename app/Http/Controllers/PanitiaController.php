@@ -161,6 +161,7 @@ class PanitiaController extends Controller
 
     public function detailMahasiswa($tahap,$id)
     {
+        
         $tipe = Tahap::where('nama','=',$tahap)->first();
         if($tipe->tipe == 0){
             $nilai = nilaiPanitia::join(
@@ -179,7 +180,7 @@ class PanitiaController extends Controller
                             'nilai_ormawa.*','kegiatan_ormawa.sn as sn','kegiatan_ormawa.nama_kegiatan as kegiatan','tahap.nama as tahap')->orderBy('nilai_ormawa.id','asc')->paginate(10);;
             
         }
-        return view('detailmahasiswa',['nilais'=> $nilai]);
+    return view('detailmahasiswa',['nilais'=> $nilai,'tipe'=> $tipe->tipe]);
     }
     
 

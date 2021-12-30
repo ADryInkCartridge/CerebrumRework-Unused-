@@ -98,11 +98,12 @@ class MahasiswaController extends Controller
         else {
             $nilai = Tahap::join('kegiatan_ormawa','tahap.id','=','kegiatan_ormawa.jenis_kegiatan')->join(
                 'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->join(
-                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
+                    'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->join('ormawa','ormawa.id','=','kegiatan_ormawa.id_ormawa')->where(
                         'nilai_ormawa.id_mhs','=',$id)->where('tahap.nama','=',$tahap)->select(
-                            'nilai_ormawa.*','kegiatan_ormawa.sn as sn','kegiatan_ormawa.nama_kegiatan as kegiatan','tahap.nama as tahap')->orderBy('nilai_ormawa.id','asc')->paginate(10);;
+                            'ormawa.nama as nama_ormawa','nilai_ormawa.*','kegiatan_ormawa.sn as sn','kegiatan_ormawa.nama_kegiatan as kegiatan','tahap.nama as tahap')->orderBy('nilai_ormawa.id','asc')->paginate(10);;
             
         }
-        return view('detailmahasiswa',['nilais'=> $nilai]);
+
+        return view('detailmahasiswa',['nilais'=> $nilai,'tipe'=>$tipe->tipe]);
     }
 }

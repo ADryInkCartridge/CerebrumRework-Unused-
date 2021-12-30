@@ -21,9 +21,11 @@ class OrmawaController extends Controller
     public function index(){
         return view('ormawa');
     }
-    public function nilaiOrmawa($id){
+    public function nilaiOrmawa($id, Request $request){
         $data = NilaiOrmawa::join('mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->where(
-            'nilai_ormawa.id_kegiatan','=',$id)->select('nilai_ormawa.*','mahasiswa.id_cerebrum','mahasiswa.nama')->orderBy('nilai_ormawa.id_mhs','asc')->paginate(10);
+            'nilai_ormawa.id_kegiatan','=',$id)->select('nilai_ormawa.*','mahasiswa.id_cerebrum','mahasiswa.nama')->where(function ($query) use ($request) {
+                $query->where('id_cerebrum', 'LIKE', '%' . $request->term . '%' )->orWhere('nama', 'LIKE', '%' . $request->term . '%' );
+            })->orderBy('mahasiswa.id_cerebrum','asc')->paginate(10);
         $id_ormawa = Kegiatan::where('id','=',$id)->first();
         return view('listnilaiormawa',['nilais' => $data,'id_kegiatan' =>$id,'id_ormawa'=> $id_ormawa]);
     }

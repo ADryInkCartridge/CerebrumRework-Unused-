@@ -14,6 +14,7 @@
     </div>
     <div class="pt-5 w-full">
         <div class="table table-fixed w-full rounded-2xl overflow-hidden">
+            @if($tipe == 0)
             <div class="table-header-group">
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No </div>
@@ -44,6 +45,36 @@
                 </div>
                 @endforeach
             </div>
+            @else
+            <div class="table-header-group">
+                <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
+                    <div class="table-cell w-32 text-center align-middle ">No </div>
+                    <div class="table-cell w-32 text-center align-middle ">Ormawa</div>
+                    <div class="table-cell w-1/4 text-center align-middle">Kegiatan</div>
+                    <div class="table-cell w-1/4 text-center align-middle">SN</div>
+                    <div class="table-cell w-1/4 text-center align-middle">BN</div>
+                    <div class="table-cell w-1/4 text-center align-middle">TN</div>
+
+                </div>
+            </div>
+            <div class="table-row-group overflow-y-scroll h-96">
+
+                @foreach($nilais as $index => $nilai)
+                <div class="table-row h-20 text-white text-xl font-semibold ">
+                    <div class="table-cell w-32 text-center align-middle  ">
+                        <span class="">{{($nilais->currentPage()-1) * 10 + $index+1}}</span>
+                    </div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['nama_ormawa']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tahap']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['sn']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['bn']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tn']}}</div>
+                    <div class="table-cell w-32 text-center align-middle relative">
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
         </div>
         <div class="flex flex-row mt-4 w-full justify-center">
             <div>
