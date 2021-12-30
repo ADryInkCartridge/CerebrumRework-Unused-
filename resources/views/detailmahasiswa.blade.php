@@ -50,6 +50,7 @@
                 <div class="table-row h-20 bg-greenTableheader text-white text-xl font-semibold ">
                     <div class="table-cell w-32 text-center align-middle ">No </div>
                     <div class="table-cell w-32 text-center align-middle ">Ormawa</div>
+                    <div class="table-cell w-1/4 text-center align-middle">Tahap</div>
                     <div class="table-cell w-1/4 text-center align-middle">Kegiatan</div>
                     <div class="table-cell w-1/4 text-center align-middle">SN</div>
                     <div class="table-cell w-1/4 text-center align-middle">BN</div>
@@ -66,6 +67,7 @@
                     </div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['nama_ormawa']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tahap']}}</div>
+                    <div class="table-cell w-1/4 text-center align-middle">{{$nilai['kegiatan']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['sn']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['bn']}}</div>
                     <div class="table-cell w-1/4 text-center align-middle">{{$nilai['tn']}}</div>
