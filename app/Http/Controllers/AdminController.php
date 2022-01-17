@@ -510,17 +510,18 @@ class AdminController extends Controller
                     'nilai_ormawa','kegiatan_ormawa.id','=','nilai_ormawa.id_kegiatan')->leftJoin(
                         'divisi','divisi.id','=','kegiatan_panitia.divisi')->leftJoin(
                         'mahasiswa','nilai_ormawa.id_mhs','=','mahasiswa.id')->leftJoin(
-                            'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->where(
+                            'nilai_panitia','kegiatan_panitia.id','=','nilai_panitia.id_kegiatan')->leftJoin('ormawa','ormawa.id','=','kegiatan_ormawa.id_ormawa')->where(
                                     'nilai_panitia.id_mhs','=',$mahasiswa->id)->orWhere('nilai_ormawa.id_mhs','=',$mahasiswa->id)->select('mahasiswa.nama as nama','mahasiswa.id_cerebrum as id_cerebrum',
                                         'nilai_panitia.*','kegiatan_panitia.sn as sn','kegiatan_panitia.nama_kegiatan as kegiatan',
                                         'divisi.nama as divisi','tahap.nama as tahap','nilai_ormawa.bn as bn2','nilai_ormawa.tn as tn2','kegiatan_ormawa.sn as sn2',
-                                        'kegiatan_ormawa.nama_kegiatan as kegiatan2')->orderBy('tahap.id')->get();
+                                        'kegiatan_ormawa.nama_kegiatan as kegiatan2','ormawa.nama as nama_ormawa')->orderBy('tahap.id')->get();
             foreach($nilais as $nilai) {
                 $nilai->nama = $mahasiswa->nama;
                 $nilai->id_cerebrum = $mahasiswa->id_cerebrum;
                 $all->add($nilai);
             }
         }
+        
         $headers = [
             "Content-type"        => "text/csv",
             "Content-Disposition" => "attachment; filename=backup.csv", // <- name of file
@@ -537,7 +538,7 @@ class AdminController extends Controller
                     fputcsv($file, [$res->nama, $res->id_cerebrum, $res->divisi, $res->tahap, $res->kegiatan,$res->sn, $res->bn, $res->tn]);
                 }
                 else {
-                    fputcsv($file, [$res->nama, $res->id_cerebrum, 'Ormawa' , $res->tahap, $res->kegiatan2,$res->sn2, $res->bn2, $res->tn2]);
+                    fputcsv($file, [$res->nama, $res->id_cerebrum, $res->nama_ormawa , $res->tahap, $res->kegiatan2,$res->sn2, $res->bn2, $res->tn2]);
                 }
             }
             fclose($file);
